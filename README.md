@@ -1,7 +1,7 @@
 # The Eye
 
-A parental control application with dual interface for parents to control
-the content of the children based on multiple categories to select from
+A parental control application with a dual interface for parents to control
+the content of the children is based on multiple categories to select from
 to avoid any sensitive or bad content for kids.
 
 ## Change Log
@@ -13,4 +13,4 @@ to avoid any sensitive or bad content for kids.
 ## Authors
 
 - [Abdullah Yehia](https://github.com/A-Yehia19)
-- [Maraim Ali](https://github.com/maraim2001)
+- [Maraim Ali](https://github.com/mariam2001)
