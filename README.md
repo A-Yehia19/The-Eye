@@ -9,6 +9,7 @@ to avoid any sensitive or bad content for kids.
 | Version | Description |
 | --- | -- |
 | 0.1 | Login page completed |
+| 0.2 | Signup page (1/2) completed |
 
 ## Authors
 
