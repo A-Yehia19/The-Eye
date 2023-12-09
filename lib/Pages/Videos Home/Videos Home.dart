@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:the_eye/Constants/Colors.dart';
 import 'package:the_eye/Pages/Videos%20Home/Widgets/Upper%20Bar.dart';
 
 import 'Widgets/Buttons List.dart';
@@ -12,8 +11,7 @@ class VideosHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: double.infinity,
-        width: double.infinity,
+        constraints: const BoxConstraints.expand(),
         padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -22,24 +20,24 @@ class VideosHome extends StatelessWidget {
           ),
         ),
         child: const SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              UpperBar(),
-              SizedBox(height: 20),
-              Text('Recommended Videos:',
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 0.78,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                UpperBar(),
+                SizedBox(height: 20),
+                Text('Recommended Videos:',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
-              ),
-              SizedBox(height: 10),
-              ButtonsList(),
-              SizedBox(height: 10),
-              Expanded(child: RecommendedVideos()),
-            ]
+                SizedBox(height: 10),
+                ButtonsList(),
+                SizedBox(height: 10),
+                RecommendedVideos(),
+              ],
+            ),
           ),
         )
       ),

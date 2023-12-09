@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:the_eye/Constants/Colors.dart';
 import 'package:the_eye/Pages/Login/login.dart';
-
-import 'Pages/Videos Home/Videos Home.dart';
+import 'package:the_eye/Pages/Signup/signup.dart';
+import 'package:the_eye/Pages/Video%20Stream/Video%20Stream.dart';
+import 'package:the_eye/Pages/Videos%20Home/Videos%20Home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,10 +19,22 @@ class MyApp extends StatelessWidget {
       title: 'The Eye',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primaryColor: primaryColor,
+        fontFamily: 'Poppins',
         useMaterial3: true,
+        textTheme: Theme.of(context).textTheme.apply(
+          fontFamily: 'Poppins',
+          bodyColor: textColor,
+          displayColor: textColor,
+        ),
       ),
-      home: const VideosHome(),
+      routes: {
+        '/login': (context) => const Login(),
+        '/signup': (context) => const Signup(),
+        '/videoHome': (context) => const VideosHome(),
+        '/videoStream': (context) => const VideoStream(video: null,),
+      },
+      home: const Login(),
     );
   }
 }
