@@ -1,18 +1,19 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:the_eye/Constants/Colors.dart';
-import 'package:the_eye/Common%20widgets/button_widget.dart';
-import 'package:the_eye/Common%20widgets/input_text_field.dart';
 
-import '../Signup/signup.dart';
+import '../../Constants/Colors.dart';
+import '../../Common widgets/button_widget.dart';
+import '../../Common widgets/input_text_field.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class Signup extends StatefulWidget {
+  const Signup({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<Signup> createState() => _SignupState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupState extends State<Signup> {
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -30,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     fit: BoxFit.fill)),
             child: Padding(
               padding: const EdgeInsets.only(bottom: 50),
-              child: Image.asset("assets/images/LOGIN.png"),
+              child: Image.asset("assets/images/New_User.png"),
             ),
           ),
           Column(
@@ -53,6 +54,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 25),
                       child: Column(
                         children: [
+                          SizedBox(height: 150,), //place holder for logo
+                          TextFieldInput(
+                              textEditingController: _nameController,
+                              hintText: "Name",
+                              textInputType: TextInputType.text),
+                          const SizedBox(height: 25),
                           TextFieldInput(
                               textEditingController: _emailController,
                               hintText: "E-mail",
@@ -62,6 +69,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               textEditingController: _passwordController,
                               hintText: "Password",
                               textInputType: TextInputType.text),
+                          const SizedBox(height: 25),
+                          TextFieldInput(
+                              textEditingController: _passwordController,
+                              hintText: "Confirm Password",
+                              textInputType: TextInputType.text),
                           const SizedBox(height: 25,),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -69,53 +81,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               buttonColor: primaryColor,
                               onPressed: () {},
                               child: const Text(
-                                "Login",
+                                "Next",
                                 style: TextStyle(
                                     color: Colors.white, fontWeight: FontWeight.bold),
                               ),
-                            ),
-                          ),
-                          const SizedBox(height: 25,),
-                          const Text("-or-", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                          const SizedBox(height: 25,),
-                          CustomButton(
-                            buttonDecoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(
-                                color: primaryColor, // Set the border color to PrimaryColor
-                                width: 2.0, // Set the border width
-                              ),
-                            ),
-                            onPressed: () {},
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset("assets/images/google_logo.png", height: 20,),
-                                Text(
-                                  "Continue with Google",
-                                  style: TextStyle(
-                                    color: primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 25,),
-                          CustomButton(
-                            buttonColor: primaryColor,
-                            onPressed: () { // temporarily will change function of button
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => Signup()),
-                              );
-                            },
-                            child: const Text(
-                              "Create an account",
-                              style: TextStyle(
-                                  color: Colors.white, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
