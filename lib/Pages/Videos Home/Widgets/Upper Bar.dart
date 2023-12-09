@@ -24,7 +24,7 @@ class UpperBar extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 12),
-        const Text('Hi Ali', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold)),
+        const Text('Hi Ali', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
         const Spacer(),
         Image.asset('assets/images/logo.png', width: 50, height: 50),
       ],
