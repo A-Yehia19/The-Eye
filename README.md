@@ -6,10 +6,13 @@ to avoid any sensitive or bad content for kids.
 
 ## Change Log
 
-| Version | Description |
-| --- | -- |
-| 0.1 | Login page completed |
-| 0.2 | Signup page (1/2) completed |
+| Version | Description                    |
+|---------|--------------------------------|
+| 0.1     | Login page completed           |
+| 0.2     | Signup page (1/2) completed    |
+| 0.3     | video page in progress         |
+| 0.4     | video page done & added themes |
+| 0.5     | Profile page completed         |
 
 ## Authors
 
