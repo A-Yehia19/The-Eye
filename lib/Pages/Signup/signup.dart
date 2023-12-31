@@ -42,10 +42,11 @@ class _SignupState extends State<Signup> {
                   padding: const EdgeInsets.only(top: 50),
                   width: double.infinity,
                   decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/background2.jpg"),
-                      fit: BoxFit.fill
-                    ),
+                      gradient:
+                      LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [blueStart, blueEnd]),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40)
