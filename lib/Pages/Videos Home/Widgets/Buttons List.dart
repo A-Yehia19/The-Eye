@@ -17,7 +17,7 @@ class ButtonsList extends StatelessWidget {
           itemCount: buttons.length,
           separatorBuilder: (context, index) => const SizedBox(width: 13),
           itemBuilder: (context, idx) => AnimatedContainer(
-            duration: const Duration(milliseconds: 500),
+            duration: const Duration(seconds: 1),
             curve: Curves.easeOut,
 
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),

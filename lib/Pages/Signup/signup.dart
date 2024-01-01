@@ -54,48 +54,56 @@ class _SignupState extends State<Signup> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 150,), //place holder for logo
-                        TextFieldInput(
-                          textEditingController: _nameController,
-                          hintText: "Name",
-                          textInputType: TextInputType.text
-                        ),
-                        const SizedBox(height: 25),
-                        TextFieldInput(
-                          textEditingController: _emailController,
-                          hintText: "E-mail",
-                          textInputType: TextInputType.emailAddress
-                        ),
-                        const SizedBox(height: 25),
-                        TextFieldInput(
-                          textEditingController: _passwordController,
-                          hintText: "Password",
-                          textInputType: TextInputType.text
-                        ),
-                        const SizedBox(height: 25),
-                        TextFieldInput(
-                          textEditingController: _passwordController,
-                          hintText: "Confirm Password",
-                          textInputType: TextInputType.text
-                        ),
-                        const SizedBox(height: 25,),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 50),
-                          child: CustomButton(
-                            buttonColor: primaryColor,
-                            onPressed: () {},
-                            child: const Text("Next",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Jua',
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 125,
+                            child: Image.asset('assets/logo/eye_white.png'),
+                          ), //place holder for logo
+                          const SizedBox(height: 25),
+                          TextFieldInput(
+                            textEditingController: _nameController,
+                            hintText: "Name",
+                            textInputType: TextInputType.text
+                          ),
+                          const SizedBox(height: 25),
+                          TextFieldInput(
+                            textEditingController: _emailController,
+                            hintText: "E-mail",
+                            textInputType: TextInputType.emailAddress
+                          ),
+                          const SizedBox(height: 25),
+                          TextFieldInput(
+                            textEditingController: _passwordController,
+                            hintText: "Password",
+                            textInputType: TextInputType.text
+                          ),
+                          const SizedBox(height: 25),
+                          TextFieldInput(
+                            textEditingController: _passwordController,
+                            hintText: "Confirm Password",
+                            textInputType: TextInputType.text
+                          ),
+                          const SizedBox(height: 25,),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 50),
+                            child: CustomButton(
+                              buttonColor: primaryColor,
+                              onPressed: () {},
+                              child: const Text("Next",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Jua',
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 25,),
+                        ],
+                      ),
                     ),
                   ),
                 )

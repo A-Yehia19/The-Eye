@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:the_eye/Pages/Video%20Stream/Data/Variables.dart';
 import 'package:the_eye/Pages/Video%20Stream/Video%20Stream.dart';
 
-import '../Data/Video Data.dart';
-
 class OtherVideos extends StatelessWidget {
   const OtherVideos({super.key});
 
@@ -13,8 +11,6 @@ class OtherVideos extends StatelessWidget {
       itemCount: recommendedList.length,
       itemBuilder: (context, index) => InkWell(
         onTap: () {
-          videoController.pause();
-          videoNotifier.value = false;
           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => VideoStream(video: recommendedList[index]),));
         },
         child: Container(
@@ -28,6 +24,7 @@ class OtherVideos extends StatelessWidget {
                 child: Image.network(
                   recommendedList[index].thumbnail,
                   width: 160,
+                  height: 125,
                   fit: BoxFit.cover,
                 ),
               ),
