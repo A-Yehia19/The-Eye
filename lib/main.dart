@@ -1,11 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:the_eye/Constants/Colors.dart';
 import 'package:the_eye/Pages/Login/login.dart';
 import 'package:the_eye/Pages/Signup/signup.dart';
-import 'package:the_eye/Pages/Video%20Stream/Video%20Stream.dart';
 import 'package:the_eye/Pages/Videos%20Home/Videos%20Home.dart';
 
-void main() {
+main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -32,9 +34,8 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const Login(),
         '/signup': (context) => const Signup(),
         '/videoHome': (context) => const VideosHome(),
-        '/videoStream': (context) => const VideoStream(video: null,),
       },
-      home: const Login(),
+      home: const VideosHome(),
     );
   }
 }

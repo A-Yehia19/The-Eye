@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:the_eye/Pages/Videos%20Home/Widgets/Upper%20Bar.dart';
+import 'package:the_eye/Common/Widgets/Upper%20Bar.dart';
 
 import 'Widgets/Buttons List.dart';
 import 'Widgets/Recommended Videos.dart';
