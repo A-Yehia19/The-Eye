@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "173688336832",
+    "project_id": "the-eye-66e7b",
+    "storage_bucket": "the-eye-66e7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173688336832:android:14338b0db2b5f049255825",
+        "android_client_info": {
+          "package_name": "com.example.the_eye"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfkqI1_9o54vNB8bDz4_p7gslh46gRNeM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173688336832:android:e7cb7a2a45e6838a255825",
+        "android_client_info": {
+          "package_name": "com.example.uploader"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfkqI1_9o54vNB8bDz4_p7gslh46gRNeM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

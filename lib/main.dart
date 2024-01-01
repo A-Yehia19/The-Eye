@@ -1,10 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:the_eye/Constants/Colors.dart';
 import 'package:the_eye/Pages/Login/login.dart';
 import 'package:the_eye/Pages/Signup/signup.dart';
 import 'package:the_eye/Pages/Videos%20Home/Videos%20Home.dart';
 
-void main() {
+main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

@@ -13,6 +13,7 @@ to avoid any sensitive or bad content for kids.
 | 0.3     | video page in progress         |
 | 0.4     | video page done & added themes |
 | 0.5     | video player done              |
+| 0.5.1   | firebase added                 |
 
 ## Authors
 
