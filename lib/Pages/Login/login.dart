@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:the_eye/Common/Widgets/button_widget.dart';
 import 'package:the_eye/Common/Widgets/input_text_field.dart';
 import 'package:the_eye/Constants/Colors.dart';
+import '../Profiles/profiles.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -28,7 +29,7 @@ class _LoginState extends State<Login> {
                     fit: BoxFit.fill)),
             child: Padding(
               padding: const EdgeInsets.only(bottom: 50),
-              child: Image.asset("assets/images/LOGIN.png"),
+              child: Image.asset("assets/images/The_Eye.png"),
             ),
           ),
           Column(
@@ -37,93 +38,47 @@ class _LoginState extends State<Login> {
                 height: 200,
               ),
               Expanded(
-                child: Container(
-                  padding: const EdgeInsets.only(top: 50),
-                  width: double.infinity,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/background2.jpg"),
-                      fit: BoxFit.fill
-                    ),
+                  child: Container(
+                padding: const EdgeInsets.only(top: 50),
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                    gradient:
+                        LinearGradient(
+                          begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [blueStart, blueEnd]),
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40)
-                    )
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25),
-                    child: Column(
-                      children: [
-                        TextFieldInput(
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40))),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Column(
+                    children: [
+                      TextFieldInput(
                           textEditingController: _emailController,
                           hintText: "E-mail",
-                          textInputType: TextInputType.emailAddress
-                        ),
-                        const SizedBox(height: 25),
-                        TextFieldInput(
+                          textInputType: TextInputType.emailAddress),
+                      const SizedBox(height: 25),
+                      TextFieldInput(
                           textEditingController: _passwordController,
                           hintText: "Password",
-                          textInputType: TextInputType.text
-                        ),
-                        const SizedBox(height: 25,),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 50),
-                          child: CustomButton(
-                            buttonColor: primaryColor,
-                            onPressed: () {},
-                            child: const Text(
-                              "Login",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Jua',
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 25,),
-                        const Text("-or-",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Jua',
-                          ),
-                        ),
-                        const SizedBox(height: 25,),
-                        CustomButton(
-                          buttonDecoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: primaryColor, // Set the border color to PrimaryColor
-                              width: 6, // Set the border width
-                            ),
-                          ),
-                          onPressed: () {},
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset("assets/images/google_logo.png", height: 20,),
-                              const Text(
-                                "Continue with Google",
-                                style: TextStyle(
-                                  color: primaryColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Jua',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 25,),
-                        CustomButton(
+                          textInputType: TextInputType.text),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 50),
+                        child: CustomButton(
                           buttonColor: primaryColor,
-                          onPressed: () { // temporarily will change function of button
-                            Navigator.pushReplacementNamed(context, '/signup');
+                          onPressed: () {
+                            // Navigate to the Profiles page when the button is pressed
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Profiles()),
+                            );
                           },
                           child: const Text(
-                            "Create an account",
+                            "Login",
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -131,11 +86,73 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      const Text(
+                        "-or-",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Jua',
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      CustomButton(
+                        buttonDecoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color:
+                                primaryColor, // Set the border color to PrimaryColor
+                            width: 6, // Set the border width
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              "assets/images/google_logo.png",
+                              height: 20,
+                            ),
+                            const Text(
+                              "Continue with Google",
+                              style: TextStyle(
+                                color: primaryColor,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Jua',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      CustomButton(
+                        buttonColor: primaryColor,
+                        onPressed: () {
+                          // temporarily will change function of button
+                          Navigator.pushReplacementNamed(context, '/signup');
+                        },
+                        child: const Text(
+                          "Create an account",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Jua',
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                )
-              ),
+                ),
+              )),
             ],
           )
         ],
