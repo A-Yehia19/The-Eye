@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:the_eye/Pages/Profiles/Widgets/profile_icons.dart';
 
-import '../../Common/Widgets/input_text_field.dart';
 import '../../Constants/Colors.dart';
 
 class Profiles extends StatelessWidget {
@@ -45,7 +44,7 @@ class Profiles extends StatelessWidget {
                             topRight: Radius.circular(40)
                         )
                     ),
-                    child: ProfileIcons()
+                    child: const ProfileIcons()
                   )
               ),
             ],

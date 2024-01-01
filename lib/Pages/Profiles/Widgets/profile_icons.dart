@@ -4,17 +4,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:the_eye/Constants/Colors.dart';
 import 'package:the_eye/Pages/Profiles/data/variables.dart';
-import 'package:the_eye/Pages/Videos%20Home/Videos%20Home.dart';
+import 'package:the_eye/Pages/Videos%20Home/Data/Variables.dart';
 
-import '../../../Common/Models/Profile Class.dart';
 
 class ProfileIcons extends StatelessWidget {
   const ProfileIcons({Key? key}) : super(key: key);
 
-  void openDialog(BuildContext context, String name, String imageURL) {
+  void openDialog(context, name, imageURL) {
     showDialog(
       context: context,
-      builder: (BuildContext context) {
+      builder: (context) {
         return Stack(
           children: [
             // Blurred background
@@ -37,48 +36,63 @@ class ProfileIcons extends StatelessWidget {
                       backgroundImage: AssetImage(imageURL),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     name,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
+                  const SizedBox(
+                    height: 50,
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     decoration: BoxDecoration(
                         color: Colors.grey,
-                        borderRadius: BorderRadius.circular(15)),
-                    child: TextField(
+                        borderRadius: BorderRadius.circular(15)
+                    ),
+                    child: const TextField(
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500
+                      ),
                       decoration: InputDecoration(
                           hintText: "Enter your ID",
                           hintStyle: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w300),
-                          border: InputBorder.none),
+                              color: Colors.white70,
+                          ),
+                          border: InputBorder.none
+                      ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
                       decoration: BoxDecoration(
                           color: primaryColor,
-                          borderRadius: BorderRadius.circular(20)),
+                          borderRadius: BorderRadius.circular(20)
+                      ),
                       child: TextButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => VideosHome()),
-                            );
+                            username = name;
+                            userImage = imageURL;
+                            Navigator.pushNamed(context, '/videoHome');
                           },
-                          child: Text(
+                          child: const Text(
                             "Confirm",
-                            style: TextStyle(color: Colors.white),
-                          )))
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Jua',
+                            ),
+                          )
+                      )
+                  )
                 ],
               ),
             ),
@@ -112,16 +126,16 @@ class ProfileIcons extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             profileList[index].name,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w600,
               fontSize: 30,
             ),
           ),
-          SizedBox(height: 25),
+          const SizedBox(height: 25),
         ],
       ),
     );
