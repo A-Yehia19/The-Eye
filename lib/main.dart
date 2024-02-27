@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_eye/Constants/Colors.dart';
+import 'package:the_eye/Pages/Creator%20Home/creator_home.dart';
 import 'package:the_eye/Pages/Login/login.dart';
 import 'package:the_eye/Pages/Signup/signup.dart';
 import 'package:the_eye/Pages/Video%20Stream/Video%20Stream.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         '/videoHome': (context) => const VideosHome(),
         '/videoStream': (context) => const VideoStream(video: null,),
       },
-      home: const Login(),
+      home: const CreatorHome(),
     );
   }
 }
