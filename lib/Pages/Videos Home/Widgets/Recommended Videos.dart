@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:the_eye/Pages/Videos%20Home/Data/Variables.dart';
 
+import '../../Video Stream/Video Stream.dart';
+
 class RecommendedVideos extends StatelessWidget {
   const RecommendedVideos({super.key});
 
@@ -14,10 +16,7 @@ class RecommendedVideos extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           InkWell(
-            onTap: () => Navigator.pushNamed(context,
-              '/videoStream',
-              arguments: videosList[index],
-            ),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => VideoStream(video: videosList[index]))),
             child: Container(
               height: 230,
               width: double.infinity,

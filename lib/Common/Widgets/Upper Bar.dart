@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_eye/Constants/Colors.dart';
-import 'package:the_eye/Constants/links.dart';
+import 'package:the_eye/Pages/Videos%20Home/Data/Variables.dart';
 
 class UpperBar extends StatelessWidget {
   const UpperBar({super.key});
@@ -14,8 +14,8 @@ class UpperBar extends StatelessWidget {
           height: 50,
           decoration: ShapeDecoration(
             color: greyColor,
-            image: const DecorationImage(
-              image: NetworkImage(profileImagePlaceholder),
+            image: DecorationImage(
+              image: AssetImage(userImage),
               fit: BoxFit.cover,
             ),
             shape: RoundedRectangleBorder(
@@ -24,9 +24,9 @@ class UpperBar extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 12),
-        const Text('Hi Ali', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        Text(username, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
         const Spacer(),
-        Image.asset('assets/images/logo.png', width: 50, height: 50),
+        Image.asset('assets/logo/eye.png', height: 70),
       ],
     );
   }

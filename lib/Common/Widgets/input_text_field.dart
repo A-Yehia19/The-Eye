@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextFieldInput extends StatelessWidget {
   final TextEditingController textEditingController;
@@ -15,24 +16,26 @@ class TextFieldInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final inputBorder =
-        OutlineInputBorder(borderSide: Divider.createBorderSide(context));
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(20)),
-      child: TextField(
-        controller: textEditingController,
-        decoration: InputDecoration(
-          hintText: hintText,
-          border: inputBorder,
-          focusedBorder: inputBorder,
-          enabledBorder: inputBorder,
-          filled: true,
-          contentPadding: const EdgeInsets.all(8),
-        ),
-        keyboardType: textInputType,
-        obscureText: isPass,
+    final inputBorder = OutlineInputBorder(
+      borderSide: Divider.createBorderSide(context),
+      borderRadius: BorderRadius.circular(15.r),
+    );
+    return TextField(
+      controller: textEditingController,
+      style: TextStyle(color: Colors.black, fontSize: 24.sp),
+      cursorColor: Colors.blueAccent,
+      decoration: InputDecoration(
+        fillColor: Colors.white,
+        hintText: hintText,
+        border: inputBorder,
+        focusedBorder: inputBorder,
+        enabledBorder: inputBorder,
+        filled: true,
+        contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        hintStyle: const TextStyle(color: Colors.grey),
       ),
+      keyboardType: textInputType,
+      obscureText: isPass,
     );
   }
 }
