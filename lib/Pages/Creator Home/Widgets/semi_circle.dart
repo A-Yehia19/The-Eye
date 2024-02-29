@@ -14,7 +14,7 @@ class SemiCircle extends StatelessWidget {
       clipper: BottomNavBarClipper(),
       child: Container(
         height: 150, // Increase height
-        color: blueEnd,
+        color: secondaryColor,
         child: Stack(
           alignment: Alignment.center,
           children: [

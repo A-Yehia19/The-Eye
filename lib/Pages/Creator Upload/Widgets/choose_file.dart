@@ -18,21 +18,21 @@ class ChooseFiles extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(10)),
               boxShadow: [
                 BoxShadow(
-                    color: blueEnd,
+                    color: secondaryColor,
                     spreadRadius: 2),
               ],
             ),
             child: TextButton(
               onPressed: () {},
-              child: Icon(CupertinoIcons.plus, size: 100, color: blueEnd,),
+              child: const Icon(CupertinoIcons.plus, size: 100, color: secondaryColor,),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 30),
+          const Padding(
+            padding: EdgeInsets.only(top: 10, bottom: 30),
             child: Text(
               'Upload video',
               style: TextStyle(
-                  color: blueEnd, fontSize: 30),
+                  color: secondaryColor, fontSize: 30),
             ),
           ),
         ],

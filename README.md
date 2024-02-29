@@ -17,7 +17,8 @@ to avoid any sensitive or bad content for kids.
 | 0.5.2   | Profile page completed                    |
 | 0.6     | finalize first prototype                  |
 | 0.7     | Creator home page and upload page created |
-| 0.8     | payment page created                      |\
+| 0.8     | payment page created                      |
+| 0.8.1   | merged everything                         |
 
 ## Authors
 
@@ -27,7 +28,7 @@ to avoid any sensitive or bad content for kids.
 ## Todo List
 
 for the whole app
-- [ ] Apply media quere
+- [ ] Apply media query
 - [ ] Connect to firebase
 
 - [ ] Creator home page
