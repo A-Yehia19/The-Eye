@@ -12,10 +12,12 @@ to avoid any sensitive or bad content for kids.
 | 0.2     | Signup page (1/2) completed               |
 | 0.3     | video page in progress                    |
 | 0.4     | video page done & added themes            |
-| 0.5     | Profile page completed                    |
+| 0.5     | video player done                         |
+| 0.5.1   | firebase added                            |
+| 0.5.2   | Profile page completed                    |
 | 0.6     | finalize first prototype                  |
 | 0.7     | Creator home page and upload page created |
-
+| 0.8     | payment page created                      |\
 
 ## Authors
 

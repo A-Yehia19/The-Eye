@@ -38,7 +38,7 @@ class Profiles extends StatelessWidget {
                         LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
-                            colors: [blueStart, blueEnd]),
+                            colors: gradientColors),
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(40),
                             topRight: Radius.circular(40)

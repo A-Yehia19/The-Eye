@@ -21,6 +21,9 @@ dependencies:
   firebase_core: ^2.24.2
   firebase_storage: ^11.5.6
   flutter_screenutil: ^5.9.0
+  flutter_credit_card: ^4.0.1
+  credit_card_scanner: ^1.0.5
+  multi_value_listenable_builder: ^0.0.2
 
 
 dev_dependencies:
@@ -36,6 +39,7 @@ flutter:
   assets:
     - assets/images/
     - assets/logo/
+    - assets/icons/
 
   fonts:
     - family: Jua
