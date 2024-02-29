@@ -17,12 +17,12 @@ class TextFieldInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final inputBorder = OutlineInputBorder(
-      borderSide: Divider.createBorderSide(context),
-      borderRadius: BorderRadius.circular(15.r),
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.circular(8),
     );
     return TextField(
       controller: textEditingController,
-      style: TextStyle(color: Colors.black, fontSize: 24.sp),
+      style: TextStyle(color: Colors.black, fontSize: 14.sp),
       cursorColor: Colors.blueAccent,
       decoration: InputDecoration(
         fillColor: Colors.white,
@@ -31,11 +31,11 @@ class TextFieldInput extends StatelessWidget {
         focusedBorder: inputBorder,
         enabledBorder: inputBorder,
         filled: true,
-        contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         hintStyle: const TextStyle(color: Colors.grey),
       ),
       keyboardType: textInputType,
       obscureText: isPass,
+
     );
   }
 }

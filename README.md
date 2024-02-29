@@ -17,6 +17,7 @@ to avoid any sensitive or bad content for kids.
 | 0.5.1   | firebase added                 |
 | 0.6     | Profile page completed         |
 | 0.7     | finalize prototype             |
+| 0.8     | payment page created           |
 
 ## Authors
 
