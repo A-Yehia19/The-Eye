@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         },
         home: child,
       ),
-      child: const Payment(),
+      child: const Login(),
     );
   }
 }
