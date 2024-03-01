@@ -6,13 +6,15 @@ class TextFieldInput extends StatelessWidget {
   final bool isPass;
   final String hintText;
   final TextInputType textInputType;
-  const TextFieldInput(
-      {Key? key,
-      required this.textEditingController,
-      this.isPass = false,
-      required this.hintText,
-      required this.textInputType})
-      : super(key: key);
+  final Icon? icon; // Optional icon parameter
+  const TextFieldInput({
+    Key? key,
+    required this.textEditingController,
+    this.isPass = false,
+    required this.hintText,
+    required this.textInputType,
+    this.icon, // Optional icon parameter
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +34,11 @@ class TextFieldInput extends StatelessWidget {
         enabledBorder: inputBorder,
         filled: true,
         hintStyle: const TextStyle(color: Colors.grey),
+        prefixIcon: icon, // Setting the icon as prefixIcon
+        contentPadding: EdgeInsets.symmetric(vertical: 12), // Adjust the vertical padding
       ),
       keyboardType: textInputType,
       obscureText: isPass,
-
     );
   }
 }

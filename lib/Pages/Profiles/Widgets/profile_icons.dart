@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:the_eye/Constants/Colors.dart';
+import 'package:the_eye/Pages/Profiles/Widgets/add_profile.dart';
 import 'package:the_eye/Pages/Profiles/data/variables.dart';
 import 'package:the_eye/Pages/Videos%20Home/Data/Variables.dart';
 
@@ -104,39 +105,50 @@ class ProfileIcons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: profileList.length,
-      itemBuilder: (context, index) => Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          InkWell(
-            onTap: () {
-              openDialog(
-                context,
-                profileList[index].name,
-                profileList[index].imageURL,
-              );
-            },
-            child: CircleAvatar(
-              radius: 79,
-              backgroundColor: Colors.white,
-              child: CircleAvatar(
-                radius: 75,
-                backgroundImage: AssetImage(profileList[index].imageURL),
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            profileList[index].name,
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w600,
-              fontSize: 30,
-            ),
-          ),
-          const SizedBox(height: 25),
-        ],
+    return Expanded(
+      child: ListView.builder(
+        itemCount: profileList.length + 1, // Add 1 for the AddProfile widget
+        itemBuilder: (context, index) {
+          // Check if it's the last item
+          if (index == profileList.length) {
+            // Return the AddProfile widget as the last item
+            return AddProfile();
+          } else {
+            // Return the profile item
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    openDialog(
+                      context,
+                      profileList[index].name,
+                      profileList[index].imageURL,
+                    );
+                  },
+                  child: CircleAvatar(
+                    radius: 79,
+                    backgroundColor: Colors.white,
+                    child: CircleAvatar(
+                      radius: 75,
+                      backgroundImage: AssetImage(profileList[index].imageURL),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  profileList[index].name,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 28,
+                  ),
+                ),
+                const SizedBox(height: 25),
+              ],
+            );
+          }
+        },
       ),
     );
   }

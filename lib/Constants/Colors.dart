@@ -11,4 +11,5 @@ const gradientColors = [
   Color(0xFF4FABEC),
   Color(0xFF2B84D4),
   Color(0xFF2B84D4),
+  Color(0xFF013877),
 ];
