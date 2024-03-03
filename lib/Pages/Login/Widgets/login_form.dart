@@ -32,94 +32,95 @@ class _LoginFormState extends State<LoginForm> {
             crossAxisAlignment:
                 CrossAxisAlignment.start, // Align children to the start
             children: [
-              Text(
+              const Text(
                 "Welcome back! Glad to see you again.",
                 style: TextStyle(
                   fontSize: 28,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
+                  color: primaryColor,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFieldInput(
                 textEditingController: _emailController,
                 hintText: "E-mail",
-                icon: Icon(Icons.email_rounded),
+                icon: const Icon(Icons.email_rounded, color: hintColor,),
                 textInputType: TextInputType.emailAddress,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFieldInput(
                 textEditingController: _passwordController,
                 hintText: "Password",
-                icon: Icon(Icons.lock_rounded), // Changed icon to lock icon
+                icon: const Icon(Icons.lock_rounded, color: hintColor,), // Changed icon to lock icon
                 textInputType: TextInputType.text,
                 isPass: true, // Mark this as a password field
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Align(
                 alignment: Alignment.topRight,
                 child: GestureDetector(
                   onTap: () {
                     // Implement forgot password functionality
                   },
-                  child: Text(
+                  child: const Text(
                     "Forgot password?",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: hintColor,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               CustomButton(
-                buttonColor: secondaryColor,
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Profiles()),
+                    MaterialPageRoute(builder: (context) => const Profiles()),
                   );
                 },
-                child: Text(
+                child: const Text(
                   "Login",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'Jua',
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
-                  Container(
-                    height: 1,
-                    width: 150, // Adjust the width as needed
-                    color: CupertinoColors.white,
-                  ),
                   Expanded(
-                    child: Text(
-                      "or",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontFamily: 'Jua',
-                      ),
+                    child: Container(
+                      height: 2,
+                      color: hintColor,
                     ),
                   ),
-                  Container(
-                    height: 1,
-                    width: 150, // Adjust the width as needed
-                    color: CupertinoColors.white,
+                  const SizedBox(width: 10,),
+                  const Text(
+                    "Or Login with",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: textColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(width: 10,),
+                  Expanded(
+                    child: Container(
+                      height: 2,
+                      color: hintColor,
+                    ),
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               CustomButton(
                 buttonDecoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(8),
                   border: Border.all(
                     color: primaryColor,
                     width: 2,
@@ -132,11 +133,11 @@ class _LoginFormState extends State<LoginForm> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      "assets/images/google_logo.png",
+                      "assets/icons/google.png",
                       height: 30,
                     ),
-                    SizedBox(width: 10),
-                    Text(
+                    const SizedBox(width: 10),
+                    const Text(
                       "Continue with Google",
                       style: TextStyle(
                         color: primaryColor,
@@ -148,28 +149,28 @@ class _LoginFormState extends State<LoginForm> {
                   ],
                 ),
               ),
-              SizedBox(height: 200),
+              const SizedBox(height: 200),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Don't have an account? ",
                     style:
-                        TextStyle(color: CupertinoColors.white, fontSize: 15),
+                        TextStyle(color: textColor, fontSize: 15),
                   ),
                   InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Signup()),
+                          MaterialPageRoute(builder: (context) => const Signup()),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         "Register Now",
                         style: TextStyle(
-                            color: secondaryColor,
+                            color: primaryColor,
                             fontSize: 15,
-                            fontWeight: FontWeight.w500),
+                            fontWeight: FontWeight.bold),
                       ))
                 ],
               )

@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
             displayColor: textColor,
           ),
           inputDecorationTheme: inputDecorationThemeTheme,
+          scaffoldBackgroundColor: Colors.white,
         ),
         routes: {
           '/login': (context) => const Login(),
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
         },
         home: child,
       ),
-      child: const Login(),
+      child: const Payment(),
     );
   }
 }

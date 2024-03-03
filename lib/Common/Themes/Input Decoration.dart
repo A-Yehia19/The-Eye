@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_eye/Constants/Colors.dart';
 
 InputDecorationTheme inputDecorationThemeTheme = const InputDecorationTheme(
   outlineBorder: BorderSide(style: BorderStyle.none),
@@ -15,15 +16,16 @@ InputDecorationTheme inputDecorationThemeTheme = const InputDecorationTheme(
     borderRadius: BorderRadius.all(Radius.circular(10)),
   ),
   focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.grey, width: 2, strokeAlign: BorderSide.strokeAlignCenter),
+    borderSide: BorderSide(color: secondaryColor, width: 2, strokeAlign: BorderSide.strokeAlignCenter),
     borderRadius: BorderRadius.all(Radius.circular(10)),
   ),
   errorStyle: TextStyle(color: Colors.red, fontWeight: FontWeight.w600),
 
 
-  fillColor: Colors.white,
+  fillColor: secondaryColor,
   filled: true,
-  hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
-  labelStyle: TextStyle(fontSize: 14),
+  hintStyle: TextStyle(fontSize: 14, color: hintColor),
+  labelStyle: TextStyle(fontSize: 14, color: hintColor),
+  prefixIconColor: hintColor,
   floatingLabelBehavior: FloatingLabelBehavior.never,
 );

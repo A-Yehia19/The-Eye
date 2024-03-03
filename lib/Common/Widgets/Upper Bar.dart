@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:the_eye/Constants/Colors.dart';
 import 'package:the_eye/Pages/Videos%20Home/Data/Variables.dart';
 
 class UpperBar extends StatelessWidget {
@@ -13,7 +12,7 @@ class UpperBar extends StatelessWidget {
           width: 50,
           height: 50,
           decoration: ShapeDecoration(
-            color: greyColor,
+            color: Colors.grey,
             image: DecorationImage(
               image: AssetImage(userImage),
               fit: BoxFit.cover,
