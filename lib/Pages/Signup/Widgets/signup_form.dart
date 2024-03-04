@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Pages/Signup/Data/Functions/signup.dart';
 
+import '../../../Common/Firebase/Auth/signin google.dart';
 import '../../../Common/Widgets/button_widget.dart';
 import '../../../Common/Widgets/input_text_field.dart';
 import '../../../Constants/Colors.dart';
 import '../../Login/login.dart';
-import '../../Profiles/profiles.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -18,6 +19,7 @@ class _SignUpFormState extends State<SignUpForm> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordConfirmController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,19 +68,20 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           const SizedBox(height: 25),
           TextFieldInput(
-              textEditingController: _passwordController,
+              textEditingController: _passwordConfirmController,
               hintText: "Confirm Password",
               icon: const Icon(Icons.lock, color: hintColor,),
               textInputType: TextInputType.text
           ),
           const SizedBox(height: 25,),
           CustomButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Profiles()),
-              );
-            },
+            onPressed: () => signup(
+                _nameController.text,
+                _emailController.text,
+                _passwordController.text,
+                _passwordConfirmController.text,
+                context
+            ),
             child: const Text("Next",
               style: TextStyle(
                 color: Colors.white,
@@ -125,9 +128,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 width: 2,
               ),
             ),
-            onPressed: () {
-              // Implement Google sign-in functionality
-            },
+            onPressed: () => googleSignUp(context),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -165,7 +166,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     );
                   },
                   child: const Text(
-                    "Register Now",
+                    "Login Now",
                     style: TextStyle(
                         color: primaryColor,
                         fontSize: 15,

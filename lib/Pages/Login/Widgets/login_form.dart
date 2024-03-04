@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:the_eye/Pages/Login/Data/Functions/login.dart';
 
+import '../../../Common/Firebase/Auth/signin google.dart';
 import '../../../Common/Widgets/button_widget.dart';
 import '../../../Common/Widgets/input_text_field.dart';
 import '../../../Constants/Colors.dart';
-import '../../Profiles/profiles.dart';
 import '../../Signup/signup.dart';
 
 class LoginForm extends StatefulWidget {
@@ -73,12 +73,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
               const SizedBox(height: 30),
               CustomButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Profiles()),
-                  );
-                },
+                onPressed: () => login(_emailController.text, _passwordController.text, context),
                 child: const Text(
                   "Login",
                   style: TextStyle(
@@ -126,9 +121,7 @@ class _LoginFormState extends State<LoginForm> {
                     width: 2,
                   ),
                 ),
-                onPressed: () {
-                  // Implement Google sign-in functionality
-                },
+                onPressed: () => googleSignUp(context),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
