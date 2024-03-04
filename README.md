@@ -20,6 +20,8 @@ to avoid any sensitive or bad content for kids.
 | 0.8     | payment page created                                        |
 | 0.8.1   | merged everything                                           |
 | 0.9     | updated UI for signup and login<br/> modified profiles list |
+| 0.10    | updated app theme                                           |
+| 0.10.1  | google and email authentication is done                     |
 
 ## Authors
 

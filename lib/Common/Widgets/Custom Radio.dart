@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_eye/Constants/Colors.dart';
 
 class CustomRadio<T> extends StatelessWidget {
   final T value;
@@ -16,8 +17,8 @@ class CustomRadio<T> extends StatelessWidget {
     required this.onChanged,
     this.width = 20,
     this.height = 20,
-    this.activeColor = const Color(0xFFFFC107),
-    this.inactiveColor = const Color(0xFFD9D9D9),
+    this.activeColor = highlightColor,
+    this.inactiveColor = hintColor,
   });
 
   @override
@@ -25,9 +26,8 @@ class CustomRadio<T> extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 8.0, bottom: 4.0, top: 4.0),
       child: InkWell(
-        onTap: () {
-          onChanged(this.value);
-        },
+        onTap: () => onChanged(this.value),
+        splashFactory: NoSplash.splashFactory,
         child: Container(
           height: this.height,
           width: this.width,

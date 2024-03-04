@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:the_eye/Constants/Colors.dart';
 
@@ -11,23 +10,19 @@ class AddProfile extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {},
-          child: CircleAvatar(
-            radius: 74,
-            backgroundColor: Colors.white,
-            child: CircleAvatar(
-              radius: 70,
-              child: Icon(Icons.add, size: 120, color: CupertinoColors.white,),
-              backgroundColor: secondaryColor,
-            ),
+          child: const CircleAvatar(
+            radius: 75,
+            backgroundColor: hintColor,
+            child: Icon(Icons.add, size: 120, color: Colors.white,),
           ),
         ),
         const SizedBox(height: 10),
-        Text(
-          "Add child profile",
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w500,
-            fontSize: 28,
+        const Text(
+          "Add child",
+          style: TextStyle(
+            color: textColor,
+            fontWeight: FontWeight.w600,
+            fontSize: 24,
           ),
         ),
       ],

@@ -11,7 +11,10 @@ class Back extends StatelessWidget {
         alignment: Alignment.center,
         backgroundColor: MaterialStateProperty.all(const Color(0xFFFFFFFF)),
         shape: MaterialStateProperty.all(
-          const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+          const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+              side: BorderSide(color: Color(0xFFE8ECF4), width: 2)
+          ),
         ),
 
       ),

@@ -22,7 +22,7 @@ class ButtonsList extends StatelessWidget {
 
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
             decoration: BoxDecoration(
-              color: selectedIdx.value == idx ? selectedChipColor : unselectedChipColor,
+              color: selectedIdx.value == idx ? primaryColor : secondaryColor,
               borderRadius: BorderRadius.circular(100),
             ),
             child: InkWell(

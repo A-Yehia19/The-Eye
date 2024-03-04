@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:the_eye/Common/Models/Profile%20Class.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Pages/Signup/Data/Functions/signup.dart';
 
+import '../../../Common/Firebase/Auth/signin google.dart';
 import '../../../Common/Widgets/button_widget.dart';
 import '../../../Common/Widgets/input_text_field.dart';
 import '../../../Constants/Colors.dart';
 import '../../Login/login.dart';
-import '../../Profiles/profiles.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -19,6 +19,7 @@ class _SignUpFormState extends State<SignUpForm> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordConfirmController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +31,15 @@ class _SignUpFormState extends State<SignUpForm> {
             TextSpan(
               text: "Hello! Glad to serve you. Welcome to ",
               style: TextStyle(
-                fontSize: 28,
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
+                fontSize: 24.sp,
+                color: primaryColor,
+                fontWeight: FontWeight.bold,
               ),
-              children: <TextSpan>[
+              children: const [
                 TextSpan(
                   text: "The Eye!",
                   style: TextStyle(
-                    color: primaryColor, // Change the color of "The Eye"
-                    fontWeight: FontWeight.bold, // Change the font weight of "The Eye"
+                    color: highlightColor,
                   ),
                 ),
               ],
@@ -49,96 +49,95 @@ class _SignUpFormState extends State<SignUpForm> {
           TextFieldInput(
               textEditingController: _nameController,
               hintText: "Enter your name",
-              icon: Icon(Icons.person),
+              icon: const Icon(Icons.person, color: hintColor,),
               textInputType: TextInputType.text
           ),
           const SizedBox(height: 25),
           TextFieldInput(
               textEditingController: _emailController,
               hintText: "Enter your email",
-              icon: Icon(Icons.email),
+              icon: const Icon(Icons.email, color: hintColor,),
               textInputType: TextInputType.emailAddress
           ),
           const SizedBox(height: 25),
           TextFieldInput(
               textEditingController: _passwordController,
               hintText: "Password",
-              icon: Icon(Icons.lock),
+              icon: const Icon(Icons.lock, color: hintColor,),
               textInputType: TextInputType.text
           ),
           const SizedBox(height: 25),
           TextFieldInput(
-              textEditingController: _passwordController,
+              textEditingController: _passwordConfirmController,
               hintText: "Confirm Password",
-              icon: Icon(Icons.lock),
+              icon: const Icon(Icons.lock, color: hintColor,),
               textInputType: TextInputType.text
           ),
           const SizedBox(height: 25,),
           CustomButton(
-            buttonColor: secondaryColor,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Profiles()),
-              );
-            },
+            onPressed: () => signup(
+                _nameController.text,
+                _emailController.text,
+                _passwordController.text,
+                _passwordConfirmController.text,
+                context
+            ),
             child: const Text("Next",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
-                fontWeight: FontWeight.w500,
-                fontFamily: 'Jua',
+                fontWeight: FontWeight.w600,
               ),
             ),
           ),
           const SizedBox(height: 25,),
           Row(
             children: [
-              Container(
-                height: 1,
-                width: 150, // Adjust the width as needed
-                color: CupertinoColors.white,
-              ),
               Expanded(
-                child: Text(
-                  "or",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontFamily: 'Jua',
-                  ),
+                child: Container(
+                  height: 2,
+                  color: hintColor,
                 ),
               ),
-              Container(
-                height: 1,
-                width: 150, // Adjust the width as needed
-                color: CupertinoColors.white,
+              const SizedBox(width: 10,),
+              const Text(
+                "Or Register with",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: textColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const SizedBox(width: 10,),
+              Expanded(
+                child: Container(
+                  height: 2,
+                  color: hintColor,
+                ),
               ),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           CustomButton(
             buttonDecoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(8),
               border: Border.all(
                 color: primaryColor,
                 width: 2,
               ),
             ),
-            onPressed: () {
-              // Implement Google sign-in functionality
-            },
+            onPressed: () => googleSignUp(context),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  "assets/images/google_logo.png",
+                  "assets/icons/google.png",
                   height: 30,
                 ),
-                SizedBox(width: 10),
-                Text(
+                const SizedBox(width: 10),
+                const Text(
                   "Continue with Google",
                   style: TextStyle(
                     color: primaryColor,
@@ -150,28 +149,28 @@ class _SignUpFormState extends State<SignUpForm> {
               ],
             ),
           ),
-          SizedBox(height: 100,),
+          const SizedBox(height: 100,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "Already have an account? ",
                 style:
-                TextStyle(color: CupertinoColors.white, fontSize: 15),
+                TextStyle(color: textColor, fontSize: 15),
               ),
               InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Login()),
+                      MaterialPageRoute(builder: (context) => const Login()),
                     );
                   },
-                  child: Text(
-                    "Register Now",
+                  child: const Text(
+                    "Login Now",
                     style: TextStyle(
-                        color: secondaryColor,
+                        color: primaryColor,
                         fontSize: 15,
-                        fontWeight: FontWeight.w500),
+                        fontWeight: FontWeight.bold),
                   ))
             ],
           )

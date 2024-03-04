@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_eye/Constants/Colors.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -9,7 +10,7 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     Key? key,
     this.onPressed,
-    this.buttonColor,
+    this.buttonColor = primaryColor,
     this.buttonDecoration,
     required this.child,
   }) : super(key: key);

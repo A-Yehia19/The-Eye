@@ -12,7 +12,20 @@
           "package_name": "com.example.the_eye"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "173688336832-npa5tdb26ibf5mc5rf8d5at9pa312ros.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.the_eye",
+            "certificate_hash": "c71d46a570162e6e94d3bf2be797de4ee8b2ca43"
+          }
+        },
+        {
+          "client_id": "173688336832-2tlt7etvikqhabdbfp076ch3ldfmkuds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBfkqI1_9o54vNB8bDz4_p7gslh46gRNeM"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173688336832-2tlt7etvikqhabdbfp076ch3ldfmkuds.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
@@ -31,7 +49,12 @@
           "package_name": "com.example.uploader"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "173688336832-2tlt7etvikqhabdbfp076ch3ldfmkuds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBfkqI1_9o54vNB8bDz4_p7gslh46gRNeM"
@@ -39,7 +62,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173688336832-2tlt7etvikqhabdbfp076ch3ldfmkuds.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

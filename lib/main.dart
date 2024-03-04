@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +10,7 @@ import 'package:the_eye/Pages/Signup/signup.dart';
 import 'package:the_eye/Pages/Videos%20Home/Videos%20Home.dart';
 
 import 'Common/Themes/Input Decoration.dart';
+import 'Common/Widgets/SnackBar.dart';
 
 
 main() async {
@@ -29,6 +31,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => MaterialApp(
         title: 'The Eye',
         debugShowCheckedModeBanner: false,
+        scaffoldMessengerKey: Bar.messengerKey,
         theme: ThemeData(
           primaryColor: primaryColor,
           fontFamily: 'Poppins',
@@ -39,6 +42,7 @@ class MyApp extends StatelessWidget {
             displayColor: textColor,
           ),
           inputDecorationTheme: inputDecorationThemeTheme,
+          scaffoldBackgroundColor: Colors.white,
         ),
         routes: {
           '/login': (context) => const Login(),
@@ -49,7 +53,8 @@ class MyApp extends StatelessWidget {
         },
         home: child,
       ),
-      child: const Login(),
+      child: FirebaseAuth.instance.currentUser == null ?
+        const Login() : const Login(),
     );
   }
 }

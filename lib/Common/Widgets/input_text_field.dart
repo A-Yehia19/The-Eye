@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../Constants/Colors.dart';
+
 class TextFieldInput extends StatelessWidget {
   final TextEditingController textEditingController;
   final bool isPass;
@@ -24,18 +26,18 @@ class TextFieldInput extends StatelessWidget {
     );
     return TextField(
       controller: textEditingController,
-      style: TextStyle(color: Colors.black, fontSize: 14.sp),
-      cursorColor: Colors.blueAccent,
+      style: TextStyle(color: textColor, fontSize: 14.sp),
+      cursorColor: primaryColor,
       decoration: InputDecoration(
-        fillColor: Colors.white,
+        fillColor: secondaryColor,
         hintText: hintText,
         border: inputBorder,
         focusedBorder: inputBorder,
         enabledBorder: inputBorder,
         filled: true,
-        hintStyle: const TextStyle(color: Colors.grey),
+        hintStyle: const TextStyle(color: hintColor, fontSize: 14),
         prefixIcon: icon, // Setting the icon as prefixIcon
-        contentPadding: EdgeInsets.symmetric(vertical: 12), // Adjust the vertical padding
+        contentPadding: const EdgeInsets.symmetric(vertical: 12), // Adjust the vertical padding
       ),
       keyboardType: textInputType,
       obscureText: isPass,
