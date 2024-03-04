@@ -25,6 +25,7 @@ class ProfileIcons extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 InkWell(
+                  splashFactory: NoSplash.splashFactory,
                   onTap: () {
                     openDialog(
                       context,
