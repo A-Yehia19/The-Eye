@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
         home: child,
       ),
       child: FirebaseAuth.instance.currentUser == null ?
-        const Login() : const Login(),
+        const Login() : const Profiles(),
     );
   }
 }

@@ -1,49 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Pages/Videos%20Home/Data/Variables.dart';
 
-import '../../Video Stream/Video Stream.dart';
+import 'Video Card.dart';
 
 class RecommendedVideos extends StatelessWidget {
   const RecommendedVideos({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: videosList.length,
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemBuilder: (context, index) => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          InkWell(
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => VideoStream(video: videosList[index]))),
-            child: Container(
-              height: 230,
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
-                  image: NetworkImage(videosList[index].thumbnail),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 8),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Text(videosList[index].caption,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 0.78,
-              ),
-            ),
-          ),
-          const SizedBox(height: 30),
-        ],
-      )
+    return SizedBox(
+      height: 220.h,
+      width: double.infinity,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        padding: EdgeInsetsDirectional.zero,
+        itemCount: videosList.length,
+        separatorBuilder: (context, index) => const SizedBox(width: 20),
+        itemBuilder: (context, index) => VideoCard(video: videosList[index]),
+      ),
     );
   }
 }
