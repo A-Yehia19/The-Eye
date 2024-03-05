@@ -1,42 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:the_eye/Constants/Colors.dart';
 import 'package:the_eye/Pages/Videos%20Home/Data/Variables.dart';
+import 'package:the_eye/Pages/Videos%20Home/Widgets/tag%20button.dart';
 
 class ButtonsList extends StatelessWidget {
   const ButtonsList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 20),
+    return SizedBox(
       height: 30,
       child: ValueListenableBuilder(
         valueListenable: selectedIdx,
-        builder: (context, value, child) => ListView.separated(
-          scrollDirection: Axis.horizontal,
-          itemCount: buttons.length,
-          separatorBuilder: (context, index) => const SizedBox(width: 13),
-          itemBuilder: (context, idx) => AnimatedContainer(
-            duration: const Duration(seconds: 1),
-            curve: Curves.easeOut,
-
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-            decoration: BoxDecoration(
-              color: selectedIdx.value == idx ? primaryColor : secondaryColor,
-              borderRadius: BorderRadius.circular(100),
+        builder: (context, value, child) => Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TagButton(
+              text: 'Explore',
+              buttonIdx: -1,
+              selectedIndex: selectedIdx.value,
             ),
-            child: InkWell(
-              onTap: () => selectedIdx.value = idx,
-              child: Text(buttons[idx],
-                style: TextStyle(
-                  color: selectedIdx.value == idx ? Colors.white : Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 0.78,
-                ),
+            const VerticalDivider(
+              color: primaryColor,
+              thickness: 2,
+            ),
+            ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: buttons.length,
+              shrinkWrap: true,
+              separatorBuilder: (context, index) => const SizedBox(width: 13),
+              itemBuilder: (context, idx) => TagButton(
+                text: buttons[idx],
+                buttonIdx: idx,
+                selectedIndex: selectedIdx.value,
               ),
             ),
-          ),
+          ],
         ),
       ),
     );

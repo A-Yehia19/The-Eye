@@ -22,6 +22,8 @@ to avoid any sensitive or bad content for kids.
 | 0.9     | updated UI for signup and login<br/> modified profiles list |
 | 0.10    | updated app theme                                           |
 | 0.10.1  | google and email authentication is done                     |
+| 0.10.2  | some modifications in pages                                 |
+| 0.10.3  | videos home page new theme applied                          |
 
 ## Authors
 

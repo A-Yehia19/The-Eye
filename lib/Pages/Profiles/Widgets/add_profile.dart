@@ -9,6 +9,7 @@ class AddProfile extends StatelessWidget {
     return Column(
       children: [
         InkWell(
+          splashFactory: NoSplash.splashFactory,
           onTap: () {},
           child: const CircleAvatar(
             radius: 75,
