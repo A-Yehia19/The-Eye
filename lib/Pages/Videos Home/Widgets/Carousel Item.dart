@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:the_eye/Common/Models/Video%20Class.dart';
+import 'package:the_eye/Common/Models/Classes/Video.dart';
 import 'package:the_eye/Constants/Colors.dart';
 
 import '../../Video Stream/Video Stream.dart';

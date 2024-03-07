@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pod_player/pod_player.dart';
 
-import '../../../Common/Models/Video Class.dart';
+import '../../../Common/Models/Classes/Video.dart';
 
 class VideoBox extends StatefulWidget {
   final Video video;
@@ -36,29 +36,12 @@ class _VideoBoxState extends State<VideoBox> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: double.infinity,
-          height: 225,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: PodVideoPlayer(
-              controller: videoController,
-              videoThumbnail: DecorationImage(
-                image: NetworkImage(widget.video.thumbnail),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(height: 15),
-        Text(
-          widget.video.caption,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700)
-        ),
-      ],
+    return PodVideoPlayer(
+      controller: videoController,
+      videoThumbnail: DecorationImage(
+        image: NetworkImage(widget.video.thumbnail),
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

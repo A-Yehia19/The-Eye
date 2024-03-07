@@ -17,7 +17,7 @@ class RecommendedCarousel extends StatelessWidget {
         autoPlayInterval: const Duration(seconds: 5),
         autoPlayAnimationDuration: const Duration(milliseconds: 800),
         autoPlayCurve: Curves.fastOutSlowIn,
-        enlargeCenterPage: false,
+        enlargeCenterPage: true,
         enableInfiniteScroll: true,
         viewportFraction: 1,
         onPageChanged: (index, reason) => currentCard.value = index,
