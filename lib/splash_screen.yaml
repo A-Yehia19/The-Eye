@@ -1,0 +1,11 @@
+flutter_native_splash:
+  background_image: "assets/images/splash.png"
+
+  # android 12
+  # Note: Doesn't support background image
+  android_12:
+    color: "#8ED197"
+    image: assets/logo/eye_white_splash.png
+
+  web: false
+  ios: false

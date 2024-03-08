@@ -48,6 +48,7 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/started': (context) => const Start(),
+          '/onBoarding': (context) => const OnBoarding(),
           '/login': (context) => const Login(),
           '/signup': (context) => const Signup(),
           '/profiles': (context) => const Profiles(),
@@ -56,8 +57,9 @@ class MyApp extends StatelessWidget {
         },
         home: child,
       ),
-      child: FirebaseAuth.instance.currentUser == null ?
-        const OnBoarding() : const OnBoarding(),
+      child: FirebaseAuth.instance.currentUser == null
+          ? const OnBoarding()
+          : const Profiles(),
     );
   }
 }
