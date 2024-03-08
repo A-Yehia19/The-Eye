@@ -25,6 +25,7 @@ to avoid any sensitive or bad content for kids.
 | 0.10.2  | some modifications in pages                                        |
 | 0.10.3  | videos home page new theme applied                                 |
 | 0.10.4  | videos steam new theme applied & changes classes into named params |
+| 0.11    | Start Page added                                                   |
 
 ## Authors
 
@@ -36,24 +37,25 @@ to avoid any sensitive or bad content for kids.
 for the whole app
 - [x] Connect to firebase
 
+- [x] Start Page
 - [ ] Creator home page
   - [ ] Replace videos in the list with uploads 
 - [ ] Creator upload page
   - [ ] Add functionality to the upload button using firebase.
 - [ ] Sign up page
   - [x] updated UI
-  - [ ] connect to firebase
+  - [x] connect to firebase
   - [ ] handle responsiveness
 - [ ] Log in page
   - [x] updated UI
-  - [ ] connect to firebase
+  - [x] connect to firebase
   - [ ] handle responsiveness
 - [ ] parents page
   - [ ] updated UI
   - [ ] connect to firebase
   - [ ] handle responsiveness
 - [ ] child's page
-  - [ ] updated UI
+  - [x] updated UI
   - [ ] connect to firebase
   - [ ] handle responsiveness
 - [x] payment page

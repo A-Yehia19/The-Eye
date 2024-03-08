@@ -11,6 +11,7 @@ import 'package:the_eye/Pages/Videos%20Home/Videos%20Home.dart';
 
 import 'Common/Themes/Input Decoration.dart';
 import 'Common/Widgets/SnackBar.dart';
+import 'Pages/Start/start.dart';
 
 
 main() async {
@@ -51,10 +52,10 @@ class MyApp extends StatelessWidget {
           '/videoHome': (context) => const VideosHome(),
           '/payment': (context) => const Payment(),
         },
-        home: child,
+        home: Start(),
       ),
       child: FirebaseAuth.instance.currentUser == null ?
-        const Login() : const Profiles(),
+        const Login() : const Start(),
     );
   }
 }
