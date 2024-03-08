@@ -11,14 +11,14 @@ class ButtonsList extends StatelessWidget {
     return SizedBox(
       height: 30,
       child: ValueListenableBuilder(
-        valueListenable: selectedIdx,
+        valueListenable: selectedTab,
         builder: (context, value, child) => Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TagButton(
               text: 'Explore',
               buttonIdx: -1,
-              selectedIndex: selectedIdx.value,
+              selectedIndex: selectedTab.value,
             ),
             const VerticalDivider(
               color: primaryColor,
@@ -32,7 +32,7 @@ class ButtonsList extends StatelessWidget {
               itemBuilder: (context, idx) => TagButton(
                 text: buttons[idx],
                 buttonIdx: idx,
-                selectedIndex: selectedIdx.value,
+                selectedIndex: selectedTab.value,
               ),
             ),
           ],

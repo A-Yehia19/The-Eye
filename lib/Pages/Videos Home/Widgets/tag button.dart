@@ -28,7 +28,7 @@ class TagButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(7),
       ),
       child: InkWell(
-        onTap: () => selectedIdx.value = buttonIdx,
+        onTap: () => selectedTab.value = buttonIdx,
         child: Text(text,
           style: TextStyle(
             color: selectedIndex == buttonIdx ? Colors.white : Colors.white70,

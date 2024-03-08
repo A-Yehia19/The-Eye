@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Constants/Colors.dart';
 
-import '../../Common/Models/Video Class.dart';
-import '../../Common/Widgets/Upper Bar.dart';
-import '../../Constants/Colors.dart';
+import '../../Common/Models/Classes/Video.dart';
+import 'Widgets/Creator Bar.dart';
 import 'Widgets/Other Videos.dart';
 import 'Widgets/Video Box.dart';
+import 'Widgets/Video Information.dart';
 
 class VideoStream extends StatelessWidget {
   final Video video;
@@ -13,29 +15,42 @@ class VideoStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        constraints: const BoxConstraints.expand(),
-        padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/bubbles.jpg'),
-            fit: BoxFit.cover,
-          ),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            VideoBox(video: video),
+            const SizedBox(height: 15),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 5),
+                    VideoInformation(video: video),
+                    const SizedBox(height: 15),
+                    const Divider(color: Colors.black, thickness: 0.8),
+                    CreatorBar(video: video),
+                    const Divider(color: Colors.black, thickness: 0.8),
+                    const SizedBox(height: 10),
+                    Text('What\'s New Today',
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        color: textColor,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    const Expanded(child: OtherVideos()),
+                    const SizedBox(height: 30),
+                  ],
+                ),
+              ),
+            )
+          ],
         ),
-        child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const UpperBar(),
-              const SizedBox(height: 28),
-              VideoBox(video: video),
-              const SizedBox(height: 15),
-              const Divider(color: textColor, thickness: 3, endIndent: 12, indent: 12),
-              const SizedBox(height: 30),
-              const Expanded(child: OtherVideos()),
-            ],
-          ),
-        )
       ),
     );
   }
