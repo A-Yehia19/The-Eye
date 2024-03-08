@@ -28,6 +28,7 @@ to avoid any sensitive or bad content for kids.
 | 0.11    | Start Page added                                                   |
 | 0.12.0  | onboarding page completed                                          |
 | 0.12.1  | splash screen completed                                            |
+| 0.12.2  | fixed some color issues                                            |
 
 ## Authors
 

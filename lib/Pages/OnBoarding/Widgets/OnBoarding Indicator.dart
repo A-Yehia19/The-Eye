@@ -26,7 +26,7 @@ class OnBoardingIndicator extends StatelessWidget {
             dotWidth: 8.r,
             spacing: 10.r,
             activeDotColor: highlightColor,
-            dotColor: secondaryColor,
+            dotColor: const Color(0xFFDDDDDD),
           ),
         ),
     );

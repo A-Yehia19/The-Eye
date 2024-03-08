@@ -12,7 +12,7 @@ class RecommendedCarousel extends StatelessWidget {
     return CarouselSlider(
       carouselController: carouselController,
       options: CarouselOptions(
-        height: 387.h,
+        height: 400.h,
         autoPlay: true,
         autoPlayInterval: const Duration(seconds: 5),
         autoPlayAnimationDuration: const Duration(milliseconds: 800),
