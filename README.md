@@ -26,6 +26,8 @@ to avoid any sensitive or bad content for kids.
 | 0.10.3  | videos home page new theme applied                                 |
 | 0.10.4  | videos steam new theme applied & changes classes into named params |
 | 0.11    | Start Page added                                                   |
+| 0.12.0  | onboarding page completed                                          |
+| 0.12.1  | splash screen completed                                            |
 
 ## Authors
 
@@ -62,3 +64,17 @@ for the whole app
 - [ ] profiles list page
   - [x] update page UI
   - [ ] update pop up UI
+
+
+- Splash screen added
+- command to update:
+
+```bash
+dart run flutter_native_splash:create --path=lib/splash_screen.yaml
+```
+
+- command to remove
+
+```bash
+dart run flutter_native_splash:remove --path=lib/splash_screen.yaml
+```
