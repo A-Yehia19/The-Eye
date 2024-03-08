@@ -26,6 +26,7 @@ to avoid any sensitive or bad content for kids.
 | 0.10.3  | videos home page new theme applied                                 |
 | 0.10.4  | videos steam new theme applied & changes classes into named params |
 | 0.11    | Start Page added                                                   |
+| 0.12.0  | onboarding page completed                                          |
 
 ## Authors
 
