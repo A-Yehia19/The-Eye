@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Constants/Colors.dart';
 import 'package:the_eye/Pages/Add%20Child/add_child.dart';
 import 'package:the_eye/Pages/Login/login.dart';
+import 'package:the_eye/Pages/OnBoarding/OnBoarding.dart';
 import 'package:the_eye/Pages/Payment/payment.dart';
 import 'package:the_eye/Pages/Profiles/profiles.dart';
 import 'package:the_eye/Pages/Signup/signup.dart';
@@ -47,16 +48,20 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
         ),
         routes: {
+          '/started': (context) => const Start(),
+          '/onBoarding': (context) => const OnBoarding(),
           '/login': (context) => const Login(),
           '/signup': (context) => const Signup(),
           '/profiles': (context) => const Profiles(),
           '/videoHome': (context) => const VideosHome(),
           '/payment': (context) => const Payment(),
         },
-        home: Profiles(),
+
+        home: child,
       ),
-      child: FirebaseAuth.instance.currentUser == null ?
-        const Login() : const Start(),
+      child: FirebaseAuth.instance.currentUser == null
+          ? const OnBoarding()
+          : const Profiles(),
     );
   }
 }

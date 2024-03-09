@@ -6,27 +6,33 @@ to avoid any sensitive or bad content for kids.
 
 ## Change Log
 
-| Version | Description                                                             |
-|---------|-------------------------------------------------------------------------|
-| 0.1     | Login page completed                                                    |
-| 0.2     | Signup page (1/2) completed                                             |
-| 0.3     | video page in progress                                                  |
-| 0.4     | video page done & added themes                                          |
-| 0.5     | video player done                                                       |
-| 0.5.1   | firebase added                                                          |
-| 0.5.2   | Profile page completed                                                  |
-| 0.6     | finalize first prototype                                                |
-| 0.7     | Creator home page and upload page created                               |
-| 0.8     | payment page created                                                    |
-| 0.8.1   | merged everything                                                       |
-| 0.9     | updated UI for signup and login<br/> modified profiles list             |
-| 0.10    | updated app theme                                                       |
-| 0.10.1  | google and email authentication is done                                 |
-| 0.10.2  | some modifications in pages                                             |
-| 0.10.3  | videos home page new theme applied                                      |
-| 0.10.4  | videos steam new theme applied & changes classes<br/> into named params |
-| 0.11    | Start Page added                                                        |
+
+
+| Version | Description                                                        |
+|---------|--------------------------------------------------------------------|
+| 0.1     | Login page completed                                               |
+| 0.2     | Signup page (1/2) completed                                        |
+| 0.3     | video page in progress                                             |
+| 0.4     | video page done & added themes                                     |
+| 0.5     | video player done                                                  |
+| 0.5.1   | firebase added                                                     |
+| 0.5.2   | Profile page completed                                             |
+| 0.6     | finalize first prototype                                           |
+| 0.7     | Creator home page and upload page created                          |
+| 0.8     | payment page created                                               |
+| 0.8.1   | merged everything                                                  |
+| 0.9     | updated UI for signup and login<br/> modified profiles list        |
+| 0.10    | updated app theme                                                  |
+| 0.10.1  | google and email authentication is done                            |
+| 0.10.2  | some modifications in pages                                        |
+| 0.10.3  | videos home page new theme applied                                 |
+| 0.10.4  | videos steam new theme applied & changes classes into named params |
+| 0.11    | Start Page added                                                   |
+| 0.12.0  | onboarding page completed                                          |
+| 0.12.1  | splash screen completed                                            |
+| 0.12.2  | fixed some color issues                                            |
 | 0.13    | Updated profiles page, added animated background<br/>updated dialog box |
+
 
 ## Authors
 
@@ -68,3 +74,17 @@ for the whole app
 - [ ] profiles list page
   - [x] update page UI
   - [ ] update pop up UI
+
+
+- Splash screen added
+- command to update:
+
+```bash
+dart run flutter_native_splash:create --path=lib/splash_screen.yaml
+```
+
+- command to remove
+
+```bash
+dart run flutter_native_splash:remove --path=lib/splash_screen.yaml
+```
