@@ -6,6 +6,8 @@ to avoid any sensitive or bad content for kids.
 
 ## Change Log
 
+
+
 | Version | Description                                                        |
 |---------|--------------------------------------------------------------------|
 | 0.1     | Login page completed                                               |
@@ -29,6 +31,8 @@ to avoid any sensitive or bad content for kids.
 | 0.12.0  | onboarding page completed                                          |
 | 0.12.1  | splash screen completed                                            |
 | 0.12.2  | fixed some color issues                                            |
+| 0.13    | Updated profiles page, added animated background<br/>updated dialog box |
+
 
 ## Authors
 
@@ -49,6 +53,11 @@ for the whole app
   - [x] updated UI
   - [x] connect to firebase
   - [ ] handle responsiveness
+- [ ] profile page
+  - [x] updated UI
+  - [x] update dialog box with validation.
+  - [ ] connect to firebase
+  - [x] handle responsiveness
 - [ ] Log in page
   - [x] updated UI
   - [x] connect to firebase

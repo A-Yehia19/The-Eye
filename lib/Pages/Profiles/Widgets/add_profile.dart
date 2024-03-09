@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Constants/Colors.dart';
 
 class AddProfile extends StatelessWidget {
@@ -11,19 +12,19 @@ class AddProfile extends StatelessWidget {
         InkWell(
           splashFactory: NoSplash.splashFactory,
           onTap: () {},
-          child: const CircleAvatar(
-            radius: 75,
+          child:CircleAvatar(
+            radius: 75.w,
             backgroundColor: hintColor,
-            child: Icon(Icons.add, size: 120, color: Colors.white,),
+            child: Icon(Icons.add, size: 120.w, color: Colors.white,),
           ),
         ),
-        const SizedBox(height: 10),
-        const Text(
+        SizedBox(height: 10.w),
+        Text(
           "Add child",
           style: TextStyle(
             color: textColor,
             fontWeight: FontWeight.w600,
-            fontSize: 24,
+            fontSize: 24.w,
           ),
         ),
       ],

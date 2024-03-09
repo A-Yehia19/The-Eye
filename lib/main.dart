@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Constants/Colors.dart';
+import 'package:the_eye/Pages/Add%20Child/add_child.dart';
 import 'package:the_eye/Pages/Login/login.dart';
 import 'package:the_eye/Pages/OnBoarding/OnBoarding.dart';
 import 'package:the_eye/Pages/Payment/payment.dart';
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
           '/videoHome': (context) => const VideosHome(),
           '/payment': (context) => const Payment(),
         },
+
         home: child,
       ),
       child: FirebaseAuth.instance.currentUser == null
