@@ -28,11 +28,11 @@ to avoid any sensitive or bad content for kids.
 | 0.10.3  | videos home page new theme applied                                 |
 | 0.10.4  | videos steam new theme applied & changes classes into named params |
 | 0.11    | Start Page added                                                   |
-| 0.12.0  | onboarding page completed                                          |
-| 0.12.1  | splash screen completed                                            |
-| 0.12.2  | fixed some color issues                                            |
+| 0.12.0  | onboarding page completed                                               |
+| 0.12.1  | splash screen completed                                                 |
+| 0.12.2  | fixed some color issues                                                 |
+| 0.12.3  | applied add comment button to videos                                    |
 | 0.13    | Updated profiles page, added animated background<br/>updated dialog box |
-
 
 ## Authors
 
@@ -71,6 +71,10 @@ for the whole app
   - [ ] connect to firebase
   - [ ] handle responsiveness
 - [x] payment page
+- [x] Videos pages
+  - [x] updated UI
+  - [ ] connect to firebase
+  - [x] handle responsiveness
 - [ ] profiles list page
   - [x] update page UI
   - [ ] update pop up UI

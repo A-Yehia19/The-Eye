@@ -11,7 +11,7 @@ class Video{
   final Creator creator;
   int isLiked;
   bool isFavourite;
-  List<Comment> comments;
+  late List<Comment> comments;
   late DateTime date;
 
   Video({
@@ -21,7 +21,7 @@ class Video{
     required this.url,
     required this.creator,
 
-    this.comments = const [],
+    List<Comment>? comments,
     this.views = 0,
     DateTime? date,
     this.isLiked = 0,
@@ -31,6 +31,11 @@ class Video{
       this.date = date;
     } else {
       this.date = DateTime.now();
+    }
+    if (comments != null) {
+      this.comments = comments;
+    } else {
+      this.comments = [];
     }
   }
 
