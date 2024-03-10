@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Constants/Colors.dart';
 import 'package:the_eye/Pages/Video%20Stream/Widgets/Comment%20Sheet.dart';
 
-import '../../../Common/Funtions/History Generator.dart';
+import '../../../Common/Functions/History Generator.dart';
 import '../../../Common/Models/Classes/Video.dart';
 
 class VideoInformation extends StatefulWidget {

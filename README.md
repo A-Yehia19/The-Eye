@@ -29,6 +29,7 @@ to avoid any sensitive or bad content for kids.
 | 0.12.0  | onboarding page completed                                          |
 | 0.12.1  | splash screen completed                                            |
 | 0.12.2  | fixed some color issues                                            |
+| 0.12.3  | applied add comment button to videos                               |
 
 ## Authors
 
@@ -62,6 +63,10 @@ for the whole app
   - [ ] connect to firebase
   - [ ] handle responsiveness
 - [x] payment page
+- [x] Videos pages
+  - [x] updated UI
+  - [ ] connect to firebase
+  - [x] handle responsiveness
 - [ ] profiles list page
   - [x] update page UI
   - [ ] update pop up UI
