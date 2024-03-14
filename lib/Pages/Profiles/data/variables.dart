@@ -1,7 +1,7 @@
-import '../../../Common/Models/Classes/Profile.dart';
+import 'package:the_eye/Common/Models/Classes/User.dart';
 
-List<Profile> profileList = [
-  Profile(name: "Ali", imageURL: "assets/images/ali.jpg"),
-  Profile(name: "Mohsen", imageURL: "assets/images/mohsen.jpg"),
-  Profile(name: "Nehal", imageURL: "assets/images/nehal.png")
+List<User> profileList = [
+  User(name: "Ali", imageURL: "assets/images/ali.jpg", id: '1', gender: 'male', role: 'child'),
+  User(name: "Mohsen", imageURL: "assets/images/mohsen.jpg", id: '2', gender: 'male', role: 'child'),
+  User(name: "Nehal", imageURL: "assets/images/nehal.png", id: '3', gender: 'female', role: 'child'),
 ];

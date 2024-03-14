@@ -1,7 +1,15 @@
 class User{
-  final String name;
+  final String id;
   final String role;
-  final String image;
+  final String gender;
+  String name;
+  String imageURL;
 
-  User({required this.name, required this.role, required this.image});
+  User({
+    required this.id,
+    required this.gender,
+    required this.name,
+    required this.role,
+    this.imageURL = ""
+  });
 }

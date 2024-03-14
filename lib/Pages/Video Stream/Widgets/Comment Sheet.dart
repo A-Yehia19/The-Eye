@@ -25,9 +25,9 @@ class CommentSheet extends StatelessWidget {
         final comment = comments[index];
         return ListTile(
           leading: CircleAvatar(
-            backgroundImage: NetworkImage(comment.profile.image),
+            backgroundImage: NetworkImage('https://th.bing.com/th/id/OLC.sD3PV5WiBFYjtA480x360?rs=1&pid=ImgDetMain'),
           ),
-          title: Text(comment.profile.name),
+          title: Text('name'),
           subtitle: Text(comment.text),
           trailing: Text(historyGenerator(comment.date)),
         );
