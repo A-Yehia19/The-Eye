@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Models/Classes/Comment.dart';
 import 'package:the_eye/Constants/Colors.dart';
 
-import '../../../Common/Models/Classes/User.dart';
 import '../../../Common/Models/Classes/Video.dart';
 
 class AddComment extends StatefulWidget {
@@ -75,11 +74,7 @@ class _AddCommentState extends State<AddComment> {
     if (controller.text.isNotEmpty) {
       final comment = Comment(
           text: controller.text,
-          profile: User(
-            name: 'User',
-            role: 'child',
-            image: 'https://i.pravatar.cc/150?img=3',
-          ),
+          profile: '1',
       );
       widget.video.comments.add(comment);
       controller.clear();

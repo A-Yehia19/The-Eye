@@ -1,8 +1,6 @@
-import 'User.dart';
-
 class Comment{
   final String text;
-  final User profile;
+  final String profile;
   late final DateTime date;
 
   Comment({

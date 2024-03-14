@@ -1,27 +1,30 @@
 import 'User.dart';
 
-class Creator extends User{
+class Parent extends User {
+  final String plan;
+  late List<String> children;
   late List<String> transactions;
-  late List<String> videos;
 
-  Creator({
+  Parent({
     required String id,
     required String role,
     required String gender,
     required String name,
     String imageURL = '',
+    this.plan = "free",
+
+    List<String>? children,
     List<String>? transactions,
-    List<String>? videos
-  }) : super(id: id, role: "creator", gender: gender, name: name, imageURL: imageURL){
+  }) : super(id: id, role: "creator", gender: gender, name: name, imageURL: imageURL) {
+    if (children != null) {
+      this.children = children;
+    } else {
+      this.children = [];
+    }
     if (transactions != null) {
       this.transactions = transactions;
     } else {
       this.transactions = [];
-    }
-    if (videos != null) {
-      this.videos = videos;
-    } else {
-      this.videos = [];
     }
   }
 }

@@ -21,7 +21,7 @@ class _VideoInformationState extends State<VideoInformation> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.video.caption,
+          widget.video.title,
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
         ),
         SizedBox(height: 20.h),
