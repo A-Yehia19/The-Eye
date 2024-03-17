@@ -6,7 +6,6 @@ class Creator extends User{
 
   Creator({
     required String id,
-    required String role,
     required String gender,
     required String name,
     String imageURL = '',

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:the_eye/Constants/Colors.dart';
-import 'package:the_eye/Pages/Profiles/Widgets/add_profile.dart';
 import 'package:the_eye/Pages/Profiles/data/variables.dart';
 
 import 'ID Dialog.dart';
@@ -14,12 +12,12 @@ class ProfileIcons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, // Display 2 items per row
         ),
         itemCount: profileList.length,
         itemBuilder: (context, index) {
-          return Container(
+          return SizedBox(
             width: MediaQuery.of(context).size.width / 2,
             child: Center(
               child: Column(
@@ -32,6 +30,7 @@ class ProfileIcons extends StatelessWidget {
                         context,
                         profileList[index].name,
                         profileList[index].imageURL,
+                        false,
                       );
                     },
                     child: CircleAvatar(

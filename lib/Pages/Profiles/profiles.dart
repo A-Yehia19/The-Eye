@@ -37,7 +37,7 @@ class _ProfilesState extends State<Profiles> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  ParentProfileBubble(), // Use the ParentProfileBubble widget
+                  const ParentProfileBubble(), // Use the ParentProfileBubble widget
                   const ProfileIcons(),
                 ],
               ),
