@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Constants/Colors.dart';
 import 'package:the_eye/Pages/Video%20Stream/Widgets/Comment%20Sheet.dart';
 
-import '../../../Common/Funtions/History Generator.dart';
+import '../../../Common/Functions/History Generator.dart';
 import '../../../Common/Models/Classes/Video.dart';
 
 class VideoInformation extends StatefulWidget {
@@ -21,7 +21,7 @@ class _VideoInformationState extends State<VideoInformation> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.video.caption,
+          widget.video.title,
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
         ),
         SizedBox(height: 20.h),

@@ -27,13 +27,13 @@ class CreatorBar extends StatelessWidget {
                   width: 2,
                 ),
                 image: DecorationImage(
-                  image: NetworkImage(video.creator.image),
+                  image: NetworkImage('https://th.bing.com/th/id/OLC.sD3PV5WiBFYjtA480x360?rs=1&pid=ImgDetMain'),
                   fit: BoxFit.cover,
                 ),
               )
           ),
           SizedBox(width: 15.w),
-          Text(video.creator.name,
+          Text('creator',
             style: TextStyle(
               fontSize: 14.sp,
               color: primaryColor,

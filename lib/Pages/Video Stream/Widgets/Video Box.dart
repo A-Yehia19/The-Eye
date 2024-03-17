@@ -18,7 +18,7 @@ class _VideoBoxState extends State<VideoBox> {
   void initState() {
     // start playing video
     videoController = PodPlayerController(
-      playVideoFrom: PlayVideoFrom.youtube(widget.video.url),
+      playVideoFrom: PlayVideoFrom.youtube(widget.video.videoURL),
       podPlayerConfig: const PodPlayerConfig(
         videoQualityPriority: [480, 360, 720],
         autoPlay: true,

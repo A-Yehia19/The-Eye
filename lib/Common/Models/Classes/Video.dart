@@ -1,36 +1,41 @@
-import 'package:the_eye/Common/Models/Classes/Creator.dart';
-
 import 'Comment.dart';
 
 class Video{
   final String id;
-  final String caption;
+  final String title;
   final String thumbnail;
-  final String url;
+  final String videoURL;
+  final String description;
   final int views;
-  final Creator creator;
+  final String creatorID;
   int isLiked;
   bool isFavourite;
-  List<Comment> comments;
+  late List<Comment> comments;
   late DateTime date;
 
   Video({
     required this.id,
-    required this.caption,
+    required this.title,
+    required this.description,
     required this.thumbnail,
-    required this.url,
-    required this.creator,
+    required this.videoURL,
+    required this.creatorID,
 
-    this.comments = const [],
+    List<Comment>? comments,
     this.views = 0,
-    DateTime? date,
     this.isLiked = 0,
-    this.isFavourite = false
+    this.isFavourite = false,
+    DateTime? date,
   }){
     if (date != null) {
       this.date = date;
     } else {
       this.date = DateTime.now();
+    }
+    if (comments != null) {
+      this.comments = comments;
+    } else {
+      this.comments = [];
     }
   }
 

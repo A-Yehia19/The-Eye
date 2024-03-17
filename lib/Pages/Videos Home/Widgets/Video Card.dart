@@ -38,7 +38,7 @@ class VideoCard extends StatelessWidget {
             Container(
               width: double.infinity,
               padding: EdgeInsets.only(left: 15.w, right: 15.w, top: 15.h),
-              child: Text(video.caption,
+              child: Text(video.title,
                 style: TextStyle(
                   fontSize: 12.sp,
                   color: secondaryColor,

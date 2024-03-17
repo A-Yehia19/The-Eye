@@ -32,7 +32,7 @@ class CarouselItem extends StatelessWidget {
             Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
-              child: Text(video.caption,
+              child: Text(video.title,
                 style: TextStyle(
                   fontSize: 18.sp,
                   color: secondaryColor,

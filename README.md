@@ -8,31 +8,32 @@ to avoid any sensitive or bad content for kids.
 
 
 
-| Version | Description                                                        |
-|---------|--------------------------------------------------------------------|
-| 0.1     | Login page completed                                               |
-| 0.2     | Signup page (1/2) completed                                        |
-| 0.3     | video page in progress                                             |
-| 0.4     | video page done & added themes                                     |
-| 0.5     | video player done                                                  |
-| 0.5.1   | firebase added                                                     |
-| 0.5.2   | Profile page completed                                             |
-| 0.6     | finalize first prototype                                           |
-| 0.7     | Creator home page and upload page created                          |
-| 0.8     | payment page created                                               |
-| 0.8.1   | merged everything                                                  |
-| 0.9     | updated UI for signup and login<br/> modified profiles list        |
-| 0.10    | updated app theme                                                  |
-| 0.10.1  | google and email authentication is done                            |
-| 0.10.2  | some modifications in pages                                        |
-| 0.10.3  | videos home page new theme applied                                 |
-| 0.10.4  | videos steam new theme applied & changes classes into named params |
-| 0.11    | Start Page added                                                   |
-| 0.12.0  | onboarding page completed                                          |
-| 0.12.1  | splash screen completed                                            |
-| 0.12.2  | fixed some color issues                                            |
+| Version | Description                                                             |
+|---------|-------------------------------------------------------------------------|
+| 0.1     | Login page completed                                                    |
+| 0.2     | Signup page (1/2) completed                                             |
+| 0.3     | video page in progress                                                  |
+| 0.4     | video page done & added themes                                          |
+| 0.5     | video player done                                                       |
+| 0.5.1   | firebase added                                                          |
+| 0.5.2   | Profile page completed                                                  |
+| 0.6     | finalize first prototype                                                |
+| 0.7     | Creator home page and upload page created                               |
+| 0.8     | payment page created                                                    |
+| 0.8.1   | merged everything                                                       |
+| 0.9     | updated UI for signup and login<br/> modified profiles list             |
+| 0.10    | updated app theme                                                       |
+| 0.10.1  | google and email authentication is done                                 |
+| 0.10.2  | some modifications in pages                                             |
+| 0.10.3  | videos home page new theme applied                                      |
+| 0.10.4  | videos steam new theme applied & changes classes into named params      |
+| 0.11    | Start Page added                                                        |
+| 0.12.0  | onboarding page completed                                               |
+| 0.12.1  | splash screen completed                                                 |
+| 0.12.2  | fixed some color issues                                                 |
+| 0.12.3  | applied add comment button to videos                                    |
 | 0.13    | Updated profiles page, added animated background<br/>updated dialog box |
-
+| 0.13.1  | Updated classes structure                                               |
 
 ## Authors
 
@@ -71,6 +72,10 @@ for the whole app
   - [ ] connect to firebase
   - [ ] handle responsiveness
 - [x] payment page
+- [x] Videos pages
+  - [x] updated UI
+  - [ ] connect to firebase
+  - [x] handle responsiveness
 - [ ] profiles list page
   - [x] update page UI
   - [ ] update pop up UI
