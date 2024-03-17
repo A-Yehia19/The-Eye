@@ -34,6 +34,7 @@ to avoid any sensitive or bad content for kids.
 | 0.12.3  | applied add comment button to videos                                    |
 | 0.13    | Updated profiles page, added animated background<br/>updated dialog box |
 | 0.13.1  | Updated classes structure                                               |
+| 0.14.0  | parent home created                                                     |
 
 ## Authors
 

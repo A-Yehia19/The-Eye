@@ -12,7 +12,6 @@ class Child extends User {
 
   Child({
     required String id,
-    required String role,
     required String gender,
     required String name,
     String imageURL = '',

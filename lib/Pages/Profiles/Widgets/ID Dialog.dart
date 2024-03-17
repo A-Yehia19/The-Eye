@@ -1,10 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Models/Classes/Parent.dart';
 import '../../../Constants/Colors.dart';
+import '../../Parent/Parent Home.dart';
 import '../../Videos Home/Data/Variables.dart';
 
-void openDialog(context, name, imageURL) {
+void openDialog(context, name, imageURL, isParent) {
   // Create a list of focus nodes
   List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
 
@@ -68,9 +70,10 @@ void openDialog(context, name, imageURL) {
                     focusNode: focusNodes[index],
                     keyboardType: TextInputType.number,
                     maxLength: 1,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       counterText: '',
                     ),
+                    textAlignVertical: TextAlignVertical.top,
                     textAlign: TextAlign.center,
                     onChanged: (value) {
                       digits[index] = value;
@@ -87,7 +90,7 @@ void openDialog(context, name, imageURL) {
                 padding: EdgeInsets.symmetric(horizontal: 25.w),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: primaryColor,
+                    backgroundColor: primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.w),
                     ),
@@ -99,15 +102,19 @@ void openDialog(context, name, imageURL) {
                       });
                       username = name;
                       userImage = imageURL;
-                      Navigator.pushNamed(context, '/videoHome');
+                      if (isParent) {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ParentHome(parent: Parent(id: '1', gender: 'male', name: 'Daddy', imageURL: imageURL, children: ['1','1'])),));
+                      } else {
+                        Navigator.pushNamed(context, '/videoHome');
+                      }
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Please enter a valid ID')),
+                        const SnackBar(content: Text('Please enter a valid ID')),
                       );
                     }
                   },
                   child: isLoading
-                      ? CircularProgressIndicator()
+                      ? const CircularProgressIndicator()
                       : Text(
                     "Confirm",
                     style: TextStyle(

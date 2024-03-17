@@ -21,6 +21,7 @@ class ParentProfileBubble extends StatelessWidget {
                   context,
                   "Daddy",
                   "assets/images/daddy.jpg",
+                  true,
                 );
               },
               child: CircleAvatar(
@@ -28,7 +29,7 @@ class ParentProfileBubble extends StatelessWidget {
                 backgroundColor: Colors.white,
                 child: CircleAvatar(
                   radius: 65.w,
-                  backgroundImage: AssetImage("assets/images/daddy.jpg"),
+                  backgroundImage: const AssetImage("assets/images/daddy.jpg"),
                 ),
               ),
             ),
@@ -39,7 +40,7 @@ class ParentProfileBubble extends StatelessWidget {
               child: Container(
                 height: 40.w,
                 width: 40.w,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
                 ),
@@ -49,7 +50,7 @@ class ParentProfileBubble extends StatelessWidget {
                     // Navigate to AddChildPage when the button is pressed
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => AddChild()),
+                      MaterialPageRoute(builder: (context) => const AddChild()),
                     );
                   },
                 ),
