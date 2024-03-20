@@ -11,6 +11,18 @@ class ChildrenAccounts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List <Widget> children = [];
+    children.addAll(parent.children.map((child) => ChildSelectionButton(parent: parent,
+    child: Child(
+      id: '12',
+      gender: 'male',
+      name: 'ali',
+      parentID: '123',
+      PIN: '1234',
+      birthDate: DateTime.now(),
+    ))));
+    // children.add(const AddChild());
+
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -27,14 +39,8 @@ class ChildrenAccounts extends StatelessWidget {
             ),
           ),
           child: Column(
-            children: parent.children.map((child) => ChildSelectionButton(child: Child(
-              id: '12',
-              gender: 'male',
-              name: 'ali',
-              parentID: '123',
-              PIN: '1234',
-              birthDate: DateTime.now(),
-            ))).toList(),
+            mainAxisSize: MainAxisSize.min,
+            children: children,
           ),
         ),
         Positioned(
