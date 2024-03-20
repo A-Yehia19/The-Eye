@@ -1,18 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:the_eye/Common/Widgets/button_widget.dart';
-import 'package:the_eye/Common/Widgets/input_text_field.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../Common/Models/Classes/Video.dart';
+import '../../../Common/Widgets/button_widget.dart';
+import '../../../Common/Widgets/input_text_field.dart';
 import '../../../Constants/Colors.dart';
+import '../../Video Stream/Video Stream.dart';
 
-class VideoForm extends StatefulWidget {
-  const VideoForm({super.key});
-
-  @override
-  State<VideoForm> createState() => _VideoFormState();
-}
-
-class _VideoFormState extends State<VideoForm> {
+class VideoForm extends StatelessWidget {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
 
@@ -32,24 +27,12 @@ class _VideoFormState extends State<VideoForm> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Container(
-            decoration: BoxDecoration(
-                color: CupertinoColors.white,
-                borderRadius: BorderRadius.circular(20)),
-            child: TextField(
-              controller: _titleController,
-              decoration: InputDecoration(
-                hintText: "Title",
-                border: new OutlineInputBorder(borderSide: new BorderSide(color: CupertinoColors.systemGrey)),
-                filled: true,
-                focusColor: Colors.black87,
-                fillColor: CupertinoColors.white,
-                contentPadding: const EdgeInsets.all(8),
-              ),
-              keyboardType: TextInputType.text,
-            ),
+          child: TextFieldInput(
+            textEditingController: _titleController,
+            hintText: "Title",
+            textInputType: TextInputType.text,
+            isPass: false,
           ),
-
         ),
         SizedBox(height: 30,),
         Padding(
@@ -64,23 +47,12 @@ class _VideoFormState extends State<VideoForm> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Container(
-            decoration: BoxDecoration(
-              color: CupertinoColors.white,
-                borderRadius: BorderRadius.circular(20),),
-            child: TextField(
-              maxLines: 4,
-              controller: _descriptionController,
-              decoration: InputDecoration(
-                hintText: "Description",
-                border: new OutlineInputBorder(borderSide: new BorderSide(color: CupertinoColors.systemGrey)),
-                filled: true,
-                focusColor: Colors.black87,
-                fillColor: CupertinoColors.white,
-                // contentPadding: const EdgeInsets.only(bottom: 80, left: 8),
-              ),
-              keyboardType: TextInputType.text,
-            ),
+          child: TextFieldInput(
+            textEditingController: _descriptionController,
+            hintText: "Description",
+            textInputType: TextInputType.text,
+            isPass: false,
+            maxLines: 4,
           ),
         ),
         Padding(
@@ -94,8 +66,8 @@ class _VideoFormState extends State<VideoForm> {
             child: const Text(
               "Upload",
               style: TextStyle(
-                color: Colors.white70,
-                fontSize: 15
+                  color: Colors.white70,
+                  fontSize: 15
                 //fontWeight: FontWeight.bold,
                 //fontFamily: 'Jua',
               ),
