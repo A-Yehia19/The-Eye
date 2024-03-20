@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Widgets/button_widget.dart';
 import 'package:the_eye/Pages/Add%20Child/Widgets/choose_content.dart';
 import 'package:the_eye/Pages/Add%20Child/Widgets/custom_app_bar.dart';
-import '../../Common/Widgets/Back.dart';
 import 'Widgets/add_child_form.dart';
 
 class AddChild extends StatefulWidget {
@@ -53,18 +52,18 @@ class _AddChildState extends State<AddChild> {
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: ListView( // Change Column to ListView
             children: [
-              AddChildAppBar(),
+              const AddChildAppBar(),
               AddChildForm(key: formKey),
               ChooseChildContent(key: contentKey),
               SizedBox(height: 70.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
                 child: CustomButton(
-                    child: Text(
+                    onPressed: submit,
+                    child: const Text(
                       "Create child account",
                       style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: submit),
+                    )),
               ),
             ],
           ),

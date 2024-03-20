@@ -25,7 +25,7 @@ class ChooseChildContentState extends State<ChooseChildContent> {
           alignment: Alignment.centerLeft, // Align the text to the left
           child: Padding(
             padding: EdgeInsets.only(left: 10.w),
-            child: Text(
+            child: const Text(
               'Select allowed content',
               style: TextStyle(
                 color: primaryColor,
@@ -66,7 +66,7 @@ class ChooseChildContentState extends State<ChooseChildContent> {
                     isSelected = List.generate(categories.length, (index) => true);
                   });
                 },
-                child: Text( // Set the text to 'Select All'
+                child: const Text( // Set the text to 'Select All'
                   'Select All',
                   style: TextStyle(color: Colors.white),
                 ),
@@ -78,11 +78,11 @@ class ChooseChildContentState extends State<ChooseChildContent> {
                     isSelected = List.generate(categories.length, (index) => false);
                   });
                 },
-                child: Text('Deselect All',
+                child: const Text('Deselect All',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              Spacer(), // Pushes the buttons to the left
+              const Spacer(), // Pushes the buttons to the left
             ],
           ),
         ),

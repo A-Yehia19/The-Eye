@@ -4,11 +4,11 @@ class Child extends User {
   final String parentID;
   final String PIN;
   final DateTime birthDate;
-  late List<String> history;
+  late List<Map<String, dynamic>> history;
   late List<String> likes;
   late List<String> favourites;
   late List<String> prefs;
-  late List<String> screenTime;
+  late Map<String, double> screenTime;
 
   Child({
     required String id,
@@ -22,7 +22,8 @@ class Child extends User {
     List<String>? likes,
     List<String>? favourites,
     List<String>? prefs,
-    List<String>? screenTime,
+    Map<String, double>? screenTime,
+    List<Map<String, dynamic>>? history,
   }) : super(id: id, role: "creator", gender: gender, name: name, imageURL: imageURL) {
     if (likes != null) {
       this.likes = likes;
@@ -42,7 +43,12 @@ class Child extends User {
     if (screenTime != null) {
       this.screenTime = screenTime;
     } else {
-      this.screenTime = [];
+      this.screenTime = {'sun': 0, 'mon': 0, 'tue': 0, 'wed': 0, 'thu': 0, 'fri': 0, 'sat': 0};
+    }
+    if (history != null) {
+      this.history = history;
+    } else {
+      this.history = [];
     }
   }
 }

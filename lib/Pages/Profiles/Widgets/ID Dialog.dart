@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Models/Classes/Parent.dart';
 import '../../../Constants/Colors.dart';
-import '../../Parent/Parent Home.dart';
+import '../../Parent/Parent Home/Parent Home.dart';
 import '../../Videos Home/Data/Variables.dart';
 
 void openDialog(context, name, imageURL, isParent) {

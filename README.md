@@ -36,6 +36,7 @@ to avoid any sensitive or bad content for kids.
 | 0.13.1  | Updated classes structure                                               |
 | 0.14.0  | parent home created                                                     |
 | 0.14.1  | Reconstructed creator pages                                             |
+| 0.14.2  | finished parent control pages and child watch                           |
 
 ## Authors
 
