@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:the_eye/Pages/Creator%20Upload/Widgets/choose_file.dart';
 import 'package:the_eye/Pages/Creator%20Upload/Widgets/video_info_form.dart';
@@ -12,8 +11,8 @@ class CreatorUpload extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0, // Remove app bar shadow
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
+        leading: const Padding(
+          padding: EdgeInsets.all(8.0),
           child: CircleAvatar(
             backgroundImage: AssetImage(
                 'assets/images/daddy.jpg'), // Replace with your image
@@ -22,18 +21,18 @@ class CreatorUpload extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.notifications_none, color: Colors.grey),
+            icon: const Icon(Icons.notifications_none, color: Colors.grey),
           ),
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.contact_support_rounded, color: Colors.grey),
+            icon: const Icon(Icons.contact_support_rounded, color: Colors.grey),
           ),
         ],
       ),
       body: Column(
         children: [
-          SizedBox(height: 60,),
-          ChooseFiles(),
+          const SizedBox(height: 60,),
+          const ChooseFiles(),
           VideoForm()
         ],
       ),

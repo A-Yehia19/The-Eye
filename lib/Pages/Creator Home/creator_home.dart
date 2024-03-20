@@ -4,8 +4,6 @@ import 'package:the_eye/Pages/Creator%20Home/Widgets/uploads_list.dart';
 
 import '../../Common/Models/Classes/Creator.dart';
 import '../../Common/Widgets/Upper Section.dart';
-import '../../Constants/Colors.dart';
-import 'Widgets/semi_circle.dart';
 
 class CreatorHome extends StatelessWidget {
   final Creator creator;
@@ -19,12 +17,12 @@ class CreatorHome extends StatelessWidget {
           Stack(
             children: [
               UpperSection(user: creator,),
-              CreatorOptions(),
+              const CreatorOptions(),
               Positioned(
                 top: 40, // Adjust the value as needed
                 right: 20, // Adjust the value as needed
                 child: IconButton(
-                  icon: Icon(Icons.notifications_none_rounded, color: Colors.white),
+                  icon: const Icon(Icons.notifications_none_rounded, color: Colors.white),
                   onPressed: () {
                     // Add your onPressed code here
                   },
@@ -34,10 +32,10 @@ class CreatorHome extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(left: 30.0, bottom: 10), // Adjust the value as needed
-            child: Text("Your Uploads", style: TextStyle(fontSize: 20, color: Colors.black87, fontWeight: FontWeight.w500),),
+            padding: const EdgeInsets.only(left: 30.0, bottom: 10), // Adjust the value as needed
+            child: const Text("Your Uploads", style: TextStyle(fontSize: 20, color: Colors.black87, fontWeight: FontWeight.w500),),
           ),
-          UploadsList()
+          const UploadsList()
         ],
       ),
       //bottomNavigationBar: SemiCircle(),

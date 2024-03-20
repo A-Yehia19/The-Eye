@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../Common/Models/Classes/Video.dart';
 import '../../../Common/Widgets/button_widget.dart';
 import '../../../Common/Widgets/input_text_field.dart';
 import '../../../Constants/Colors.dart';
-import '../../Video Stream/Video Stream.dart';
 
 class VideoForm extends StatelessWidget {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
 
+  VideoForm({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 20),
+        const Padding(
+          padding: EdgeInsets.only(left: 20),
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
@@ -34,9 +33,9 @@ class VideoForm extends StatelessWidget {
             isPass: false,
           ),
         ),
-        SizedBox(height: 30,),
-        Padding(
-          padding: const EdgeInsets.only(left: 20),
+        const SizedBox(height: 30,),
+        const Padding(
+          padding: EdgeInsets.only(left: 20),
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(

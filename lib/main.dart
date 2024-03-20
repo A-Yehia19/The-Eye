@@ -10,10 +10,8 @@ import 'package:the_eye/Pages/Profiles/profiles.dart';
 import 'package:the_eye/Pages/Signup/signup.dart';
 import 'package:the_eye/Pages/Videos%20Home/Videos%20Home.dart';
 
-import 'Common/Models/Classes/Creator.dart';
 import 'Common/Themes/Input Decoration.dart';
 import 'Common/Widgets/SnackBar.dart';
-import 'Pages/Creator Home/creator_home.dart';
 import 'Pages/Start/start.dart';
 
 
@@ -29,12 +27,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final Creator creator = Creator(
-        id: '1',
-        name: 'John Doe',
-        gender: 'male',
-        imageURL: 'assets/images/daddy.jpg',
-    );
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
@@ -57,6 +49,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/started': (context) => const Start(),
           '/onBoarding': (context) => const OnBoarding(),
+          '/start': (context) => const Start(),
           '/login': (context) => const Login(),
           '/signup': (context) => const Signup(),
           '/profiles': (context) => const Profiles(),
@@ -64,7 +57,7 @@ class MyApp extends StatelessWidget {
           '/payment': (context) => const Payment(),
         },
 
-        home: CreatorHome(creator: creator),
+        home: child,
       ),
       child: FirebaseAuth.instance.currentUser == null
           ? const OnBoarding()

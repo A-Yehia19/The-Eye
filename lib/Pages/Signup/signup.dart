@@ -9,20 +9,18 @@ class Signup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Scaffold(
-        body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 16.h),
-            child: const Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Align(alignment: Alignment.topLeft, child: Back()),
-                SignUpForm()
-              ],
-            ),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 16.h),
+          child: const Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Align(alignment: Alignment.topLeft, child: Back()),
+              SignUpForm(),
+            ],
           ),
         ),
-      )
+      ),
     );
   }
 }

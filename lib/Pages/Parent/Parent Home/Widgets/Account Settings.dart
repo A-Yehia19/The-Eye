@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Models/Classes/Parent.dart';
@@ -31,7 +32,7 @@ class AccountSettings extends StatelessWidget {
               SettingsButton(text: 'Change Password', icon: Icons.lock_rounded, onPressed: () {}),
               SettingsButton(text: 'Report Video', icon: Icons.edit_rounded, onPressed: () {}),
               SettingsButton(text: 'Remove ADs', icon: Icons.remove_circle_outline, onPressed: () {}),
-              SettingsButton(text: 'Sign out', icon: Icons.logout_rounded, onPressed: () {}),
+              SettingsButton(text: 'Sign out', icon: Icons.logout_rounded, onPressed: () => signOut(context)),
             ],
           ),
         ),
@@ -50,5 +51,10 @@ class AccountSettings extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  signOut(context) {
+    FirebaseAuth.instance.signOut();
+    Navigator.pushNamedAndRemoveUntil(context, '/start', (route) => false);
   }
 }

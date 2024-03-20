@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Widgets/Custom%20Radio.dart';
 import 'package:the_eye/Pages/Signup/Data/Functions/signup.dart';
 
 import '../../../Common/Firebase/Auth/signin google.dart';
@@ -20,6 +21,7 @@ class _SignUpFormState extends State<SignUpForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordConfirmController = TextEditingController();
+  bool isParent = true;
 
   @override
   Widget build(BuildContext context) {
@@ -76,12 +78,63 @@ class _SignUpFormState extends State<SignUpForm> {
                   textInputType: TextInputType.text
               ),
               const SizedBox(height: 25,),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Sign up as:",
+                  style: TextStyle(
+                    color: textColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomRadio(
+                    value: true,
+                    groupValue: isParent,
+                    onChanged: (value) {
+                      setState(() {
+                        isParent = value;
+                      });
+                    },
+                  ),
+                  const Text("Parent",
+                    style: TextStyle(
+                      color: textColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(width: 40.w,),
+                  CustomRadio(
+                    value: false,
+                    groupValue: isParent,
+                    onChanged: (value) {
+                      setState(() {
+                        isParent = value;
+                      });
+                    },
+                  ),
+                  const Text("Creator",
+                    style: TextStyle(
+                      color: textColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 25,),
               CustomButton(
                 onPressed: () => signup(
                     _nameController.text,
                     _emailController.text,
                     _passwordController.text,
                     _passwordConfirmController.text,
+                    isParent,
                     context
                 ),
                 child: const Text("Next",
@@ -151,7 +204,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   ],
                 ),
               ),
-              SizedBox(height: 100.h),
+              SizedBox(height: 35.h,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -175,7 +228,7 @@ class _SignUpFormState extends State<SignUpForm> {
                             fontWeight: FontWeight.bold),
                       ))
                 ],
-              )
+              ),
             ],
           ),
         ),
