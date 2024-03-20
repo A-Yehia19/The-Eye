@@ -91,7 +91,7 @@ class CreatorVideoCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Padding(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 child: Text(
                   video.status, // Assuming 'status' is a property of the 'Video' class that indicates whether the video is being uploaded, processing, or uploaded
                   style: TextStyle(

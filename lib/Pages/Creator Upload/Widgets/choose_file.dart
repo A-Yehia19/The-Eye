@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:the_eye/Constants/Colors.dart';
 
@@ -24,7 +23,7 @@ class ChooseFiles extends StatelessWidget {
             ),
             child: TextButton(
               onPressed: () {},
-              child: const Icon(CupertinoIcons.plus, size: 100, color: highlightColor,),
+              child: const Icon(Icons.add, size: 100, color: highlightColor,),
             ),
           ),
           const Padding(

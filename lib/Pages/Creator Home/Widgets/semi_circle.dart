@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:the_eye/Pages/Creator%20Upload/creator_upload.dart';
 

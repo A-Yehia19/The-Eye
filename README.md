@@ -37,6 +37,7 @@ to avoid any sensitive or bad content for kids.
 | 0.14.0  | parent home created                                                     |
 | 0.14.1  | Reconstructed creator pages                                             |
 | 0.14.2  | finished parent control pages and child watch                           |
+| 0.14.3  | combined the whole project                                              |
 
 ## Authors
 

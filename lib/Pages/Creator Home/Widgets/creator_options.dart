@@ -12,25 +12,24 @@ class CreatorOptions extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          SizedBox(height: 200),
+          const SizedBox(height: 200),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               FloatingActionButton(
                 backgroundColor: highlightColor,
-                child: Icon(Icons.add, color: Colors.white),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CreatorUpload()),
+                    MaterialPageRoute(builder: (context) => const CreatorUpload()),
                   );
                 },
                 tooltip: 'Add new video',
+                child: const Icon(Icons.add, color: Colors.white),
               ),
-              SizedBox(width: 185),
+              const SizedBox(width: 185),
               FloatingActionButton(
                 backgroundColor: customPink,
-                child: Icon(Icons.support_agent, color: Colors.white),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -38,6 +37,7 @@ class CreatorOptions extends StatelessWidget {
                   );
                 },
                 tooltip: 'Contact support',
+                child: const Icon(Icons.support_agent, color: Colors.white),
               ),
             ],
           ),
