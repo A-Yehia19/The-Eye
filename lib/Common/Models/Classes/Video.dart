@@ -8,6 +8,7 @@ class Video{
   final String description;
   final int views;
   final String creatorID;
+  final String status;
   int isLiked;
   bool isFavourite;
   late List<Comment> comments;
@@ -25,6 +26,7 @@ class Video{
     this.views = 0,
     this.isLiked = 0,
     this.isFavourite = false,
+    this.status = "uploaded",
     DateTime? date,
   }){
     if (date != null) {

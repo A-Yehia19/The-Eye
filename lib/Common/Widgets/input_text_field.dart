@@ -9,6 +9,7 @@ class TextFieldInput extends StatelessWidget {
   final String hintText;
   final TextInputType textInputType;
   final Icon? icon; // Optional icon parameter
+  final int maxLines; // Added maxLines parameter
   const TextFieldInput({
     Key? key,
     required this.textEditingController,
@@ -16,6 +17,7 @@ class TextFieldInput extends StatelessWidget {
     required this.hintText,
     required this.textInputType,
     this.icon, // Optional icon parameter
+    this.maxLines = 1, // Set default value of maxLines to 1
   }) : super(key: key);
 
   @override
@@ -37,10 +39,11 @@ class TextFieldInput extends StatelessWidget {
         filled: true,
         hintStyle: const TextStyle(color: hintColor, fontSize: 14),
         prefixIcon: icon, // Setting the icon as prefixIcon
-        contentPadding: const EdgeInsets.symmetric(vertical: 12), // Adjust the vertical padding
+        contentPadding: EdgeInsets.symmetric(vertical: 12).copyWith(left: 20), // Adjust the left padding
       ),
       keyboardType: textInputType,
       obscureText: isPass,
+      maxLines: maxLines, // Set maxLines of TextField
     );
   }
 }
