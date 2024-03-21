@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Models/Classes/Parent.dart';
 import 'package:the_eye/Pages/Parent/Common/WIdgets/Settings%20Button.dart';
 import 'package:the_eye/Constants/Colors.dart';
+import 'package:the_eye/Pages/Parent/Report%20Video/ReportVideo.dart';
+import 'package:the_eye/Pages/Payment/payment.dart';
 
 class AccountSettings extends StatelessWidget {
   final Parent parent;
@@ -51,6 +53,14 @@ class AccountSettings extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  reportVideo(context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ReportVideo(parent: parent, videoID: '')));
+  }
+
+  removeADs(context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Payment(parent: parent)));
   }
 
   signOut(context) {

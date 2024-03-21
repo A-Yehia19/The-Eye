@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Models/Classes/Parent.dart';
 
 import '../../Common/Widgets/Back.dart';
 import '../../Common/Widgets/button_widget.dart';
@@ -9,7 +10,8 @@ import 'Widgets/Credit Form.dart';
 import 'Widgets/Payment Options.dart';
 
 class Payment extends StatelessWidget {
-  const Payment({super.key});
+  final Parent parent;
+  const Payment({super.key, required this.parent});
 
   @override
   Widget build(BuildContext context) {
