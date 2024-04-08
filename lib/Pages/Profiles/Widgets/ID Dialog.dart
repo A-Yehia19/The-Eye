@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Models/Classes/Parent.dart';
 import '../../../Constants/Colors.dart';
 import '../../Parent/Parent Home/Parent Home.dart';
-import '../../Videos Home/Data/Variables.dart';
 
 void openDialog(context, name, imageURL, isParent) {
   // Create a list of focus nodes
@@ -100,8 +99,6 @@ void openDialog(context, name, imageURL, isParent) {
                       setState(() {
                         isLoading = true;
                       });
-                      username = name;
-                      userImage = imageURL;
                       if (isParent) {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => ParentHome(parent: Parent(id: '1', gender: 'male', name: 'Daddy', imageURL: imageURL, children: ['1','1'])),));
                       } else {

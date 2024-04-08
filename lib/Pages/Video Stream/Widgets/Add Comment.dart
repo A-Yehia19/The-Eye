@@ -74,7 +74,7 @@ class _AddCommentState extends State<AddComment> {
     if (controller.text.isNotEmpty) {
       final comment = Comment(
           text: controller.text,
-          profile: '1',
+          profileID: '1',
       );
       widget.video.comments.add(comment);
       controller.clear();

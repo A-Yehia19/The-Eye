@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'Comment.dart';
 
 class Video{
@@ -63,5 +65,22 @@ class Video{
 
   void addComment(Comment comment){
     comments.add(comment);
+  }
+
+  factory Video.fromSnapshot(DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
+
+    return Video(
+      id: doc.id,
+      title: data['title'],
+      description: data['description'],
+      thumbnail: data['thumbnail'],
+      videoURL: data['videoURL'],
+      creatorID: data['creatorID'],
+      views: data['views'],
+      status: data['status'],
+      date: data['date'].toDate(),
+      comments: (data['comments'] as List).map((comment) => Comment.fromMap(comment)).toList(),
+    );
   }
 }

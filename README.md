@@ -6,8 +6,6 @@ to avoid any sensitive or bad content for kids.
 
 ## Change Log
 
-
-
 | Version | Description                                                             |
 |---------|-------------------------------------------------------------------------|
 | 0.1     | Login page completed                                                    |
@@ -39,6 +37,7 @@ to avoid any sensitive or bad content for kids.
 | 0.14.2  | finished parent control pages and child watch                           |
 | 0.14.3  | combined the whole project                                              |
 | 0.14.4  | updated some buttons functions                                          |
+| 0.15    | make video home dynamic from database                                   |
 
 ## Authors
 
@@ -69,7 +68,7 @@ for the whole app
   - [x] connect to firebase
   - [ ] handle responsiveness
 - [ ] parents page
-  - [ ] updated UI
+  - [x] updated UI
   - [ ] connect to firebase
   - [ ] handle responsiveness
 - [ ] child's page
