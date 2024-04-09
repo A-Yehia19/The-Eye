@@ -38,6 +38,7 @@ to avoid any sensitive or bad content for kids.
 | 0.14.3  | combined the whole project                                              |
 | 0.14.4  | updated some buttons functions                                          |
 | 0.15    | make video home dynamic from database                                   |
+| 0.15.1  | make video steam recommendations and data dynamic from database         |
 
 ## Authors
 
