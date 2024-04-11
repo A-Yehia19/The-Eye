@@ -11,20 +11,25 @@ class CarouselIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: currentCard,
-      builder: (context, value, child) => AnimatedSmoothIndicator(
-        activeIndex: currentCard.value,
-        count: carouselList.length,
-        onDotClicked: (index) => carouselController.animateToPage(index),
+      valueListenable: carouselLoaded,
+      builder: (context, value, child) => value == false
+          ? const SizedBox()
+          : ValueListenableBuilder(
+            valueListenable: currentCard,
+            builder: (context, value, child) => AnimatedSmoothIndicator(
+              activeIndex: currentCard.value,
+              count: carouselList.length,
+              onDotClicked: (index) => carouselController.animateToPage(index),
 
-        effect: WormEffect(
-          dotHeight: 10.r,
-          dotWidth: 10.r,
-          spacing: 10.r,
-          activeDotColor: highlightColor,
-          dotColor: primaryColor,
-        ),
-      ),
+              effect: WormEffect(
+                dotHeight: 10.r,
+                dotWidth: 10.r,
+                spacing: 10.r,
+                activeDotColor: highlightColor,
+                dotColor: primaryColor,
+              ),
+            ),
+          ),
     );
   }
 }

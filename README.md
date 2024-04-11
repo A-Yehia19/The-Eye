@@ -6,8 +6,6 @@ to avoid any sensitive or bad content for kids.
 
 ## Change Log
 
-
-
 | Version | Description                                                             |
 |---------|-------------------------------------------------------------------------|
 | 0.1     | Login page completed                                                    |
@@ -39,11 +37,14 @@ to avoid any sensitive or bad content for kids.
 | 0.14.2  | finished parent control pages and child watch                           |
 | 0.14.3  | combined the whole project                                              |
 | 0.14.4  | updated some buttons functions                                          |
+| 0.15    | make video home dynamic from database                                   |
+| 0.15.1  | make video steam recommendations and data dynamic from database         |
+| 0.15.2  | make video information dynamic and handled comments through firebase    |
 
 ## Authors
 
-- [Abdullah Yehia](https://github.com/A-Yehia19)
-- [Maraim Ali](https://github.com/mariam2001)
+- Abdullah Yehia [GitHub](https://github.com/A-Yehia19)
+- Maraim Ali [GitHub](https://github.com/mariam2001)
 
 ## Todo List
 
@@ -69,17 +70,17 @@ for the whole app
   - [x] connect to firebase
   - [ ] handle responsiveness
 - [ ] parents page
-  - [ ] updated UI
-  - [ ] connect to firebase
-  - [ ] handle responsiveness
-- [ ] child's page
   - [x] updated UI
   - [ ] connect to firebase
-  - [ ] handle responsiveness
+  - [x] handle responsiveness
+- [x] child's page
+  - [x] updated UI
+  - [x] connect to firebase
+  - [x] handle responsiveness
 - [x] payment page
 - [x] Videos pages
   - [x] updated UI
-  - [ ] connect to firebase
+  - [x] connect to firebase
   - [x] handle responsiveness
 - [ ] profiles list page
   - [x] update page UI

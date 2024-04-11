@@ -6,7 +6,7 @@ createUser(uid, email, name, String? photo) async {
   Map<String, dynamic> userData = {
     "email": email,
     "name": name,
-    "photo": photo ?? "",
+    "imageURL": photo ?? "",
   };
 
   final userRef = db.collection("users").doc(uid);

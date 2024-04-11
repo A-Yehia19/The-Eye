@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:the_eye/Pages/Videos%20Home/Data/Variables.dart';
 
 import 'creator_video_card.dart';
 
@@ -8,6 +7,7 @@ class UploadsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final videosList = [];
     return Expanded(
       child: videosList.isNotEmpty
     ? Padding(

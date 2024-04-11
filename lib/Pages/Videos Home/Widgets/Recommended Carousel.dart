@@ -9,20 +9,28 @@ class RecommendedCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      carouselController: carouselController,
-      options: CarouselOptions(
-        height: 400.h,
-        autoPlay: true,
-        autoPlayInterval: const Duration(seconds: 5),
-        autoPlayAnimationDuration: const Duration(milliseconds: 800),
-        autoPlayCurve: Curves.fastOutSlowIn,
-        enlargeCenterPage: true,
-        enableInfiniteScroll: true,
-        viewportFraction: 1,
-        onPageChanged: (index, reason) => currentCard.value = index,
-      ),
-      items: carouselList.map((video) => CarouselItem(video: video)).toList()
+    return ValueListenableBuilder(
+      valueListenable: carouselLoaded,
+      builder: (context, value, child) => value == false
+          ? const SizedBox(
+              height: 400,
+              child: Center(child: CircularProgressIndicator()),
+          )
+          : CarouselSlider(
+              carouselController: carouselController,
+              options: CarouselOptions(
+                height: 400.h,
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 5),
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                enlargeCenterPage: true,
+                enableInfiniteScroll: true,
+                viewportFraction: 1,
+                onPageChanged: (index, reason) => currentCard.value = index,
+              ),
+              items: carouselList.map((video) => CarouselItem(video: video)).toList()
+            ),
     );
   }
 }
