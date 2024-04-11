@@ -39,6 +39,7 @@ to avoid any sensitive or bad content for kids.
 | 0.14.2  | finished parent control pages and child watch                           |
 | 0.14.3  | combined the whole project                                              |
 | 0.14.4  | updated some buttons functions                                          |
+| 0.14.5  | added popup dialogs in parent and child pages                           |
 
 ## Authors
 
