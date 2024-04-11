@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Widgets/Upper%20Bar.dart';
 import 'package:the_eye/Constants/Colors.dart';
 
+import 'Data/Functions/Carousel Fetch.dart';
 import 'Widgets/Buttons List.dart';
 import 'Widgets/Carousel Indicator.dart';
 import 'Widgets/Recommended Carousel.dart';
@@ -13,6 +14,8 @@ class VideosHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getCarouselList();
+
     return Scaffold(
       body: SafeArea(
         child: Padding(

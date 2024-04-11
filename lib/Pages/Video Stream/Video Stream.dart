@@ -28,16 +28,10 @@ class VideoStream extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 5),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: VideoInformation(video: video),
-                    ),
+                    VideoInformation(video: video),
                     const SizedBox(height: 15),
                     Divider(color: Colors.black, thickness: 0.8, indent: 20.w, endIndent: 20.w),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: CreatorBar(video: video),
-                    ),
+                    CreatorBar(video: video),
                     Divider(color: Colors.black, thickness: 0.8, indent: 20.w, endIndent: 20.w),
                     const SizedBox(height: 10),
                     Padding(
