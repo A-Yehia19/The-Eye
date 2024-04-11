@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Firebase/Firestore/get%20user.dart';
 import 'package:the_eye/Common/Models/Classes/Video.dart';
 import 'package:the_eye/Constants/Colors.dart';
 
@@ -71,38 +72,50 @@ class CarouselItem extends StatelessWidget {
             Divider(color: secondaryColor, thickness: 1, height: 30.h, indent: 15.w, endIndent: 15.w),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15.w),
-                  child: CircleAvatar(
-                    radius: 24.r,
-                    backgroundImage: const NetworkImage('https://i.pravatar.cc/150?img=1'),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('The Eye',
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          color: secondaryColor,
-                          fontWeight: FontWeight.w600,
+                FutureBuilder(
+                  future: getUser(video.creatorID),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData == false) {
+                      return const Center(child: CircularProgressIndicator(color: primaryColor));
+                    }
+
+                    // final creator = snapshot.data! as Creator;
+                    final creator = snapshot.data!;
+                    return Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(width: 15.w),
+                        CircleAvatar(
+                          radius: 24.r,
+                          backgroundImage: NetworkImage(creator.imageURL),
                         ),
-                      ),
-                      Text('1.2k Subscribers',
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: secondaryColor,
-                          fontWeight: FontWeight.w600,
+                        SizedBox(width: 30.w),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(creator.name,
+                              style: TextStyle(
+                                fontSize: 16.sp,
+                                color: secondaryColor,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text('1.2k Subscribers', //todo: add subscribers count
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                color: secondaryColor,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  )
+                      ],
+                    );
+                  },
                 ),
-                const Spacer(),
                 Container(
                   width: 70.w,
                   margin: EdgeInsets.only(top: 10.h),

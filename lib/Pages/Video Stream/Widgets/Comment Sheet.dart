@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_eye/Common/Firebase/Firestore/get%20user.dart';
 import 'package:the_eye/Common/Functions/History%20Generator.dart';
 import 'package:the_eye/Constants/Colors.dart';
 
@@ -23,13 +24,22 @@ class CommentSheet extends StatelessWidget {
       separatorBuilder: (context, index) => const Divider(color: textColor, height: 4, thickness: 0.8, indent: 30, endIndent: 30),
       itemBuilder: (context, index) {
         final comment = comments[index];
-        return ListTile(
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage('https://th.bing.com/th/id/OLC.sD3PV5WiBFYjtA480x360?rs=1&pid=ImgDetMain'),
-          ),
-          title: Text('name'),
-          subtitle: Text(comment.text),
-          trailing: Text(historyGenerator(comment.date)),
+        return FutureBuilder(
+          future: getUser(comment.profileID),
+          builder: (context, snapshot) {
+            if (snapshot.hasData == false) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            final userData = snapshot.data!;
+            return ListTile(
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(userData.imageURL),
+              ),
+              title: Text(userData.name),
+              subtitle: Text(comment.text),
+              trailing: Text(historyGenerator(comment.date)),
+            );
+          },
         );
       },
     );

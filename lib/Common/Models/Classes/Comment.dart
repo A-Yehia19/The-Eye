@@ -15,6 +15,14 @@ class Comment{
     }
   }
 
+  Map<String, dynamic> toMap() {
+    return {
+      'text': text,
+      'profileID': profileID,
+      'date': date,
+    };
+  }
+
   factory Comment.fromMap(Map<String, dynamic> map) {
     return Comment(
       text: map['text'],

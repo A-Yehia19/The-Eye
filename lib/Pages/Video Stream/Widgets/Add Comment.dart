@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Firebase/Firestore/add%20comment.dart';
 import 'package:the_eye/Common/Models/Classes/Comment.dart';
+import 'package:the_eye/Common/Variables/video.dart';
 import 'package:the_eye/Constants/Colors.dart';
 
 import '../../../Common/Models/Classes/Video.dart';
@@ -74,12 +76,12 @@ class _AddCommentState extends State<AddComment> {
     if (controller.text.isNotEmpty) {
       final comment = Comment(
           text: controller.text,
-          profileID: '1',
+          profileID: videoUserId,
       );
       widget.video.comments.add(comment);
+      addCommentFirebase(widget.video.id, comment);
       controller.clear();
       setState(() => _isFocused = false);
-      print('comment added successfully');
     }
   }
 }
