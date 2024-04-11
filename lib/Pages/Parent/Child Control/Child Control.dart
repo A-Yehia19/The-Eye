@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Models/Classes/Child.dart';
 import 'package:the_eye/Common/Models/Classes/Parent.dart';
 import 'package:the_eye/Common/Widgets/Upper%20Section.dart';
+import 'package:the_eye/Pages/Parent/Child%20Control/Functions/child_settings_functions.dart';
 import 'package:the_eye/Pages/Parent/Child%20Control/Widgets/Customize%20Content.dart';
 import 'package:the_eye/Pages/Parent/Child%20Control/Widgets/Screen%20Time.dart';
 import 'package:the_eye/Pages/Parent/Child%20History/ChildHistory.dart';
@@ -28,14 +29,14 @@ class ChildControl extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: SettingsButton(text: 'Change PIN', icon: Icons.lock_rounded, onPressed: () {}),
+                child: SettingsButton(text: 'Change PIN', icon: Icons.lock_rounded, onPressed: () => openChangeIdDialog(context)),
               ),
               SizedBox(height: 20.h),
               CustomizeContent(child: child),
               SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: SettingsButton(text: 'Delete Account', icon: Icons.delete_forever, isDanger: true, onPressed: () {}),
+                child: SettingsButton(text: 'Delete Account', icon: Icons.delete_forever, isDanger: true, onPressed: () => showDeleteChildDialog(context)),
               ),
               SizedBox(height: 20.h),
             ],

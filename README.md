@@ -37,6 +37,7 @@ to avoid any sensitive or bad content for kids.
 | 0.14.2  | finished parent control pages and child watch                           |
 | 0.14.3  | combined the whole project                                              |
 | 0.14.4  | updated some buttons functions                                          |
+| 0.14.5  | added popup dialogs in parent and child pages                           |
 | 0.15    | make video home dynamic from database                                   |
 | 0.15.1  | make video steam recommendations and data dynamic from database         |
 | 0.15.2  | make video information dynamic and handled comments through firebase    |
