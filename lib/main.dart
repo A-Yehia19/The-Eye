@@ -8,13 +8,16 @@ import 'package:the_eye/Pages/OnBoarding/OnBoarding.dart';
 import 'package:the_eye/Pages/Profiles/profiles.dart';
 import 'package:the_eye/Pages/Signup/signup.dart';
 import 'package:the_eye/Pages/Videos%20Home/Videos%20Home.dart';
+import 'package:the_eye/Common/Firebase/Firestore/get%20user.dart';
+import 'package:the_eye/Common/Models/Classes/Creator.dart';
+import 'package:the_eye/Common/Models/Classes/Parent.dart';
 
 import 'Common/Themes/Input Decoration.dart';
 import 'Common/Widgets/SnackBar.dart';
+import 'Pages/Creator Home/creator_home.dart';
 import 'Pages/Start/start.dart';
 
-
-main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -54,12 +57,35 @@ class MyApp extends StatelessWidget {
           '/profiles': (context) => const Profiles(),
           '/videoHome': (context) => const VideosHome(),
         },
-
-        home: child,
+        home: FutureBuilder(
+          future: _getInitialScreen(),
+          builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            } else {
+              return snapshot.data ?? CircularProgressIndicator();
+            }
+          },
+        ),
       ),
-      child: FirebaseAuth.instance.currentUser == null
-          ? const OnBoarding()
-          : const Profiles(),
     );
+  }
+
+  Future<Widget> _getInitialScreen() async {
+    print('Getting initial screen...'); // Add this line
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? currentUser = auth.currentUser;
+
+    if (currentUser != null) {
+      var user = await getUser(currentUser.uid);
+      print('User data: $user'); // Add this line
+      if (user is Creator) {
+        return CreatorHome();
+      } else if (user is Parent) {
+        return Profiles();
+      }
+    }
+    // If no user is signed in, return the OnBoarding screen as default
+    return OnBoarding();
   }
 }

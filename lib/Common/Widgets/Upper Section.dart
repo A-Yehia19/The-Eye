@@ -37,31 +37,31 @@ class UpperSection extends StatelessWidget {
               children: [
                 user.imageURL.isNotEmpty
                     ? ClipRRect(
-                        borderRadius: BorderRadius.circular(1000),
-                        child: Image.asset(
-                          user.imageURL,
-                          height: 130.h,
-                          width: 130.h,
-                          fit: BoxFit.cover,
-                        ),
-                      )
+                  borderRadius: BorderRadius.circular(1000),
+                  child: Image.asset(
+                    user.imageURL,
+                    height: 130.h,
+                    width: 130.h,
+                    fit: BoxFit.cover,
+                  ),
+                )
                     : Container(
-                        height: 130.h,
-                        width: 130.h,
-                        decoration: BoxDecoration(
-                          color: primaryColor,
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 5,
-                          ),
-                        ),
-                        child: Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: 80.h,
-                        ),
-                      ),
+                  height: 130.h,
+                  width: 130.h,
+                  decoration: BoxDecoration(
+                    color: primaryColor,
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 5,
+                    ),
+                  ),
+                  child: Icon(
+                    Icons.person,
+                    color: Colors.white,
+                    size: 80.h,
+                  ),
+                ),
                 SizedBox(height: 10.h),
                 Text(
                   user.name,

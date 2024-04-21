@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -20,7 +21,23 @@ Future<UserCredential> signInWithGoogle() async {
   return await FirebaseAuth.instance.signInWithCredential(credential);
 }
 
-googleSignUp (context) async {
+googleSignIn(context) async {
+  await signInWithGoogle();
+  if (FirebaseAuth.instance.currentUser != null) {
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+
+    // Retrieve the user's data from Firestore
+    final userDoc = await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    final userData = userDoc.data();
+
+    // Check if the user is a parent
+    bool isParent = userData?['isParent'] ?? false;
+
+    Navigator.pushNamedAndRemoveUntil(context, '/profiles', (route) => false);
+  }
+}
+
+googleSignUp(bool isParent, context) async {
   await signInWithGoogle();
   if (FirebaseAuth.instance.currentUser != null) {
     final uid = FirebaseAuth.instance.currentUser!.uid;
@@ -28,7 +45,7 @@ googleSignUp (context) async {
     final name = FirebaseAuth.instance.currentUser!.displayName ?? "";
     final photo = FirebaseAuth.instance.currentUser!.photoURL ?? "";
 
-    createUser(uid, email, name, photo);
+    createUser(uid, email, name, photo, isParent);
     Navigator.pushNamedAndRemoveUntil(context, '/profiles', (route) => false);
   }
 }

@@ -3,7 +3,7 @@ import 'User.dart';
 class Child extends User {
   final String parentID;
   final String PIN;
-  final DateTime birthDate;
+  final String birthDate; //changed from datetime to string for now
   late List<Map<String, dynamic>> history;
   late List<String> likes;
   late List<String> favourites;
@@ -50,5 +50,41 @@ class Child extends User {
     } else {
       this.history = [];
     }
+  }
+
+  // map firestore object to child object
+  factory Child.fromMap(Map<String, dynamic> map) {
+    return Child(
+      id: map['id'] ?? '',
+      parentID: map['parentID'] ?? '',
+      gender: map['gender'] ?? '',
+      name: map['name'] ?? '',
+      imageURL: map['imageURL'] ?? '',
+      PIN: map['pin'] ?? '',
+      history: List<Map<String, dynamic>>.from(map['history']?.map((item) => Map<String, dynamic>.from(item)) ?? []),
+      likes: List<String>.from(map['likes'] ?? []),
+      favourites: List<String>.from(map['favourites'] ?? []),
+      prefs: List<String>.from(map['prefs'] ?? []),
+      screenTime: Map<String, double>.from(map['screenTime'] ?? {}),
+      birthDate: map['birthDate'] ?? '',
+    );
+  }
+
+  // map child object to firestore object
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'gender': gender,
+      'imageURL': imageURL,
+      'parentID': parentID,
+      'PIN': PIN,
+      'birthDate': birthDate,
+      'history': history,
+      'likes': likes,
+      'favourites': favourites,
+      'prefs': prefs,
+      'screenTime': screenTime,
+    };
   }
 }
