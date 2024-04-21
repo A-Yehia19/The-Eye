@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:the_eye/Pages/Login/Data/Functions/login.dart';
-
 import '../../../Common/Firebase/Auth/signin google.dart';
 import '../../../Common/Widgets/button_widget.dart';
 import '../../../Common/Widgets/input_text_field.dart';
 import '../../../Constants/Colors.dart';
 import '../../Signup/signup.dart';
+import '../Functions/login_functions.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
@@ -119,7 +118,7 @@ class LoginForm extends StatelessWidget {
                         width: 2,
                       ),
                     ),
-                    onPressed: () => googleSignUp(context),
+                    onPressed: () => googleSignIn(context),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

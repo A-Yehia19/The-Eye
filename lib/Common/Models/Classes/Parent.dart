@@ -26,4 +26,15 @@ class Parent extends User {
       this.transactions = [];
     }
   }
+
+  factory Parent.fromMap(Map<String, dynamic> map) {
+    return Parent(
+      id: map['id'],
+      gender: map['gender'],
+      name: map['name'],
+      imageURL: map['imageURL'],
+      children: List<String>.from(map['children']),
+      transactions: List<String>.from(map['transactions']),
+    );
+  }
 }

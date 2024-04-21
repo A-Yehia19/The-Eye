@@ -1,63 +1,65 @@
+// profile_icons.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:the_eye/Pages/Profiles/data/variables.dart';
-
+import '../../../Common/Firebase/Firestore/get child.dart';
+import '../../../Common/Models/Classes/Child.dart';
 import 'ID Dialog.dart';
 
-
 class ProfileIcons extends StatelessWidget {
-  const ProfileIcons({Key? key}) : super(key: key);
+  final List<String> childIDs;
+
+  ProfileIcons({required this.childIDs});
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, // Display 2 items per row
-        ),
-        itemCount: profileList.length,
-        itemBuilder: (context, index) {
-          return SizedBox(
-            width: MediaQuery.of(context).size.width / 2,
-            child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  InkWell(
-                    splashFactory: NoSplash.splashFactory,
-                    onTap: () {
-                      openDialog(
-                        context,
-                        profileList[index].name,
-                        profileList[index].imageURL,
-                        false,
-                      );
-                    },
-                    child: CircleAvatar(
-                      radius: 50.w, // Reduce the radius to make the icons smaller
-                      backgroundColor: Colors.white,
-                      child: CircleAvatar(
-                        radius: 45.w, // Reduce the radius to make the icons smaller
-                        backgroundImage: AssetImage(profileList[index].imageURL),
+    return Wrap(
+      spacing: 20.w,
+      runSpacing: 20.h,
+      children: childIDs.map((childID) {
+        return FutureBuilder<Child?>(
+          future: getChild(childID),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator(); // Show a loading spinner while waiting for the data
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}'); // Show an error message if an error occurred
+            } else {
+              final childData = snapshot.data;
+              if (childData != null) {
+                return InkWell(
+                  splashFactory: NoSplash.splashFactory,
+                  onTap: () {
+                    openDialog(
+                      context,
+                      childID,
+                      childData.name,
+                      childData.imageURL,
+                      false,
+                    );
+                  },
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 50.w,
+                        backgroundColor: Colors.white,
+                        child: CircleAvatar(
+                          radius: 45.w,
+                          backgroundImage: (childData.imageURL != null && childData.imageURL.isNotEmpty)
+                              ? NetworkImage(childData.imageURL) as ImageProvider<Object>
+                              : AssetImage('assets/images/profile_placeholder.png') as ImageProvider<Object>,
+                        ),
                       ),
-                    ),
+                      Text(childData.name, style: const TextStyle(fontSize: 20, color: Colors.white)),
+                    ],
                   ),
-                  SizedBox(height: 10.w),
-                  Text(
-                    profileList[index].name,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20.w,
-                    ),
-                  ),
-                  SizedBox(height: 25.w),
-                ],
-              ),
-            ),
-          );
-        },
-      ),
+                );
+              } else {
+                return Text('No child found with id: $childID'); // Show a message if no child data was found
+              }
+            }
+          },
+        );
+      }).toList(),
     );
   }
 }
