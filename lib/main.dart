@@ -1,3 +1,6 @@
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:amplify_storage_s3/amplify_storage_s3.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +15,14 @@ import 'package:the_eye/Pages/Videos%20Home/Videos%20Home.dart';
 import 'Common/Themes/Input Decoration.dart';
 import 'Common/Widgets/SnackBar.dart';
 import 'Pages/Start/start.dart';
+import 'amplifyconfiguration.dart';
 
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await Amplify.addPlugins([AmplifyStorageS3(), AmplifyAuthCognito()]);
+  await Amplify.configure(amplifyconfig);
   runApp(const MyApp());
 }
 

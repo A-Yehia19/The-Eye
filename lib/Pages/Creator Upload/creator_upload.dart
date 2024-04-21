@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:the_eye/Pages/Creator%20Upload/Widgets/choose_file.dart';
 import 'package:the_eye/Pages/Creator%20Upload/Widgets/video_info_form.dart';
 
+import 'Widgets/choose_thumbnail.dart';
+
 class CreatorUpload extends StatelessWidget {
   const CreatorUpload({super.key});
 
@@ -29,12 +31,16 @@ class CreatorUpload extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          const SizedBox(height: 60,),
-          const ChooseFiles(),
-          VideoForm()
-        ],
+      body: const SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 60,),
+            ChooseFiles(),
+            ChooseThumbnail(),
+            SizedBox(height: 20,),
+            VideoForm()
+          ],
+        ),
       ),
     );
   }

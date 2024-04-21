@@ -1,17 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:the_eye/Common/Firebase/Firestore/create%20new%20video.dart';
+import 'package:the_eye/Pages/Creator%20Upload/Data/variables.dart';
 
 import '../../../Common/Widgets/button_widget.dart';
 import '../../../Common/Widgets/input_text_field.dart';
 import '../../../Constants/Colors.dart';
 
 class VideoForm extends StatelessWidget {
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
-
-  VideoForm({super.key});
+  const VideoForm({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController titleController = TextEditingController();
+    final TextEditingController descriptionController = TextEditingController();
+
     return Column(
       children: [
         const Padding(
@@ -27,7 +30,7 @@ class VideoForm extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: TextFieldInput(
-            textEditingController: _titleController,
+            textEditingController: titleController,
             hintText: "Title",
             textInputType: TextInputType.text,
             isPass: false,
@@ -47,7 +50,7 @@ class VideoForm extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: TextFieldInput(
-            textEditingController: _descriptionController,
+            textEditingController: descriptionController,
             hintText: "Description",
             textInputType: TextInputType.text,
             isPass: false,
@@ -61,13 +64,19 @@ class VideoForm extends StatelessWidget {
               color: primaryColor,
               borderRadius: BorderRadius.circular(20),
             ),
-            onPressed: () {},
+            onPressed: () => createVideo(
+              FirebaseAuth.instance.currentUser!.uid,
+              titleController.text,
+              descriptionController.text,
+              thumbnailPath.value,
+              videoPath.value,
+            ),
             child: const Text(
               "Upload",
               style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 15
-                //fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
                 //fontFamily: 'Jua',
               ),
             ),

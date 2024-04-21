@@ -40,6 +40,7 @@ to avoid any sensitive or bad content for kids.
 | 0.15    | make video home dynamic from database                                   |
 | 0.15.1  | make video steam recommendations and data dynamic from database         |
 | 0.15.2  | make video information dynamic and handled comments through firebase    |
+| 0.17    | link project with amplify and handled uploading videos to storage       |
 
 ## Authors
 
@@ -54,8 +55,8 @@ for the whole app
 - [x] Start Page
 - [ ] Creator home page
   - [ ] Replace videos in the list with uploads 
-- [ ] Creator upload page
-  - [ ] Add functionality to the upload button using firebase.
+- [x] Creator upload page
+  - [x] Add functionality to the upload button using firebase.
 - [ ] Sign up page
   - [x] updated UI
   - [x] connect to firebase
