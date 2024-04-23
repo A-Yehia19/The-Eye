@@ -19,7 +19,7 @@ class ChildrenAccounts extends StatelessWidget {
       name: 'ali',
       parentID: '123',
       PIN: '1234',
-      birthDate: DateTime.now(),
+      birthDate: '12/12/12',
     ))));
     // children.add(const AddChild());
 

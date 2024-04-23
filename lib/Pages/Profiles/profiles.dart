@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Pages/Profiles/Widgets/profile_icons.dart';
@@ -15,6 +17,29 @@ class Profiles extends StatefulWidget {
 }
 
 class _ProfilesState extends State<Profiles> {
+  late Future<DocumentSnapshot> parentFuture;
+  late List<Future<DocumentSnapshot>> childrenFutures;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Get the parent's UID
+    final parentUID = FirebaseAuth.instance.currentUser!.uid;
+
+    // Fetch the parent's document from Firestore
+    parentFuture = FirebaseFirestore.instance.collection('users').doc(parentUID).get();
+
+    // Fetch the children's documents from Firestore
+    childrenFutures = [];
+    parentFuture.then((parentDoc) {
+      final childrenUIDs = parentDoc['children'];
+      for (final childUID in childrenUIDs) {
+        childrenFutures.add(FirebaseFirestore.instance.collection('users').doc(childUID).get());
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,8 +62,30 @@ class _ProfilesState extends State<Profiles> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  const ParentProfileBubble(), // Use the ParentProfileBubble widget
-                  const ProfileIcons(),
+                  FutureBuilder<DocumentSnapshot>(
+                    future: parentFuture,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        final parentData = snapshot.data!.data() as Map<String, dynamic>;
+                        return ParentProfileBubble(parentData: parentData);
+                      } else {
+                        return CircularProgressIndicator();
+                      }
+                    },
+                  ),
+                  SizedBox(height: 20.h),
+                  FutureBuilder<DocumentSnapshot>(
+                    future: parentFuture,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        final parentData = snapshot.data!.data() as Map<String, dynamic>;
+                        final childrenIDs = (parentData['children'] as List<dynamic>).map((item) => item.toString()).toList();
+                        return ProfileIcons(childIDs: childrenIDs);
+                      } else {
+                        return CircularProgressIndicator();
+                      }
+                    },
+                  ),
                 ],
               ),
             ],

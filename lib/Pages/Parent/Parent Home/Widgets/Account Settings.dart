@@ -1,11 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Firebase/Auth/signout.dart';
 import 'package:the_eye/Common/Models/Classes/Parent.dart';
 import 'package:the_eye/Pages/Parent/Common/WIdgets/Settings%20Button.dart';
 import 'package:the_eye/Constants/Colors.dart';
-import 'package:the_eye/Pages/Parent/Report%20Video/ReportVideo.dart';
-import 'package:the_eye/Pages/Payment/payment.dart';
+
+import '../Functions/account_settings_functions.dart';
 
 class AccountSettings extends StatelessWidget {
   final Parent parent;
@@ -30,10 +30,10 @@ class AccountSettings extends StatelessWidget {
           ),
           child: Column(
             children: [
-              SettingsButton(text: 'Change Username', icon: Icons.person_rounded, onPressed: () {}),
-              SettingsButton(text: 'Change Password', icon: Icons.lock_rounded, onPressed: () {}),
-              SettingsButton(text: 'Report Video', icon: Icons.edit_rounded, onPressed: () {}),
-              SettingsButton(text: 'Remove ADs', icon: Icons.remove_circle_outline, onPressed: () {}),
+              SettingsButton(text: 'Change Username', icon: Icons.person_rounded, onPressed: () => showChangeUsernameDialog(context)),
+              SettingsButton(text: 'Change Password', icon: Icons.lock_rounded, onPressed: () => showChangePasswordDialog(context)),
+              SettingsButton(text: 'Report Video', icon: Icons.edit_rounded, onPressed: () => reportVideo(context, parent)),
+              SettingsButton(text: 'Remove ADs', icon: Icons.remove_circle_outline, onPressed: () => removeADs(context, parent)),
               SettingsButton(text: 'Sign out', icon: Icons.logout_rounded, onPressed: () => signOut(context)),
             ],
           ),
@@ -53,18 +53,5 @@ class AccountSettings extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  reportVideo(context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => ReportVideo(parent: parent, videoID: '')));
-  }
-
-  removeADs(context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Payment(parent: parent)));
-  }
-
-  signOut(context) {
-    FirebaseAuth.instance.signOut();
-    Navigator.pushNamedAndRemoveUntil(context, '/start', (route) => false);
   }
 }

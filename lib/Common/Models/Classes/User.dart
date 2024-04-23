@@ -12,4 +12,14 @@ class User{
     required this.role,
     this.imageURL = ""
   });
+
+  factory User.fromMap(Map<String, dynamic> map) {
+    return User(
+      id: map['id'],
+      role: map['role'],
+      gender: map['gender'],
+      name: map['name'],
+      imageURL: map['imageURL'],
+    );
+  }
 }

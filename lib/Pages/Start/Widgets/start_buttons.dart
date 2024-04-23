@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Widgets/button_widget.dart';
 import 'package:the_eye/Constants/Colors.dart';
-import 'package:the_eye/Pages/Login/login.dart'; // Import the login.dart file
+import 'package:the_eye/Pages/Login/login.dart'; // Import the login_functions.dart file
 import 'package:the_eye/Pages/Signup/signup.dart'; // Import the signup.dart file
 
 class StartButtons extends StatelessWidget {

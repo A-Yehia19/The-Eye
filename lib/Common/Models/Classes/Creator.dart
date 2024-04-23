@@ -23,4 +23,15 @@ class Creator extends User{
       this.videos = [];
     }
   }
+
+  factory Creator.fromMap(Map<String, dynamic> map) {
+    return Creator(
+      id: map['id'],
+      gender: map['gender'],
+      name: map['name'],
+      imageURL: map['imageURL'],
+      transactions: List<String>.from(map['transactions']),
+      videos: List<String>.from(map['videos']),
+    );
+  }
 }

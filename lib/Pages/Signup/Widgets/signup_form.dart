@@ -183,7 +183,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     width: 2,
                   ),
                 ),
-                onPressed: () => googleSignUp(context),
+                onPressed: () => googleSignUp(isParent,context),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

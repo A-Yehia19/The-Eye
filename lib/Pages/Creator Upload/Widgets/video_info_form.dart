@@ -1,7 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:the_eye/Common/Firebase/Firestore/create%20new%20video.dart';
-import 'package:the_eye/Pages/Creator%20Upload/Data/variables.dart';
+import 'package:the_eye/Pages/Creator%20Upload/Data/Functions/upload.dart';
 
 import '../../../Common/Widgets/button_widget.dart';
 import '../../../Common/Widgets/input_text_field.dart';
@@ -64,12 +62,10 @@ class VideoForm extends StatelessWidget {
               color: primaryColor,
               borderRadius: BorderRadius.circular(20),
             ),
-            onPressed: () => createVideo(
-              FirebaseAuth.instance.currentUser!.uid,
-              titleController.text,
-              descriptionController.text,
-              thumbnailPath.value,
-              videoPath.value,
+            onPressed: () => uploadVideoButton(
+              context,
+              titleController,
+              descriptionController,
             ),
             child: const Text(
               "Upload",

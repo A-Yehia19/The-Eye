@@ -1,16 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:the_eye/Common/AWS/Storage/upload%20file.dart';
 import 'package:the_eye/Common/Firebase/Storage/upload%20file.dart';
-import 'package:the_eye/Common/Widgets/SnackBar.dart';
 
 createVideo(creatorID, title, description, thumbnailPath, videoPath) async {
   final db = FirebaseFirestore.instance;
-
-  if(videoPath == null || thumbnailPath == null) {
-    Bar.showSnackBar("Please select the files", Colors.red);
-    return;
-  }
 
   Map<String, dynamic> videoData = {
     "creatorID": creatorID,
@@ -29,6 +22,5 @@ createVideo(creatorID, title, description, thumbnailPath, videoPath) async {
       "thumbnail": thumbnail,
       "videoURL": videoURL,
     });
-    Bar.showSnackBar("Video Uploaded Successfully", Colors.green);
   });
 }

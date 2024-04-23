@@ -1,11 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:the_eye/Common/Models/Classes/Parent.dart';
 import '../../../Constants/Colors.dart';
 import '../../Parent/Parent Home/Parent Home.dart';
 
-void openDialog(context, name, imageURL, isParent) {
+void openDialog(context, childID, name, imageURL, isParent) {
   // Create a list of focus nodes
   List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
 
@@ -30,7 +29,9 @@ void openDialog(context, name, imageURL, isParent) {
                 backgroundColor: primaryColor,
                 child: CircleAvatar(
                   radius: 70.w,
-                  backgroundImage: AssetImage(imageURL),
+                  backgroundImage: (imageURL != null && imageURL.isNotEmpty)
+                      ? AssetImage(imageURL) as ImageProvider<Object>
+                      : AssetImage('assets/images/profile_placeholder.png') as ImageProvider<Object>, // Replace with your placeholder image
                 ),
               ),
               SizedBox(height: 10.w),
@@ -100,7 +101,7 @@ void openDialog(context, name, imageURL, isParent) {
                         isLoading = true;
                       });
                       if (isParent) {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ParentHome(parent: Parent(id: '1', gender: 'male', name: 'Daddy', imageURL: imageURL, children: ['1','1'])),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ParentHome()));
                       } else {
                         Navigator.pushNamed(context, '/videoHome');
                       }
