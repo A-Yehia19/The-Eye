@@ -26,6 +26,7 @@ Future<User?> getUser(String id) async {
               name: user.data()!['name'] ?? "",
               gender: user.data()!['gender'] ?? "",
               imageURL: user.data()!['imageURL'] != "" ? user.data()!['imageURL'] : profilePlaceholderURL,
+              email: user.data()!['email'] ?? "",
             );
           } else {
             print('User data is null for parent');
@@ -39,6 +40,7 @@ Future<User?> getUser(String id) async {
               name: user.data()!['name'] ?? "",
               gender: user.data()!['gender'] ?? "",
               imageURL: user.data()!['imageURL'] != "" ? user.data()!['imageURL'] : profilePlaceholderURL,
+              email: user.data()!['email'] ?? "",
             );
           } else {
             print('User data is null for creator');
