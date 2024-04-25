@@ -13,7 +13,8 @@ login(email, password, context) async {
       gender: 'Male',
       name: 'Dummy Creator',
       transactions: ['transaction1', 'transaction2'],
-      videos: ['video1', 'video2']
+      videos: ['video1', 'video2'],
+      email: ''
   );
   await logInWithEmailAndPassword(email, password);
   if (FirebaseAuth.instance.currentUser != null) {

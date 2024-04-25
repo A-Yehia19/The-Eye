@@ -39,7 +39,7 @@ class ParentHome extends StatelessWidget {
                     SizedBox(height: 30.h),
                     AccountSettings(parent: parent),
                     SizedBox(height: 40.h),
-                    ChildrenAccounts(parent: parent),
+                    ChildrenAccounts(),
                     AddChildButton(parent: parent),
                     SizedBox(height: 20.h),
                     Padding(

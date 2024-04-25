@@ -13,6 +13,8 @@ class ChildSelectionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Building ChildSelectionButton');
+    print('Child id: ${child.id}');
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.h),
       child: ClipRRect(

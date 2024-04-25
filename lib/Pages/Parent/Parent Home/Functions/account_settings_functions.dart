@@ -7,9 +7,11 @@ import 'package:the_eye/Common/Widgets/input_text_field.dart';
 import 'package:the_eye/Constants/Colors.dart';
 import 'package:the_eye/Pages/Parent/Report%20Video/ReportVideo.dart';
 import 'package:the_eye/Pages/Payment/payment.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void showChangeUsernameDialog(BuildContext context) {
   final TextEditingController usernameController = TextEditingController();
+  final user = FirebaseAuth.instance.currentUser;
 
   showDialog(
     context: context,
@@ -19,8 +21,7 @@ void showChangeUsernameDialog(BuildContext context) {
           dialogBackgroundColor: Colors.white,
           dialogTheme: DialogTheme(
             shape: RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadius.circular(15), // Increase borderRadius value
+              borderRadius: BorderRadius.circular(15),
               side: BorderSide(color: primaryColor),
             ),
           ),
@@ -45,8 +46,15 @@ void showChangeUsernameDialog(BuildContext context) {
               child: Text('Save',
                   style: TextStyle(
                       color: primaryColor, fontWeight: FontWeight.bold)),
-              onPressed: () {
-                // Implement your logic to change the username here
+              onPressed: () async {
+                // Update the display name in Firebase Authentication
+                await user?.updateProfile(displayName: usernameController.text);
+
+                // Update the username in Firestore
+                FirebaseFirestore.instance.collection('users').doc(user?.uid).update({
+                  'name': usernameController.text,
+                });
+
                 Navigator.of(context).pop();
               },
             ),
@@ -58,9 +66,10 @@ void showChangeUsernameDialog(BuildContext context) {
 }
 
 void showChangePasswordDialog(BuildContext context) {
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+  final TextEditingController oldPasswordController = TextEditingController();
+  final TextEditingController newPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
+  final user = FirebaseAuth.instance.currentUser;
 
   showDialog(
     context: context,
@@ -70,8 +79,7 @@ void showChangePasswordDialog(BuildContext context) {
           dialogBackgroundColor: Colors.white,
           dialogTheme: DialogTheme(
             shape: RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadius.circular(15), // Increase borderRadius value
+              borderRadius: BorderRadius.circular(15),
               side: BorderSide(color: primaryColor),
             ),
           ),
@@ -82,7 +90,7 @@ void showChangePasswordDialog(BuildContext context) {
             mainAxisSize: MainAxisSize.min,
             children: [
               TextFieldInput(
-                textEditingController: passwordController,
+                textEditingController: oldPasswordController,
                 hintText: 'Old Password',
                 textInputType: TextInputType.text,
                 isPass: true,
@@ -91,7 +99,7 @@ void showChangePasswordDialog(BuildContext context) {
                 height: 20.h,
               ),
               TextFieldInput(
-                textEditingController: passwordController,
+                textEditingController: newPasswordController,
                 hintText: 'New Password',
                 textInputType: TextInputType.text,
                 isPass: true,
@@ -100,7 +108,7 @@ void showChangePasswordDialog(BuildContext context) {
                 height: 10.h,
               ),
               TextFieldInput(
-                textEditingController: passwordController,
+                textEditingController: confirmPasswordController,
                 hintText: 'Confirm New Password',
                 textInputType: TextInputType.text,
                 isPass: true,
@@ -120,9 +128,10 @@ void showChangePasswordDialog(BuildContext context) {
               child: Text('Save',
                   style: TextStyle(
                       color: primaryColor, fontWeight: FontWeight.bold)),
-              onPressed: () {
-                if (passwordController.text == confirmPasswordController.text) {
-                  // Implement your logic to change the password here
+              onPressed: () async {
+                if (newPasswordController.text == confirmPasswordController.text) {
+                  // Update the password in Firebase Authentication
+                  await user?.updatePassword(newPasswordController.text);
                   Navigator.of(context).pop();
                 } else {
                   // Show an error message
@@ -138,6 +147,7 @@ void showChangePasswordDialog(BuildContext context) {
 
 void showDeleteAccountDialog(BuildContext context) {
   final TextEditingController deleteController = TextEditingController();
+  final user = FirebaseAuth.instance.currentUser;
 
   showDialog(
     context: context,
@@ -147,8 +157,7 @@ void showDeleteAccountDialog(BuildContext context) {
           dialogBackgroundColor: Colors.white,
           dialogTheme: DialogTheme(
             shape: RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadius.circular(15), // Increase borderRadius value
+              borderRadius: BorderRadius.circular(15),
               side: BorderSide(color: Colors.redAccent),
             ),
           ),
@@ -174,12 +183,18 @@ void showDeleteAccountDialog(BuildContext context) {
               child: Text(
                 'Delete',
                 style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
-              onPressed: () {
+              onPressed: () async {
                 if (deleteController.text == 'Delete my account') {
-                  // Implement your logic to delete the account here
-                  Navigator.of(context).pop();
+                  // Delete the user from Firestore
+                  await FirebaseFirestore.instance.collection('users').doc(user?.uid).delete();
+
+                  // Delete the user from Firebase Authentication
+                  await user?.delete();
+
+                  // Navigate to the Start page
+                  Navigator.pushNamedAndRemoveUntil(context, '/start', (route) => false);
                 } else {
                   // Show an error message
                 }
