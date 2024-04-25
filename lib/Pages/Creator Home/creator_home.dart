@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Firebase/Auth/signout.dart';
 import 'package:the_eye/Common/Firebase/Firestore/get%20user.dart';
 import 'package:the_eye/Pages/Creator%20Home/Widgets/creator_options.dart';
 import 'package:the_eye/Pages/Creator%20Home/Widgets/uploads_list.dart';
@@ -9,7 +10,6 @@ import 'package:firebase_auth/firebase_auth.dart' as auth; // Use a prefix to av
 import '../../Common/Models/Classes/User.dart';
 import '../../Common/Widgets/Upper Section.dart';
 import '../Parent/Common/WIdgets/Settings Button.dart';
-import '../Parent/Parent Home/Functions/account_settings_functions.dart';
 
 class CreatorHome extends StatelessWidget {
   const CreatorHome({super.key});

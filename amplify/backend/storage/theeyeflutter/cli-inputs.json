@@ -1,0 +1,16 @@
+{
+  "resourceName": "theeyeflutter",
+  "policyUUID": "2d7156c9",
+  "bucketName": "amplify-theeye-dev-161615-deployment",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ",
+    "CREATE_AND_UPDATE",
+    "DELETE"
+  ],
+  "authAccess": [
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

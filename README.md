@@ -45,6 +45,8 @@ to avoid any sensitive or bad content for kids.
 | 0.16.1  | bug fixed where app always opens on profiles page                                                       |
 | 0.16.2  | adds parents, creators and children to firebase using class factories                                   |
 | 0.16.3  | the pop ups in the parents page update in firebase<br/>updated the signup method for parent and creator |
+| 0.17    | link project with amplify and handled uploading videos to storage                                       |
+| 0.17.1  | added popup to view uploading progress and fixed video aspect ratio                                     |
 
 ## Authors
 
@@ -60,6 +62,7 @@ to debug
 - [x] Sessions aren't saved correctly is always opens on profiles page the parent even if a creator is currently logged in.
 - [ ] make Google authentication work with both creator and parent.
 - [ ] the back button shouldn't pop when there are no other pages in stack.
+- [ ] delete video data in case of uploading error .
 
 - [x] Start Page
 - [ ] Creator home page

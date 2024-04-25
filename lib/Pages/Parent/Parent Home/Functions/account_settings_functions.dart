@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Models/Classes/Parent.dart';
@@ -217,9 +216,4 @@ void reportVideo(BuildContext context, Parent parent) {
 void removeADs(BuildContext context, Parent parent) {
   Navigator.push(context,
       MaterialPageRoute(builder: (context) => Payment(parent: parent)));
-}
-
-void signOut(BuildContext context) {
-  FirebaseAuth.instance.signOut();
-  Navigator.pushNamedAndRemoveUntil(context, '/start', (route) => false);
 }

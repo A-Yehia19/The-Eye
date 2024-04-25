@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Firebase/Auth/signout.dart';
 import 'package:the_eye/Common/Models/Classes/Parent.dart';
 import 'package:the_eye/Pages/Parent/Common/WIdgets/Settings%20Button.dart';
 import 'package:the_eye/Constants/Colors.dart';

@@ -38,6 +38,7 @@ class _VideoBoxState extends State<VideoBox> {
   Widget build(BuildContext context) {
     return PodVideoPlayer(
       controller: videoController,
+      matchVideoAspectRatioToFrame: true,
       videoThumbnail: DecorationImage(
         image: NetworkImage(widget.video.thumbnail),
         fit: BoxFit.cover,

@@ -1,3 +1,6 @@
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:amplify_storage_s3/amplify_storage_s3.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +19,13 @@ import 'Common/Themes/Input Decoration.dart';
 import 'Common/Widgets/SnackBar.dart';
 import 'Pages/Creator Home/creator_home.dart';
 import 'Pages/Start/start.dart';
+import 'amplifyconfiguration.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await Amplify.addPlugins([AmplifyStorageS3(), AmplifyAuthCognito()]);
+  await Amplify.configure(amplifyconfig);
   runApp(const MyApp());
 }
 
@@ -61,9 +67,9 @@ class MyApp extends StatelessWidget {
           future: _getInitialScreen(),
           builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             } else {
-              return snapshot.data ?? CircularProgressIndicator();
+              return snapshot.data ?? const Center(child: CircularProgressIndicator());
             }
           },
         ),
@@ -80,12 +86,12 @@ class MyApp extends StatelessWidget {
       var user = await getUser(currentUser.uid);
       print('User data: $user'); // Add this line
       if (user is Creator) {
-        return CreatorHome();
+        return const CreatorHome();
       } else if (user is Parent) {
-        return Profiles();
+        return const Profiles();
       }
     }
     // If no user is signed in, return the OnBoarding screen as default
-    return OnBoarding();
+    return const OnBoarding();
   }
 }

@@ -20,7 +20,7 @@ class ProfileIcons extends StatelessWidget {
           future: getChild(childID),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator(); // Show a loading spinner while waiting for the data
+              return const CircularProgressIndicator(); // Show a loading spinner while waiting for the data
             } else if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}'); // Show an error message if an error occurred
             } else {
@@ -44,9 +44,9 @@ class ProfileIcons extends StatelessWidget {
                         backgroundColor: Colors.white,
                         child: CircleAvatar(
                           radius: 45.w,
-                          backgroundImage: (childData.imageURL != null && childData.imageURL.isNotEmpty)
+                          backgroundImage: (childData.imageURL.isNotEmpty)
                               ? NetworkImage(childData.imageURL) as ImageProvider<Object>
-                              : AssetImage('assets/images/profile_placeholder.png') as ImageProvider<Object>,
+                              : const AssetImage('assets/images/profile_placeholder.png'),
                         ),
                       ),
                       Text(childData.name, style: const TextStyle(fontSize: 20, color: Colors.white)),

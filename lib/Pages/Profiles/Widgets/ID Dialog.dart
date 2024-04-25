@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:the_eye/Common/Models/Classes/Parent.dart';
 import '../../../Constants/Colors.dart';
 import '../../Parent/Parent Home/Parent Home.dart';
 

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:the_eye/Pages/Creator%20Upload/Data/Functions/upload.dart';
 
 import '../../../Common/Widgets/button_widget.dart';
 import '../../../Common/Widgets/input_text_field.dart';
 import '../../../Constants/Colors.dart';
 
 class VideoForm extends StatelessWidget {
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
-
-  VideoForm({super.key});
+  const VideoForm({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController titleController = TextEditingController();
+    final TextEditingController descriptionController = TextEditingController();
+
     return Column(
       children: [
         const Padding(
@@ -27,7 +28,7 @@ class VideoForm extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: TextFieldInput(
-            textEditingController: _titleController,
+            textEditingController: titleController,
             hintText: "Title",
             textInputType: TextInputType.text,
             isPass: false,
@@ -47,7 +48,7 @@ class VideoForm extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: TextFieldInput(
-            textEditingController: _descriptionController,
+            textEditingController: descriptionController,
             hintText: "Description",
             textInputType: TextInputType.text,
             isPass: false,
@@ -61,13 +62,17 @@ class VideoForm extends StatelessWidget {
               color: primaryColor,
               borderRadius: BorderRadius.circular(20),
             ),
-            onPressed: () {},
+            onPressed: () => uploadVideoButton(
+              context,
+              titleController,
+              descriptionController,
+            ),
             child: const Text(
               "Upload",
               style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 15
-                //fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
                 //fontFamily: 'Jua',
               ),
             ),
