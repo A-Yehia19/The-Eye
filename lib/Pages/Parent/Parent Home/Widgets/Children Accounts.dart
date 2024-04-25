@@ -4,24 +4,72 @@ import 'package:the_eye/Common/Models/Classes/Child.dart';
 import 'package:the_eye/Common/Models/Classes/Parent.dart';
 import 'package:the_eye/Constants/Colors.dart';
 import 'package:the_eye/Pages/Parent/Parent%20Home/Widgets/Child%20Selection%20Button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ChildrenAccounts extends StatelessWidget {
-  final Parent parent;
-  const ChildrenAccounts({super.key, required this.parent});
+import '../../../../Common/Firebase/Firestore/get child.dart';
+
+class ChildrenAccounts extends StatefulWidget {
+  @override
+  _ChildrenAccountsState createState() => _ChildrenAccountsState();
+}
+
+class _ChildrenAccountsState extends State<ChildrenAccounts> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  List<Child> children = [];
+  Parent? parent;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchChildren();
+  }
+
+  Future<void> fetchChildren() async {
+    print('fetchChildren started');
+    final User? user = auth.currentUser;
+    if (user == null) {
+      print('User is null');
+      return;
+    }
+    try {
+      final parentDoc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+      if (!parentDoc.exists) {
+        print('Parent document does not exist');
+        return;
+      }
+      final parentData = parentDoc.data();
+      if (parentData == null) {
+        print('Parent data is null');
+        return;
+      }
+      parent = Parent.fromMap(parentData);
+      final childrenIds = List<String>.from(parentData['children'] ?? []);
+
+      await Future.wait(childrenIds.map((childId) async {
+        final childDoc = await FirebaseFirestore.instance.collection('users').doc(childId).get();
+        if (childDoc.exists) {
+          final childData = childDoc.data();
+          if (childData != null) {
+            children.add(Child.fromMap(childData));
+          }
+        }
+      }));
+
+      print('fetchChildren completed');
+      setState(() {});
+    } catch (e) {
+      print('Error fetching children: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    List <Widget> children = [];
-    children.addAll(parent.children.map((child) => ChildSelectionButton(parent: parent,
-    child: Child(
-      id: '12',
-      gender: 'male',
-      name: 'ali',
-      parentID: '123',
-      PIN: '1234',
-      birthDate: '12/12/12',
-    ))));
-    // children.add(const AddChild());
+    print('Building ChildrenAccounts');
+    print('Number of children: ${children.length}');
+    if (parent == null) {
+      return CircularProgressIndicator();
+    }
 
     return Stack(
       clipBehavior: Clip.none,
@@ -40,7 +88,10 @@ class ChildrenAccounts extends StatelessWidget {
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: children,
+            children: children.map((child) {
+              print('Building ChildSelectionButton for child ${child.id}');
+              return ChildSelectionButton(parent: parent!, child: child);
+            }).toList(),
           ),
         ),
         Positioned(

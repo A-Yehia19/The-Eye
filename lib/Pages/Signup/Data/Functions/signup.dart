@@ -14,7 +14,8 @@ signup(name, email, password, rePassword, isParent, context) async {
       gender: 'Male',
       name: 'Dummy Creator',
       transactions: ['transaction1', 'transaction2'],
-      videos: ['video1', 'video2']
+      videos: ['video1', 'video2'],
+      email: ''
   );
   if (password != rePassword) {
     Bar.showSnackBar('Passwords do not match', Colors.red);

@@ -10,13 +10,28 @@ Future<dynamic> createUser(uid, email, name, String? photo, bool isParent) async
   // Determine the role based on isParent
   String role = isParent ? 'parent' : 'creator';
 
-  Map<String, dynamic> userData = {
-    "email": email,
-    "name": name,
-    "imageURL": photo ?? "assets/images/profile_placeholder.png", // Set the default imageURL
-    "isParent": isParent,
-    "role": role,  // Add the role field
-  };
+  // Create a Parent or Creator object
+  var user;
+  if (isParent) {
+    user = Parent(
+      id: uid,
+      gender: 'unknown', // Replace with actual gender
+      name: name,
+      imageURL: "assets/images/profile_placeholder.png",
+      email: email,
+    );
+  } else {
+    user = Creator(
+      id: uid,
+      gender: 'unknown', // Replace with actual gender
+      name: name,
+      imageURL: "assets/images/profile_placeholder.png",
+      email: email,
+    );
+  }
+
+  // Convert the Parent or Creator object to a map
+  Map<String, dynamic> userData = user.toMap();
 
   // Determine the collection based on role
   final collection = role == 'child' ? 'children' : 'users';
@@ -40,12 +55,6 @@ Future<dynamic> createUser(uid, email, name, String? photo, bool isParent) async
     case 'creator':
       if (userDoc.data() != null) {
         return Creator.fromMap(userDoc.data() as Map<String, dynamic>);
-      } else {
-        throw Exception('User data is null');
-      }
-    case 'child':
-      if (userDoc.data() != null) {
-        return Child.fromMap(userDoc.data() as Map<String, dynamic>);
       } else {
         throw Exception('User data is null');
       }
