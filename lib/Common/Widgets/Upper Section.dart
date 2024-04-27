@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Models/Classes/User.dart';
 import 'package:the_eye/Constants/Colors.dart';
+import 'package:the_eye/Constants/links.dart';
 
 class UpperSection extends StatelessWidget {
   final User user;
@@ -35,31 +37,15 @@ class UpperSection extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                user.imageURL.isNotEmpty
-                    ? ClipRRect(
+                ClipRRect(
                   borderRadius: BorderRadius.circular(1000),
-                  child: Image.asset(
-                    user.imageURL,
+                  child: CachedNetworkImage(
+                    imageUrl: user.imageURL,
                     height: 130.h,
                     width: 130.h,
                     fit: BoxFit.cover,
-                  ),
-                )
-                    : Container(
-                  height: 130.h,
-                  width: 130.h,
-                  decoration: BoxDecoration(
-                    color: primaryColor,
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: Colors.white,
-                      width: 5,
-                    ),
-                  ),
-                  child: Icon(
-                    Icons.person,
-                    color: Colors.white,
-                    size: 80.h,
+                    errorWidget: (context, url, error) => Image.asset(profilePlaceholderAsset),
+                    progressIndicatorBuilder: (context, url, downloadProgress) => Center(child: CircularProgressIndicator(value: downloadProgress.progress))
                   ),
                 ),
                 SizedBox(height: 10.h),

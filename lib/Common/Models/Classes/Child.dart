@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:the_eye/Constants/links.dart';
+
 import 'User.dart';
 
 class Child extends User {
@@ -24,7 +27,7 @@ class Child extends User {
     List<String>? prefs,
     Map<String, double>? screenTime,
     List<Map<String, dynamic>>? history,
-  }) : super(id: id, role: "creator", gender: gender, name: name, imageURL: imageURL) {
+  }) : super(id: id, role: "child", gender: gender, name: name, imageURL: imageURL) {
     if (likes != null) {
       this.likes = likes;
     } else {
@@ -59,8 +62,8 @@ class Child extends User {
       parentID: map['parentID'] ?? '',
       gender: map['gender'] ?? '',
       name: map['name'] ?? '',
-      imageURL: map['imageURL'] ?? '',
-      PIN: map['pin'] ?? '',
+      imageURL: map['imageURL'] ?? profilePlaceholderURL,
+      PIN: map['PIN'] ?? '',
       history: List<Map<String, dynamic>>.from(map['history']?.map((item) => Map<String, dynamic>.from(item)) ?? []),
       likes: List<String>.from(map['likes'] ?? []),
       favourites: List<String>.from(map['favourites'] ?? []),
@@ -73,7 +76,6 @@ class Child extends User {
   // map child object to firestore object
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'name': name,
       'gender': gender,
       'imageURL': imageURL,
@@ -85,6 +87,26 @@ class Child extends User {
       'favourites': favourites,
       'prefs': prefs,
       'screenTime': screenTime,
+      "role": "child",
     };
+  }
+
+  factory Child.fromSnapshot(DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
+
+    return Child(
+      id: doc.id,
+      name: data['name'] ?? 'name',
+      gender: data['gender'] ?? 'gender',
+      imageURL: data['imageURL'] ?? profilePlaceholderURL,
+      parentID: data['parentID'],
+      PIN: data['PIN'] ?? '',
+      history: data['history'] ?? [],
+      likes: data['likes'] ?? [],
+      favourites: data['favourites'] ?? [],
+      prefs: data['prefs'] ?? [],
+      screenTime: data['screenTime'] ?? {},
+      birthDate: data['birthDate'] ?? '',
+    );
   }
 }

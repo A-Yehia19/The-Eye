@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:the_eye/Common/Models/Classes/Creator.dart';
 import 'package:the_eye/Pages/Support/contact_support.dart';
 
 import '../../../Constants/Colors.dart';
 import '../../Creator Upload/creator_upload.dart';
 
 class CreatorOptions extends StatelessWidget {
-  const CreatorOptions({Key? key}) : super(key: key);
+  final Creator creator;
+  const CreatorOptions({Key? key, required this.creator}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class CreatorOptions extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const CreatorUpload()),
+                    MaterialPageRoute(builder: (context) => CreatorUpload(creator: creator)),
                   );
                 },
                 tooltip: 'Add new video',
@@ -33,7 +35,7 @@ class CreatorOptions extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ContactSupport()),
+                    MaterialPageRoute(builder: (context) => const ContactSupport()),
                   );
                 },
                 tooltip: 'Contact support',

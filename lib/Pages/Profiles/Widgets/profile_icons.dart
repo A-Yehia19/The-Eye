@@ -1,6 +1,6 @@
-// profile_icons.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Constants/links.dart';
 import '../../../Common/Firebase/Firestore/get child.dart';
 import '../../../Common/Models/Classes/Child.dart';
 import 'ID Dialog.dart';
@@ -8,7 +8,7 @@ import 'ID Dialog.dart';
 class ProfileIcons extends StatelessWidget {
   final List<String> childIDs;
 
-  ProfileIcons({required this.childIDs});
+  const ProfileIcons({super.key, required this.childIDs});
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +31,7 @@ class ProfileIcons extends StatelessWidget {
                   onTap: () {
                     openDialog(
                       context,
-                      childID,
-                      childData.name,
-                      childData.imageURL,
-                      false,
+                      childData
                     );
                   },
                   child: Column(
@@ -46,7 +43,7 @@ class ProfileIcons extends StatelessWidget {
                           radius: 45.w,
                           backgroundImage: (childData.imageURL.isNotEmpty)
                               ? NetworkImage(childData.imageURL) as ImageProvider<Object>
-                              : const AssetImage('assets/images/profile_placeholder.png'),
+                              : const AssetImage(profilePlaceholderAsset),
                         ),
                       ),
                       Text(childData.name, style: const TextStyle(fontSize: 20, color: Colors.white)),
