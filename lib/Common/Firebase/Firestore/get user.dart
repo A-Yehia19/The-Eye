@@ -21,13 +21,7 @@ Future<User?> getUser(String id) async {
         case 'parent':
           if (user.data() != null) {
             print('User role is parent');
-            return Parent(
-              id: user.id,
-              name: user.data()!['name'] ?? "",
-              gender: user.data()!['gender'] ?? "",
-              imageURL: user.data()!['imageURL'] != "" ? user.data()!['imageURL'] : profilePlaceholderURL,
-              email: user.data()!['email'] ?? "",
-            );
+            return Parent.fromSnapshot(user);
           } else {
             print('User data is null for parent');
             throw Exception('User data is null');
@@ -35,13 +29,7 @@ Future<User?> getUser(String id) async {
         case 'creator':
           if (user.data() != null) {
             print('User role is creator');
-            return Creator(
-              id: user.id,
-              name: user.data()!['name'] ?? "",
-              gender: user.data()!['gender'] ?? "",
-              imageURL: user.data()!['imageURL'] != "" ? user.data()!['imageURL'] : profilePlaceholderURL,
-              email: user.data()!['email'] ?? "",
-            );
+            return Creator.fromSnapshot(user);
           } else {
             print('User data is null for creator');
             throw Exception('User data is null');

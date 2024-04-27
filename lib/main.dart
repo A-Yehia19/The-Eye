@@ -84,9 +84,9 @@ class MyApp extends StatelessWidget {
 
     if (currentUser != null) {
       var user = await getUser(currentUser.uid);
-      print('User data: $user'); // Add this line
+      print('User data: $user');
       if (user is Creator) {
-        return const CreatorHome();
+        return CreatorHome(creator: user);
       } else if (user is Parent) {
         return const Profiles();
       }

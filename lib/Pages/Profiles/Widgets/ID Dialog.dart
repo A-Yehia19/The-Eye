@@ -1,10 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Models/Classes/Parent.dart';
+import 'package:the_eye/Constants/links.dart';
 import '../../../Constants/Colors.dart';
 import '../../Parent/Parent Home/Parent Home.dart';
 
-void openDialog(context, childID, name, imageURL, isParent) {
+void openDialog(context, user) {
   // Create a list of focus nodes
   List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
 
@@ -29,14 +31,14 @@ void openDialog(context, childID, name, imageURL, isParent) {
                 backgroundColor: primaryColor,
                 child: CircleAvatar(
                   radius: 70.w,
-                  backgroundImage: (imageURL != null && imageURL.isNotEmpty)
-                      ? AssetImage(imageURL) as ImageProvider<Object>
-                      : AssetImage('assets/images/profile_placeholder.png') as ImageProvider<Object>, // Replace with your placeholder image
+                  backgroundImage: (user.imageURL != null && user.imageURL.isNotEmpty)
+                      ? NetworkImage(user.imageURL) as ImageProvider<Object>
+                      : const AssetImage(profilePlaceholderAsset),
                 ),
               ),
               SizedBox(height: 10.w),
               Text(
-                name,
+                user.name,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 30.w,
@@ -100,8 +102,8 @@ void openDialog(context, childID, name, imageURL, isParent) {
                       setState(() {
                         isLoading = true;
                       });
-                      if (isParent) {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ParentHome()));
+                      if (user.role == "parent") {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ParentHome(parent: user as Parent,)));
                       } else {
                         Navigator.pushNamed(context, '/videoHome');
                       }

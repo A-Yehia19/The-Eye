@@ -1,13 +1,14 @@
 // parent_profile.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Models/Classes/Parent.dart';
 import '../../Add Child/add_child.dart';
 import 'ID Dialog.dart';
 
 class ParentProfileBubble extends StatelessWidget {
-  final Map<String, dynamic> parentData;
+  final Parent parent;
 
-  ParentProfileBubble({required this.parentData});
+  ParentProfileBubble({required this.parent});
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +21,7 @@ class ParentProfileBubble extends StatelessWidget {
               onTap: () {
                 openDialog(
                   context,
-                  0,
-                  parentData['name'],
-                  parentData['image'],
-                  true,
+                  parent
                 );
               },
               child: CircleAvatar(
@@ -31,7 +29,7 @@ class ParentProfileBubble extends StatelessWidget {
                 backgroundColor: Colors.white,
                 child: CircleAvatar(
                   radius: 65.w,
-                  backgroundImage: AssetImage(parentData['imageURL']),
+                  backgroundImage: NetworkImage(parent.imageURL),
                 ),
               ),
             ),
@@ -59,7 +57,7 @@ class ParentProfileBubble extends StatelessWidget {
           ],
         ),
         Text(
-          parentData['name'],
+          parent.name,
           style: TextStyle(
               fontSize: 22.w,
               fontWeight: FontWeight.bold,

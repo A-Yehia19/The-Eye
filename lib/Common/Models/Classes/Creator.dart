@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:the_eye/Constants/links.dart';
+
 import 'User.dart';
 
 class Creator extends User{
@@ -31,7 +34,7 @@ class Creator extends User{
       id: map['id'] ?? '',
       gender: map['gender'] ?? '',
       name: map['name'] ?? '',
-      imageURL: map['imageURL'] ?? 'assets/images/profile_placeholder.png',
+      imageURL: map['imageURL'] ?? profilePlaceholderURL,
       transactions: List<String>.from(map['transactions'] ?? []),
       videos: List<String>.from(map['videos'] ?? []),
       email: map['email'] ?? '',
@@ -40,7 +43,6 @@ class Creator extends User{
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'email': email,
       'gender': gender,
       'name': name,
@@ -48,8 +50,20 @@ class Creator extends User{
       'transactions': transactions,
       'videos': videos,
       'role': 'creator',
-      'isParent': false,
-      'plan': 'free',
     };
+  }
+
+  factory Creator.fromSnapshot(DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
+
+    return Creator(
+      id: doc.id,
+      name: data['name'] ?? 'name',
+      email: data['email'] ?? '',
+      gender: data['gender'] ?? 'gender',
+      imageURL: data['imageURL'] ?? profilePlaceholderURL,
+      transactions: List<String>.from(data['transactions']),
+      videos: List<String>.from(data['videos']),
+    );
   }
 }
