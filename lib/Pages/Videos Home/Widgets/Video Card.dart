@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Functions/History%20Generator.dart';
 
 import '../../../Common/Models/Classes/Video.dart';
 import '../../../Constants/Colors.dart';
@@ -65,7 +66,7 @@ class VideoCard extends StatelessWidget {
                 const Spacer(),
                 Icon(Icons.history_rounded, color: secondaryColor, size: 20.sp),
                 SizedBox(width: 10.w),
-                Text('5 Days Ago',
+                Text(historyGenerator(video.date),
                   style: TextStyle(
                     fontSize: 12.sp,
                     color: secondaryColor,

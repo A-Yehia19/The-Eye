@@ -30,7 +30,7 @@ to avoid any sensitive or bad content for kids.
 | 0.12.1  | splash screen completed                                                                                   |
 | 0.12.2  | fixed some color issues                                                                                   |
 | 0.12.3  | applied add comment button to videos                                                                      |
-| 0.13    | Updated profiles page, added animated background<br/>updated dialog box                                   |
+| 0.13    | Updated profiles page, added animated background <br/>updated dialog box                                  |
 | 0.13.1  | Updated classes structure                                                                                 |
 | 0.14.0  | parent home created                                                                                       |
 | 0.14.1  | Reconstructed creator pages                                                                               |
@@ -41,13 +41,14 @@ to avoid any sensitive or bad content for kids.
 | 0.15    | make video home dynamic from database                                                                     |
 | 0.15.1  | make video steam recommendations and data dynamic from database                                           |
 | 0.15.2  | make video information dynamic and handled comments through firebase                                      |
-| 0.16    | profiles bubbles became dynamic with firebase<br/>adds children dynamically                               |
+| 0.16    | profiles bubbles became dynamic with firebase <br/>adds children dynamically                              |
 | 0.16.1  | bug fixed where app always opens on profiles page                                                         |
 | 0.16.2  | adds parents, creators and children to firebase using class factories                                     |
-| 0.16.3  | the pop ups in the parents page update in firebase<br/>updated the signup method for parent and creator   |
+| 0.16.3  | the pop ups in the parents page update in firebase <br/>updated the signup method for parent and creator  |
 | 0.17    | link project with amplify and handled uploading videos to storage                                         |
 | 0.17.1  | added popup to view uploading progress and fixed video aspect ratio                                       |
 | 0.18    | fixed videos upload from database <br/>placeholders from network <br/>reduce user retrieval from database |
+| 0.18.1  | fixed Video Card info <br/>validation of PIN of user <br/> added video description                        |
 
 ## Authors
 

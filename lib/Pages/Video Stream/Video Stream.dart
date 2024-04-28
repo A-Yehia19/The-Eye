@@ -36,6 +36,11 @@ class VideoStream extends StatelessWidget {
                     const SizedBox(height: 10),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: Text(video.description),
+                    ),
+                    const SizedBox(height: 30),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
                       child: Text('What\'s New Today',
                         style: TextStyle(
                           fontSize: 12.sp,

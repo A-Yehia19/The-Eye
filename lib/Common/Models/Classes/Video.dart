@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:the_eye/Constants/links.dart';
 
 import 'Comment.dart';
 
@@ -72,13 +73,13 @@ class Video{
 
     return Video(
       id: doc.id,
-      title: data['title'],
-      description: data['description'],
-      thumbnail: data['thumbnail'],
-      videoURL: data['videoURL'],
-      creatorID: data['creatorID'],
-      views: data['views'],
-      status: data['status'],
+      title: data['title'] ?? "title",
+      description: data['description'] ?? "description",
+      thumbnail: data['thumbnail'] ?? videoPlaceholderURL,
+      videoURL: data['videoURL'] ?? "videoURL",
+      creatorID: data['creatorID'] ?? "creatorID",
+      views: data['views'] ?? 0,
+      status: data['status'] ?? "uploaded",
       date: data['date'].toDate(),
       comments: (data['comments'] as List).map((comment) => Comment.fromMap(comment)).toList(),
     );
