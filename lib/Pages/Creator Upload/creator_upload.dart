@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:the_eye/Common/Models/Classes/Creator.dart';
 import 'package:the_eye/Pages/Creator%20Upload/Widgets/choose_file.dart';
 import 'package:the_eye/Pages/Creator%20Upload/Widgets/video_info_form.dart';
 
 import 'Widgets/choose_thumbnail.dart';
 
 class CreatorUpload extends StatelessWidget {
-  const CreatorUpload({super.key});
+  final Creator creator;
+  const CreatorUpload({super.key, required this.creator});
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +15,10 @@ class CreatorUpload extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0, // Remove app bar shadow
-        leading: const Padding(
-          padding: EdgeInsets.all(8.0),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
           child: CircleAvatar(
-            backgroundImage: AssetImage(
-                'assets/images/daddy.jpg'), // Replace with your image
+            backgroundImage: NetworkImage(creator.imageURL),
           ),
         ),
         actions: [

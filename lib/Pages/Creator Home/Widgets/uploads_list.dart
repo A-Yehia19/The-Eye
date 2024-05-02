@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'creator_video_card.dart';
 
 class UploadsList extends StatelessWidget {
-  const UploadsList({super.key});
+  final List<String> videosList;
+  const UploadsList({super.key, required this.videosList});
 
   @override
   Widget build(BuildContext context) {
-    final videosList = [];
     return Expanded(
       child: videosList.isNotEmpty
     ? Padding(
@@ -19,7 +19,7 @@ class UploadsList extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox(width: 20),
           itemBuilder: (context, index) => Column(
             children: [
-              CreatorVideoCard(video: videosList[index]),
+              CreatorVideoCard(videoID: videosList[index]),
               const SizedBox(height: 20),
             ],
           ),

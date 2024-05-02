@@ -50,7 +50,7 @@ class CarouselItem extends StatelessWidget {
                 SizedBox(width: 15.w),
                 Icon(Icons.remove_red_eye_outlined, color: secondaryColor, size: 30.sp),
                 SizedBox(width: 15.w),
-                Text('1.2k',
+                Text(video.views.toString(),
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: secondaryColor,

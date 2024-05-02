@@ -16,6 +16,9 @@ createVideo(creatorID, title, description, thumbnailPath, videoPath) async {
   };
 
   db.collection('videos').add(videoData).then((doc) async {
+    db.collection('users').doc(creatorID).update({
+      "videos": FieldValue.arrayUnion([doc.id])
+    });
     final thumbnail = await uploadFileFirebase(thumbnailPath, creatorID, doc.id);
     final videoURL = await uploadFileAWS(videoPath, creatorID, doc.id);
     db.collection('videos').doc(doc.id).update({

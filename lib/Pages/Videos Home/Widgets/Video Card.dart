@@ -55,7 +55,7 @@ class VideoCard extends StatelessWidget {
                 SizedBox(width: 15.w),
                 Icon(Icons.remove_red_eye_outlined, color: secondaryColor, size: 20.sp),
                 SizedBox(width: 10.w),
-                Text('1.2k',
+                Text(video.views.toString(),
                   style: TextStyle(
                     fontSize: 12.sp,
                     color: secondaryColor,
