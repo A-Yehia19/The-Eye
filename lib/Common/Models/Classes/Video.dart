@@ -9,7 +9,7 @@ class Video{
   final String thumbnail;
   final String videoURL;
   final String description;
-  final int views;
+  int views;
   final String creatorID;
   final String status;
   int isLiked;
@@ -60,12 +60,15 @@ class Video{
     }
   }
 
-  void favourite(){
-    isFavourite = !isFavourite;
-  }
-
   void addComment(Comment comment){
     comments.add(comment);
+  }
+
+  void view(){
+    views++;
+    FirebaseFirestore.instance.collection('videos').doc(id).update({
+      'views': views,
+    });
   }
 
   factory Video.fromSnapshot(DocumentSnapshot doc) {

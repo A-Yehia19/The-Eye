@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:the_eye/Constants/links.dart';
 
 import 'User.dart';
+import 'Video.dart';
 
 class Child extends User {
   final String parentID;
@@ -9,6 +10,7 @@ class Child extends User {
   final String birthDate; //changed from datetime to string for now
   late List<Map<String, dynamic>> history;
   late List<String> likes;
+  late List<String> dislikes;
   late List<String> favourites;
   late List<String> prefs;
   late Map<String, double> screenTime;
@@ -23,6 +25,7 @@ class Child extends User {
     required this.birthDate,
 
     List<String>? likes,
+    List<String>? dislikes,
     List<String>? favourites,
     List<String>? prefs,
     Map<String, double>? screenTime,
@@ -32,6 +35,11 @@ class Child extends User {
       this.likes = likes;
     } else {
       this.likes = [];
+    }
+    if (dislikes != null) {
+      this.dislikes = dislikes;
+    } else {
+      this.dislikes = [];
     }
     if (favourites != null) {
       this.favourites = favourites;
@@ -55,6 +63,56 @@ class Child extends User {
     }
   }
 
+  viewVideo(Video video) {
+    video.view();
+    history.add({
+      'video': video,
+      'date': DateTime.now(),
+    });
+    final db = FirebaseFirestore.instance;
+    db.collection('users').doc(id).update({'history': history});
+  }
+
+  likeVideo(Video video) {
+    video.like();
+    if (likes.contains(video.id)) {
+      likes.remove(video.id);
+    } else {
+      likes.add(video.id);
+      if (dislikes.contains(video.id)) {
+        dislikes.remove(video.id);
+      }
+    }
+    final db = FirebaseFirestore.instance;
+    db.collection('users').doc(id).update({'likes': likes, 'dislikes': dislikes});
+  }
+
+  dislikeVideo(Video video) {
+    video.dislike();
+    if (dislikes.contains(video.id)) {
+      dislikes.remove(video.id);
+    } else {
+      dislikes.add(video.id);
+      if (likes.contains(video.id)) {
+        likes.remove(video.id);
+      }
+    }
+    final db = FirebaseFirestore.instance;
+    db.collection('users').doc(id).update({'likes': likes, 'dislikes': dislikes});
+  }
+
+  favouriteVideo(Video video) {
+    if (favourites.contains(video.id)) {
+      favourites.remove(video.id);
+      video.isFavourite = false;
+    } else {
+      favourites.add(video.id);
+      video.isFavourite = true;
+    }
+    final db = FirebaseFirestore.instance;
+    db.collection('users').doc(id).update({'favourites': favourites});
+  }
+
   // map firestore object to child object
   factory Child.fromMap(Map<String, dynamic> map) {
     return Child(
@@ -66,6 +124,7 @@ class Child extends User {
       PIN: map['PIN'] ?? '',
       history: List<Map<String, dynamic>>.from(map['history']?.map((item) => Map<String, dynamic>.from(item)) ?? []),
       likes: List<String>.from(map['likes'] ?? []),
+      dislikes: List<String>.from(map['dislikes'] ?? []),
       favourites: List<String>.from(map['favourites'] ?? []),
       prefs: List<String>.from(map['prefs'] ?? []),
       screenTime: Map<String, double>.from(map['screenTime'] ?? {}),
@@ -76,6 +135,7 @@ class Child extends User {
   // map child object to firestore object
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'name': name,
       'gender': gender,
       'imageURL': imageURL,
@@ -84,6 +144,7 @@ class Child extends User {
       'birthDate': birthDate,
       'history': history,
       'likes': likes,
+      'dislikes': dislikes,
       'favourites': favourites,
       'prefs': prefs,
       'screenTime': screenTime,
@@ -101,11 +162,12 @@ class Child extends User {
       imageURL: data['imageURL'] ?? profilePlaceholderURL,
       parentID: data['parentID'],
       PIN: data['PIN'] ?? '',
-      history: data['history'] ?? [],
-      likes: data['likes'] ?? [],
-      favourites: data['favourites'] ?? [],
-      prefs: data['prefs'] ?? [],
-      screenTime: data['screenTime'] ?? {},
+      history: List<Map<String, dynamic>>.from(data['history']),
+      likes: List<String>.from(data['likes']),
+      dislikes: List<String>.from(data['dislikes']),
+      favourites: List<String>.from(data['favourites']),
+      prefs: List<String>.from(data['prefs']),
+      screenTime: Map<String, double>.from(data['screenTime']),
       birthDate: data['birthDate'] ?? '',
     );
   }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:the_eye/Common/Models/Classes/Creator.dart';
 
 import 'creator_video_card.dart';
 
 class UploadsList extends StatelessWidget {
   final List<String> videosList;
-  const UploadsList({super.key, required this.videosList});
+  final Creator creator;
+  const UploadsList({super.key, required this.videosList, required this.creator});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class UploadsList extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox(width: 20),
           itemBuilder: (context, index) => Column(
             children: [
-              CreatorVideoCard(videoID: videosList[index]),
+              CreatorVideoCard(videoID: videosList[index], creator: creator,),
               const SizedBox(height: 20),
             ],
           ),

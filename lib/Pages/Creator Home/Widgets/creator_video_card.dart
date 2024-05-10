@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Firebase/Firestore/get%20video.dart';
+import 'package:the_eye/Common/Models/Classes/Creator.dart';
 import 'package:the_eye/Common/Models/Classes/Video.dart';
 
 import '../../../Constants/Colors.dart';
@@ -8,7 +9,8 @@ import '../../Video Stream/Video Stream.dart';
 
 class CreatorVideoCard extends StatelessWidget {
   final String videoID;
-  const CreatorVideoCard({super.key, required this.videoID});
+  final Creator creator;
+  const CreatorVideoCard({super.key, required this.videoID, required this.creator});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class CreatorVideoCard extends StatelessWidget {
         final Video video = snapshot.data!;
 
         return InkWell(
-          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => VideoStream(video: video))),
+          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => VideoStream(video: video, user: creator,))),
           splashFactory: NoSplash.splashFactory,
           child: Stack(
             children: [
@@ -91,10 +93,10 @@ class CreatorVideoCard extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 10, // Adjust the value as needed
-                right: 10, // Adjust the value as needed
+                top: 10,
+                right: 10,
                 child: Container(
-                  padding: EdgeInsets.all(2),
+                  padding: const EdgeInsets.all(2),
                   decoration: BoxDecoration(
                     color: primaryColor,
                     borderRadius: BorderRadius.circular(10),
@@ -102,7 +104,7 @@ class CreatorVideoCard extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(5),
                     child: Text(
-                      video.status, // Assuming 'status' is a property of the 'Video' class that indicates whether the video is being uploaded, processing, or uploaded
+                      video.status,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 10.sp,

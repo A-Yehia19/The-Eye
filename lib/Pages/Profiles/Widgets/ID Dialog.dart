@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Models/Classes/Parent.dart';
 import 'package:the_eye/Constants/links.dart';
+import 'package:the_eye/Pages/Videos%20Home/Videos%20Home.dart';
 import '../../../Constants/Colors.dart';
 import '../../Parent/Parent Home/Parent Home.dart';
 
@@ -98,7 +99,7 @@ void openDialog(context, user) {
                     if (user.role == "parent") {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => ParentHome(parent: user as Parent,)));
                     } else {
-                      Navigator.pushNamed(context, '/videoHome');
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => VideosHome(user: user)));
                     }
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(

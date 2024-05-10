@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Firebase/Firestore/add%20comment.dart';
 import 'package:the_eye/Common/Models/Classes/Comment.dart';
-import 'package:the_eye/Common/Variables/video.dart';
+import 'package:the_eye/Common/Models/Classes/User.dart';
 import 'package:the_eye/Constants/Colors.dart';
 
 import '../../../Common/Models/Classes/Video.dart';
 
 class AddComment extends StatefulWidget {
   final Video video;
-  const AddComment({super.key, required this.video});
+  final User user;
+  const AddComment({super.key, required this.user, required this.video});
 
   @override
   State<AddComment> createState() => _AddCommentState();
@@ -76,7 +77,7 @@ class _AddCommentState extends State<AddComment> {
     if (controller.text.isNotEmpty) {
       final comment = Comment(
           text: controller.text,
-          profileID: videoUserId,
+          profileID: widget.user.id,
       );
       widget.video.comments.add(comment);
       addCommentFirebase(widget.video.id, comment);

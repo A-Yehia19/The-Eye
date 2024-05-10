@@ -7,7 +7,6 @@ import 'package:the_eye/Pages/Parent/Parent%20Home/Widgets/Child%20Selection%20B
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../../Common/Firebase/Firestore/get child.dart';
 
 class ChildrenAccounts extends StatefulWidget {
   @override

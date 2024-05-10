@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Models/Classes/User.dart';
 
 import '../Data/Functions/Videos Fetch.dart';
 import 'Video Card.dart';
 
 class RecommendedVideos extends StatelessWidget {
-  const RecommendedVideos({super.key});
+  final User user;
+  const RecommendedVideos({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class RecommendedVideos extends StatelessWidget {
               padding: EdgeInsetsDirectional.zero,
               itemCount: snapshot.data!.length,
               separatorBuilder: (context, index) => const SizedBox(width: 20),
-              itemBuilder: (context, index) => VideoCard(video: snapshot.data![index]),
+              itemBuilder: (context, index) => VideoCard(video: snapshot.data![index], user: user,),
             );
           }
         },

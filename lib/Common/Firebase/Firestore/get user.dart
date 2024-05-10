@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:the_eye/Common/Models/Classes/User.dart';
-import 'package:the_eye/Constants/links.dart';
 
 import '../../Models/Classes/Child.dart';
 import '../../Models/Classes/Creator.dart';
@@ -37,16 +36,7 @@ Future<User?> getUser(String id) async {
         case 'child':
           if (user.data() != null) {
             print('User role is child');
-            return Child(
-              id: user.id,
-              name: user.data()!['name'] ?? "",
-              gender: user.data()!['gender'] ?? "",
-              imageURL: user.data()!['imageURL'] != "" ? user.data()!['imageURL'] : profilePlaceholderURL,
-              parentID: user.data()!['parentID'] ?? "",
-              PIN: user.data()!['PIN'] ?? "",
-              birthDate: user.data()!['birthDate'] ?? "",
-
-            );
+            return Child.fromSnapshot(user);
           } else {
             print('User data is null for child');
             throw Exception('User data is null');

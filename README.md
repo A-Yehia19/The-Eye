@@ -49,6 +49,7 @@ to avoid any sensitive or bad content for kids.
 | 0.17.1  | added popup to view uploading progress and fixed video aspect ratio                                       |
 | 0.18    | fixed videos upload from database <br/>placeholders from network <br/>reduce user retrieval from database |
 | 0.18.1  | fixed Video Card info <br/>validation of PIN of user <br/> added video description                        |
+| 0.18.2  | fixed Video info updates (likes, dislikes, view, fav) <br/>update child data (history, likes, dislikes)   |
 
 ## Authors
 
@@ -64,21 +65,22 @@ to debug
 - [x] Sessions aren't saved correctly is always opens on profiles page the parent even if a creator is currently logged in.
 - [ ] make Google authentication work with both creator and parent.
 - [ ] the back button shouldn't pop when there are no other pages in stack.
-- [ ] delete video data in case of uploading error .
+- [ ] delete video data in case of uploading error.
 
 - [x] Start Page
-- [ ] Creator home page
-  - [ ] Replace videos in the list with uploads 
-- [ ] Creator upload page
-  - [ ] Add functionality to the upload button using firebase.
+- [x] Creator home page
+  - [x] Replace videos in the list with uploads 
+- [x] Creator upload page
+  - [x] Add functionality to the upload button using firebase.
+  - [x] Upload video to AWS S3
 - [ ] Sign up page
   - [x] updated UI
   - [x] connect to firebase
   - [ ] handle responsiveness
-- [ ] profile page
+- [x] profile page
   - [x] updated UI
   - [x] update dialog box with validation.
-  - [ ] connect to firebase
+  - [x] connect to firebase
   - [x] handle responsiveness
 - [ ] Log in page
   - [x] updated UI
@@ -97,9 +99,11 @@ to debug
   - [x] updated UI
   - [x] connect to firebase
   - [x] handle responsiveness
-- [ ] profiles list page
+  - [x] make the interactions with the video works (likes, favorites, history)
+- [x] profiles list page
   - [x] update page UI
-  - [ ] update pop up UI
+  - [x] update pop up UI
+  - [x] validate the PIN
 
 
 - Splash screen added

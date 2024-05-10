@@ -38,7 +38,7 @@ class CreatorHome extends StatelessWidget {
             padding: const EdgeInsets.only(left: 30.0, bottom: 10), // Adjust the value as needed
             child: const Text("Your Uploads", style: TextStyle(fontSize: 20, color: Colors.black87, fontWeight: FontWeight.w500),),
           ),
-          UploadsList(videosList: creator.videos),
+          UploadsList(videosList: creator.videos, creator: creator,),
           Padding(
             padding: EdgeInsets.all(10.h),
             child: SettingsButton(text: 'Sign out', icon: Icons.logout_rounded, onPressed: () => signOut(context)),
