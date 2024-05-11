@@ -68,7 +68,7 @@ class _VideoStreamState extends State<VideoStream> {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    OtherVideos(user: widget.user),
+                    OtherVideos(user: widget.user, video: widget.video),
                   ],
                 ),
               ),

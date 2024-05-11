@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Firebase/Firestore/Videos%20Fetch.dart';
 import 'package:the_eye/Common/Models/Classes/User.dart';
+import 'package:the_eye/Common/Models/Classes/Video.dart';
 
-import '../Data/Functions/Recommended Videos Fetch.dart';
 import 'Recommended Video Card.dart';
 
 class OtherVideos extends StatelessWidget {
   final User user;
-  const OtherVideos({super.key, required this.user});
+  final Video video;
+  const OtherVideos({super.key, required this.user, required this.video});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class OtherVideos extends StatelessWidget {
       height: 215.h,
       width: double.infinity,
       child: FutureBuilder(
-        future: getRecommendedVideos(),
+        future: getVideosList(video.tags, video.videoURL),
         builder: (context, snapshot) {
           if (snapshot.hasData == false) {
             return const Center(child: CircularProgressIndicator());

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Firebase/Firestore/Videos%20Fetch.dart';
+import 'package:the_eye/Common/Models/Classes/Child.dart';
 import 'package:the_eye/Common/Models/Classes/User.dart';
 
-import '../Data/Functions/Videos Fetch.dart';
 import 'Video Card.dart';
 
 class RecommendedVideos extends StatelessWidget {
@@ -11,11 +12,12 @@ class RecommendedVideos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final child = user as Child;
     return SizedBox(
       height: 220.h,
       width: double.infinity,
       child: FutureBuilder(
-        future: getVideosList(),
+        future: getVideosList(child.prefs),
         builder: (context, snapshot) {
           if (snapshot.hasData == false) {
             return const Center(child: CircularProgressIndicator());

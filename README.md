@@ -48,8 +48,9 @@ to avoid any sensitive or bad content for kids.
 | 0.17    | link project with amplify and handled uploading videos to storage                                         |
 | 0.17.1  | added popup to view uploading progress and fixed video aspect ratio                                       |
 | 0.18    | fixed videos upload from database <br/>placeholders from network <br/>reduce user retrieval from database |
-| 0.18.1  | fixed Video Card info <br/>validation of PIN of user <br/> added video description                        |
+| 0.18.1  | fixed Video Card info <br/>validation of PIN of user <br/>added video description                         |
 | 0.18.2  | fixed Video info updates (likes, dislikes, view, fav) <br/>update child data (history, likes, dislikes)   |
+| 0.18.3  | make video fetch according to filter specified by parent using firebase query                             |
 
 ## Authors
 
@@ -64,7 +65,7 @@ for the whole app
 to debug
 - [x] Sessions aren't saved correctly is always opens on profiles page the parent even if a creator is currently logged in.
 - [ ] make Google authentication work with both creator and parent.
-- [ ] the back button shouldn't pop when there are no other pages in stack.
+- [x] the back button shouldn't pop when there are no other pages in stack.
 - [ ] delete video data in case of uploading error.
 
 - [x] Start Page

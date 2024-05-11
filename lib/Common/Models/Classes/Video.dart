@@ -15,6 +15,7 @@ class Video{
   int isLiked;
   bool isFavourite;
   late List<Comment> comments;
+  late List<String> tags;
   late DateTime date;
 
   Video({
@@ -26,6 +27,7 @@ class Video{
     required this.creatorID,
 
     List<Comment>? comments,
+    List<String>? tags,
     this.views = 0,
     this.isLiked = 0,
     this.isFavourite = false,
@@ -41,6 +43,11 @@ class Video{
       this.comments = comments;
     } else {
       this.comments = [];
+    }
+    if (tags != null) {
+      this.tags = tags;
+    } else {
+      this.tags = [];
     }
   }
 
@@ -84,6 +91,7 @@ class Video{
       views: data['views'] ?? 0,
       status: data['status'] ?? "uploaded",
       date: data['date'].toDate(),
+      tags: List<String>.from(data['tags'] ?? []),
       comments: (data['comments'] as List).map((comment) => Comment.fromMap(comment)).toList(),
     );
   }

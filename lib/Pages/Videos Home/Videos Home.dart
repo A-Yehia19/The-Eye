@@ -17,10 +17,8 @@ class VideosHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    getCarouselList();
-    print('*******************************************');
-    Child child = user as Child;
-    print(child.toMap().toString());
+    final child = user as Child;
+    getCarouselList(child.prefs);
 
     return Scaffold(
       body: SafeArea(
