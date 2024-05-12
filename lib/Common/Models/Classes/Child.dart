@@ -52,7 +52,15 @@ class Child extends User {
       this.prefs = [];
     }
     if (screenTime != null) {
-      this.screenTime = screenTime;
+      this.screenTime = {
+        'sun': screenTime['sun'] ?? 0,
+        'mon': screenTime['mon'] ?? 0,
+        'tue': screenTime['tue'] ?? 0,
+        'wed': screenTime['wed'] ?? 0,
+        'thu': screenTime['thu'] ?? 0,
+        'fri': screenTime['fri'] ?? 0,
+        'sat': screenTime['sat'] ?? 0,
+      };
     } else {
       this.screenTime = {'sun': 0, 'mon': 0, 'tue': 0, 'wed': 0, 'thu': 0, 'fri': 0, 'sat': 0};
     }
@@ -66,11 +74,9 @@ class Child extends User {
   viewVideo(Video video) {
     video.view();
     history.add({
-      'video': video,
+      'video': video.id,
       'date': DateTime.now(),
     });
-    final db = FirebaseFirestore.instance;
-    db.collection('users').doc(id).update({'history': history});
   }
 
   likeVideo(Video video) {
@@ -83,8 +89,6 @@ class Child extends User {
         dislikes.remove(video.id);
       }
     }
-    final db = FirebaseFirestore.instance;
-    db.collection('users').doc(id).update({'likes': likes, 'dislikes': dislikes});
   }
 
   dislikeVideo(Video video) {
@@ -97,8 +101,6 @@ class Child extends User {
         likes.remove(video.id);
       }
     }
-    final db = FirebaseFirestore.instance;
-    db.collection('users').doc(id).update({'likes': likes, 'dislikes': dislikes});
   }
 
   favouriteVideo(Video video) {
@@ -109,27 +111,10 @@ class Child extends User {
       favourites.add(video.id);
       video.isFavourite = true;
     }
-    final db = FirebaseFirestore.instance;
-    db.collection('users').doc(id).update({'favourites': favourites});
   }
 
-  // map firestore object to child object
-  factory Child.fromMap(Map<String, dynamic> map) {
-    return Child(
-      id: map['id'] ?? '',
-      parentID: map['parentID'] ?? '',
-      gender: map['gender'] ?? '',
-      name: map['name'] ?? '',
-      imageURL: map['imageURL'] ?? profilePlaceholderURL,
-      PIN: map['PIN'] ?? '',
-      history: List<Map<String, dynamic>>.from(map['history']?.map((item) => Map<String, dynamic>.from(item)) ?? []),
-      likes: List<String>.from(map['likes'] ?? []),
-      dislikes: List<String>.from(map['dislikes'] ?? []),
-      favourites: List<String>.from(map['favourites'] ?? []),
-      prefs: List<String>.from(map['prefs'] ?? []),
-      screenTime: Map<String, double>.from(map['screenTime'] ?? {}),
-      birthDate: map['birthDate'] ?? '',
-    );
+  addScreenTime(String day, double time) {
+    screenTime[day] = screenTime[day]! + time;
   }
 
   // map child object to firestore object
@@ -154,6 +139,18 @@ class Child extends User {
 
   factory Child.fromSnapshot(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
+    Map<String, double>? screenTime;
+    if (data['screenTime'] != null) {
+      screenTime = {
+        'sun': data['screenTime']['sun'].toDouble() ?? 0,
+        'mon': data['screenTime']['mon'].toDouble() ?? 0,
+        'tue': data['screenTime']['tue'].toDouble() ?? 0,
+        'wed': data['screenTime']['wed'].toDouble() ?? 0,
+        'thu': data['screenTime']['thu'].toDouble() ?? 0,
+        'fri': data['screenTime']['fri'].toDouble() ?? 0,
+        'sat': data['screenTime']['sat'].toDouble() ?? 0,
+      };
+    }
 
     return Child(
       id: doc.id,
@@ -167,7 +164,7 @@ class Child extends User {
       dislikes: List<String>.from(data['dislikes'] ?? []),
       favourites: List<String>.from(data['favourites'] ?? []),
       prefs: List<String>.from(data['prefs'] ?? []),
-      screenTime: Map<String, double>.from(data['screenTime']),
+      screenTime: screenTime,
       birthDate: data['birthDate'] ?? '',
     );
   }

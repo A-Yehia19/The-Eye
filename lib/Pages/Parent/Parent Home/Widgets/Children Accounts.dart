@@ -48,10 +48,7 @@ class _ChildrenAccountsState extends State<ChildrenAccounts> {
       await Future.wait(childrenIds.map((childId) async {
         final childDoc = await FirebaseFirestore.instance.collection('users').doc(childId).get();
         if (childDoc.exists) {
-          final childData = childDoc.data();
-          if (childData != null) {
-            children.add(Child.fromMap(childData));
-          }
+          children.add(Child.fromSnapshot(childDoc));
         }
       }));
 

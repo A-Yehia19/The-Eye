@@ -51,6 +51,7 @@ to avoid any sensitive or bad content for kids.
 | 0.18.1  | fixed Video Card info <br/>validation of PIN of user <br/>added video description                         |
 | 0.18.2  | fixed Video info updates (likes, dislikes, view, fav) <br/>update child data (history, likes, dislikes)   |
 | 0.18.3  | make video fetch according to filter specified by parent using firebase query                             |
+| 0.18.4  | added the screen time recorder <br/>upload all video interactions at dispose to increase efficiency       |
 
 ## Authors
 

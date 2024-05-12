@@ -34,7 +34,7 @@ class ScreenTime extends StatelessWidget {
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
       fontWeight: FontWeight.w600,
-      fontSize: 14,
+      fontSize: 12,
     );
 
     return SideTitleWidget(
@@ -44,31 +44,50 @@ class ScreenTime extends StatelessWidget {
   }
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(fontSize: 14, fontWeight: FontWeight.w600);
+    const style = TextStyle(fontSize: 12, fontWeight: FontWeight.w600);
     String text;
 
-    final maxVal = period.values.reduce((value, element) => value > element ? value : element);
-    final part = maxVal/6;
+    const maxVal = 24;
+    const part = maxVal/6;
 
     switch (value.toInt()) {
-      case 1:
-        text = part.toStringAsFixed(1);
+      case 0:
+        text = '0';
         break;
-      case 3:
-        text = (3*part).toStringAsFixed(1);
+      case 2:
+        text = (2*part).toStringAsFixed(0);
         break;
-      case 5:
-        text = (5*part).toStringAsFixed(1);
+      case 4:
+        text = (4*part).toStringAsFixed(0);
+        break;
+      case 6:
+        text = maxVal.toStringAsFixed(0);
         break;
       default:
         return const SizedBox();
     }
 
-    return Text('$text H', style: style, textAlign: TextAlign.left);
+    return Text('$text H', style: style, textAlign: TextAlign.center);
   }
 
   LineChartData mainData() {
     return LineChartData(
+      lineTouchData: LineTouchData(
+        touchTooltipData: LineTouchTooltipData(
+          tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
+          getTooltipItems: (List<LineBarSpot> touchedBarSpots) {
+            return touchedBarSpots.map((barSpot) {
+              final flSpot = barSpot;
+
+              return LineTooltipItem(
+                '${(flSpot.y * 4).toStringAsFixed(2)} H',
+                const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              );
+            }).toList();
+          },
+        ),
+        handleBuiltInTouches: true,
+      ),
       gridData: FlGridData(
         show: true,
         drawVerticalLine: false,
@@ -113,19 +132,27 @@ class ScreenTime extends StatelessWidget {
       lineBarsData: [
         LineChartBarData(
           spots: [
-            FlSpot(0, period['sun']??0),
-            FlSpot(1, period['mon']??0),
-            FlSpot(2, period['tue']??0),
-            FlSpot(3, period['wed']??0),
-            FlSpot(4, period['thu']??0),
-            FlSpot(5, period['fri']??0),
-            FlSpot(6, period['sat']??0),
+            FlSpot(0, (period['sun'] ?? 0)/3600/4),
+            FlSpot(1, (period['mon'] ?? 0)/3600/4),
+            FlSpot(2, (period['tue'] ?? 0)/3600/4),
+            FlSpot(3, (period['wed'] ?? 0)/3600/4),
+            FlSpot(4, (period['thu'] ?? 0)/3600/4),
+            FlSpot(5, (period['fri'] ?? 0)/3600/4),
+            FlSpot(6, (period['sat'] ?? 0)/3600/4),
           ],
           isCurved: true,
+          curveSmoothness: 0.2,
           gradient: const LinearGradient(colors: gradientColors),
           barWidth: 5,
           isStrokeCapRound: true,
-          dotData: const FlDotData(show: false),
+          dotData: FlDotData(show: true, getDotPainter: (spot, percent, barData, index) {
+            return FlDotCirclePainter(
+              radius: 3,
+              color: Colors.white,
+              strokeWidth: 2,
+              strokeColor: gradientColors[1],
+            );
+          }),
           belowBarData: BarAreaData(
             show: true,
             gradient: LinearGradient(
