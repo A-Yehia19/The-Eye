@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Firebase/Firestore/get%20user.dart';
+import 'package:the_eye/Common/Functions/History%20Generator.dart';
+import 'package:the_eye/Common/Models/Classes/Creator.dart';
+import 'package:the_eye/Common/Models/Classes/User.dart';
 import 'package:the_eye/Common/Models/Classes/Video.dart';
 import 'package:the_eye/Constants/Colors.dart';
 
@@ -8,7 +11,8 @@ import '../../Video Stream/Video Stream.dart';
 
 class CarouselItem extends StatelessWidget {
   final Video video;
-  const CarouselItem({super.key, required this.video});
+  final User user;
+  const CarouselItem({super.key, required this.video, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +64,7 @@ class CarouselItem extends StatelessWidget {
                 SizedBox(width: 35.w),
                 Icon(Icons.history_rounded, color: secondaryColor, size: 30.sp),
                 SizedBox(width: 15.w),
-                Text('5 Days Ago',
+                Text(historyGenerator(video.date),
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: secondaryColor,
@@ -82,7 +86,7 @@ class CarouselItem extends StatelessWidget {
                     }
 
                     // final creator = snapshot.data! as Creator;
-                    final creator = snapshot.data!;
+                    final creator = snapshot.data! as Creator;
                     return Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -103,7 +107,7 @@ class CarouselItem extends StatelessWidget {
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            Text('1.2k Subscribers', //todo: add subscribers count
+                            Text("${creator.videos.length} videos",
                               style: TextStyle(
                                 fontSize: 14.sp,
                                 color: secondaryColor,
@@ -126,7 +130,7 @@ class CarouselItem extends StatelessWidget {
                   ),
                   child: IconButton(
                     splashColor: Colors.transparent,
-                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => VideoStream(video: video))),
+                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => VideoStream(video: video, user: user,))),
                     icon: Icon(Icons.arrow_forward_outlined, color: secondaryColor, size: 30.sp),
                   ),
                 ),

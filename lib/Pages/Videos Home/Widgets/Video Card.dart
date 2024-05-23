@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../Common/Models/Classes/Video.dart';
-import '../../../Constants/Colors.dart';
-import '../../Video Stream/Video Stream.dart';
+import 'package:the_eye/Common/Functions/History%20Generator.dart';
+import 'package:the_eye/Common/Models/Classes/User.dart';
+import 'package:the_eye/Common/Models/Classes/Video.dart';
+import 'package:the_eye/Constants/Colors.dart';
+import 'package:the_eye/Pages/Video%20Stream/Video%20Stream.dart';
 
 class VideoCard extends StatelessWidget {
   final Video video;
-  const VideoCard({super.key, required this.video});
+  final User user;
+  const VideoCard({super.key, required this.video, required this.user});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => VideoStream(video: video))),
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => VideoStream(video: video, user: user,))),
       splashFactory: NoSplash.splashFactory,
       child: Container(
         width: 204.w,
@@ -65,7 +67,7 @@ class VideoCard extends StatelessWidget {
                 const Spacer(),
                 Icon(Icons.history_rounded, color: secondaryColor, size: 20.sp),
                 SizedBox(width: 10.w),
-                Text('5 Days Ago',
+                Text(historyGenerator(video.date),
                   style: TextStyle(
                     fontSize: 12.sp,
                     color: secondaryColor,

@@ -1,0 +1,98 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Firebase/Firestore/get%20video.dart';
+import 'package:the_eye/Common/Functions/History%20Generator.dart';
+import 'package:the_eye/Common/Models/Classes/User.dart';
+import 'package:the_eye/Common/Models/Classes/Video.dart';
+import 'package:the_eye/Constants/Colors.dart';
+import 'package:the_eye/Pages/Video%20Stream/Video%20Stream.dart';
+
+class SavedVideoCard extends StatelessWidget {
+  final String videoID;
+  final User user;
+  const SavedVideoCard({super.key, required this.videoID, required this.user});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: getVideo(videoID),
+      builder: (context, snapshot) {
+        if (snapshot.hasData == false){
+          return const Center(child: CircularProgressIndicator());
+        }
+        final Video video = snapshot.data!;
+
+        return InkWell(
+          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => VideoStream(video: video, user: user,))),
+          splashFactory: NoSplash.splashFactory,
+          child: Container(
+            width: double.infinity,
+            height: 200.h,
+            margin: EdgeInsets.only(bottom: 20.h),
+            decoration: BoxDecoration(
+              color: primaryColor,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 126.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                      image: NetworkImage(video.thumbnail),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.only(left: 15.w, right: 15.w, top: 15.h),
+                  child: Text(video.title,
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: secondaryColor,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.78,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                const Spacer(),
+                Row(
+                  children: [
+                    SizedBox(width: 15.w),
+                    Icon(Icons.remove_red_eye_outlined, color: secondaryColor, size: 20.sp),
+                    SizedBox(width: 10.w),
+                    Text(video.views.toString(),
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        color: secondaryColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const Spacer(),
+                    Icon(Icons.history_rounded, color: secondaryColor, size: 20.sp),
+                    SizedBox(width: 10.w),
+                    Text(historyGenerator(video.date),
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        color: secondaryColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(width: 15.w),
+                  ],
+                ),
+                const SizedBox(height: 10),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}

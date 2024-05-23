@@ -12,9 +12,6 @@ void openChangeIdDialog(context) {
   // Create a list to store the entered digits
   List<String> digits = List.generate(4, (index) => "");
 
-  // Create a boolean to control the display of the loading indicator
-  bool isLoading = false;
-
   showDialog(
     context: context,
     builder: (context) => StatefulBuilder(
@@ -27,12 +24,12 @@ void openChangeIdDialog(context) {
               shape: RoundedRectangleBorder(
                 borderRadius:
                 BorderRadius.circular(15), // Increase borderRadius value
-                side: BorderSide(color: primaryColor),
+                side: const BorderSide(color: primaryColor),
               ),
             ),
           ),
           child: AlertDialog(
-            title: Text('Enter new profile PIN'),
+            title: const Text('Enter new profile PIN'),
             contentPadding: EdgeInsets.all(20.w),
             content: Column(
               mainAxisSize: MainAxisSize.min,
@@ -85,9 +82,7 @@ void openChangeIdDialog(context) {
                     onPressed: () {
                       // Implement your logic here
                     },
-                    child: isLoading
-                        ? const CircularProgressIndicator()
-                        : Text(
+                    child: Text(
                       "Confirm",
                       style: TextStyle(
                         color: Colors.white,
@@ -119,12 +114,12 @@ void showDeleteChildDialog(BuildContext context) {
             shape: RoundedRectangleBorder(
               borderRadius:
               BorderRadius.circular(15), // Increase borderRadius value
-              side: BorderSide(color: Colors.redAccent),
+              side: const BorderSide(color: Colors.redAccent),
             ),
           ),
         ),
         child: AlertDialog(
-          title: Text('Are you sure?'),
+          title: const Text('Are you sure?'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -141,7 +136,7 @@ void showDeleteChildDialog(BuildContext context) {
           actions: [
             CustomButton(
               buttonColor: Colors.redAccent,
-              child: Text(
+              child: const Text(
                 'Delete',
                 style:
                 TextStyle(color: Colors.white, fontWeight: FontWeight.bold),

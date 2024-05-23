@@ -1,12 +1,10 @@
 // add_child_form.dart
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Widgets/input_text_field.dart';
 import 'package:the_eye/Common/Widgets/set_user_profile_pic.dart';
 import 'package:the_eye/Constants/Colors.dart';
-import 'package:the_eye/Pages/Add%20Child/Widgets/add_photo_child.dart';
 
 enum Gender { male, female }
 
@@ -57,7 +55,7 @@ class AddChildFormState extends State<AddChildForm> {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
-          child: Text(
+          child: const Text(
             'Add Account',
             style: TextStyle(
               color: primaryColor, // Set the text color to primaryColor
@@ -114,7 +112,7 @@ class AddChildFormState extends State<AddChildForm> {
               textEditingController: nameController,
               hintText: 'Child\'s Name',
               textInputType: TextInputType.text,
-              icon: Icon(Icons.person, color: primaryColor),
+              icon: const Icon(Icons.person, color: primaryColor),
             ),
           ),
         ),
@@ -129,7 +127,7 @@ class AddChildFormState extends State<AddChildForm> {
             child: TextFieldInput(
               textEditingController: ageController,
               hintText: 'Birth Date',
-              icon: Icon(Icons.cake, color: primaryColor),
+              icon: const Icon(Icons.cake, color: primaryColor),
               onTap: () async {
                 final date = await showDatePicker(
                   context: context,
@@ -160,9 +158,9 @@ class AddChildFormState extends State<AddChildForm> {
               hintText: 'Password',
               textInputType: TextInputType.visiblePassword,
               isPass: true,
-              icon: Icon(Icons.lock, color: primaryColor),
+              icon: const Icon(Icons.lock, color: primaryColor),
               onChanged: (value) async {
-                if (value == null || value.isEmpty) {
+                if (value.isEmpty) {
                   setState(() {
                     passwordError = 'Please enter your password';
                   });

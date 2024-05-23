@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pod_player/pod_player.dart';
-
-import '../../../Common/Models/Classes/Video.dart';
+import 'package:the_eye/Common/Models/Classes/Video.dart';
 
 class VideoBox extends StatefulWidget {
   final Video video;

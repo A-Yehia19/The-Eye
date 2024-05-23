@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:the_eye/Common/Models/Classes/Video.dart';
 
 ValueNotifier<int> selectedTab = ValueNotifier(-1);
-List<String> buttons = ['Latest', 'Favourites'];
+List<String> buttons = ['Favourites', 'Liked'];
 
 // carousel part
 CarouselController carouselController = CarouselController();

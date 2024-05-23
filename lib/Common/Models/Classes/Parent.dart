@@ -15,7 +15,7 @@ class Parent extends User {
     required String gender,
     required String name,
     required this.email,
-    required this.PIN, // Add this line
+    required this.PIN,
     String imageURL = '',
     this.plan = "free",
 
@@ -50,6 +50,7 @@ class Parent extends User {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'email': email,
       'gender': gender,
       'name': name,

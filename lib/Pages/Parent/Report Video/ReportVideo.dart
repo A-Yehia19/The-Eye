@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Firebase/Firestore/report%20video.dart';
 import 'package:the_eye/Common/Models/Classes/Parent.dart';
 import 'package:the_eye/Common/Widgets/Upper%20Section.dart';
 import 'package:the_eye/Constants/Colors.dart';
 
+import 'Data/Variables.dart';
 import 'Widgets/Desired Flags.dart';
 import 'Widgets/Report Description.dart';
 import 'Widgets/Report Heading.dart';
@@ -34,7 +36,7 @@ class ReportVideo extends StatelessWidget {
               const ReportDescription(),
               SizedBox(height: 30.h),
               InkWell(
-                onTap: () => confirmReport(),
+                onTap: () => confirmReport(context),
                 child: Container(
                   width: 105.w,
                   height: 30.h,
@@ -53,7 +55,8 @@ class ReportVideo extends StatelessWidget {
     );
   }
 
-  confirmReport(){
-
+  confirmReport(context) async {
+    await reportVideoFirebase(reportedFlags, reportVideoID, reportTitle, reportDescription);
+    Navigator.pop(context);
   }
 }

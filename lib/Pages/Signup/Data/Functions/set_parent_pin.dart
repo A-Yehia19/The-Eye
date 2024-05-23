@@ -14,9 +14,6 @@ void openSetParentPin(context, Completer<int> pinCompleter) {
   // Create a list to store the entered digits
   List<String> digits = List.generate(4, (index) => "");
 
-  // Create a boolean to control the display of the loading indicator
-  bool isLoading = false;
-
   showDialog(
     context: context,
     builder: (context) => StatefulBuilder(
@@ -29,12 +26,12 @@ void openSetParentPin(context, Completer<int> pinCompleter) {
               shape: RoundedRectangleBorder(
                 borderRadius:
                 BorderRadius.circular(15), // Increase borderRadius value
-                side: BorderSide(color: primaryColor),
+                side: const BorderSide(color: primaryColor),
               ),
             ),
           ),
           child: AlertDialog(
-            title: Text('Enter new profile PIN'),
+            title: const Text('Enter new profile PIN'),
             contentPadding: EdgeInsets.all(20.w),
             content: Column(
               mainAxisSize: MainAxisSize.min,
@@ -93,9 +90,7 @@ void openSetParentPin(context, Completer<int> pinCompleter) {
 
                       Navigator.of(context).pop();
                     },
-                    child: isLoading
-                        ? const CircularProgressIndicator()
-                        : Text(
+                    child: Text(
                       "Confirm",
                       style: TextStyle(
                         color: Colors.white,

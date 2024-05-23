@@ -5,7 +5,6 @@ import 'package:the_eye/Common/Models/Classes/Creator.dart';
 import 'package:the_eye/Pages/Creator%20Settings/creator_settings.dart';
 
 import '../../Common/Widgets/Upper Section.dart';
-import '../Parent/Common/WIdgets/Settings Button.dart';
 
 class CreatorHome extends StatelessWidget {
   final Creator creator;
@@ -36,7 +35,7 @@ class CreatorHome extends StatelessWidget {
                         context,
                         MaterialPageRoute(builder: (context) => CreatorSettings(creator: creator)),
                       );
-                    }, icon: Icon(Icons.settings, color: Colors.white))
+                    }, icon: const Icon(Icons.settings, color: Colors.white))
                   ],
                 ),
               ),
@@ -47,7 +46,7 @@ class CreatorHome extends StatelessWidget {
             padding: const EdgeInsets.only(left: 30.0, bottom: 10), // Adjust the value as needed
             child: const Text("Your Uploads", style: TextStyle(fontSize: 20, color: Colors.black87, fontWeight: FontWeight.w500),),
           ),
-          UploadsList(videosList: creator.videos),
+          UploadsList(videosList: creator.videos, creator: creator,),
         ],
       ),
       //bottomNavigationBar: SemiCircle(),

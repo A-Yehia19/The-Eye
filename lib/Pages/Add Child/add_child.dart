@@ -1,5 +1,4 @@
 // add_child.dart
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Widgets/button_widget.dart';
@@ -7,7 +6,6 @@ import 'package:the_eye/Pages/Add%20Child/Widgets/choose_content.dart';
 import 'package:the_eye/Pages/Add%20Child/Widgets/custom_app_bar.dart';
 import 'package:the_eye/Pages/Add%20Child/Functions/submit_child.dart';
 import 'package:the_eye/Pages/Add%20Child/Widgets/add_child_form.dart';
-import 'package:the_eye/Pages/Add%20Child/Widgets/add_photo_child.dart';
 
 import '../../Common/Widgets/set_user_profile_pic.dart';
 

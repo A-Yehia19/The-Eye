@@ -7,7 +7,6 @@ import 'package:the_eye/Pages/Parent/Parent%20Home/Widgets/Child%20Selection%20B
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../../Common/Firebase/Firestore/get child.dart';
 
 class ChildrenAccounts extends StatefulWidget {
   @override
@@ -49,10 +48,7 @@ class _ChildrenAccountsState extends State<ChildrenAccounts> {
       await Future.wait(childrenIds.map((childId) async {
         final childDoc = await FirebaseFirestore.instance.collection('users').doc(childId).get();
         if (childDoc.exists) {
-          final childData = childDoc.data();
-          if (childData != null) {
-            children.add(Child.fromMap(childData));
-          }
+          children.add(Child.fromSnapshot(childDoc));
         }
       }));
 

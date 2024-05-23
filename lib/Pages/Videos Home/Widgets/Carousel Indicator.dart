@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:the_eye/Constants/Colors.dart';
-
-import '../Data/Variables.dart';
+import 'package:the_eye/Pages/Videos%20Home/Data/Variables.dart';
 
 class CarouselIndicator extends StatelessWidget {
   const CarouselIndicator({super.key});

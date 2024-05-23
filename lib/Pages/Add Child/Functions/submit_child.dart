@@ -1,4 +1,3 @@
-// submit_child.dart
 import 'dart:async';
 import 'dart:io';
 
@@ -7,11 +6,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:the_eye/Pages/Add%20Child/Widgets/add_child_form.dart';
 import 'package:the_eye/Pages/Add%20Child/Widgets/choose_content.dart';
-import '../../../Common/Firebase/Firestore/create new user.dart';
 import '../../../Common/Models/Classes/Child.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
-import '../../../Common/Widgets/set_user_profile_pic.dart';
 import '../../Signup/Data/Functions/set_parent_pin.dart';
 
 // submit_child.dart
@@ -28,7 +25,6 @@ Future<void> submit(File? imageFile, GlobalKey<AddChildFormState> formKey, Globa
     //final age = DateTime.parse(formState.ageController.text);
     final gender = formState.selectedGender.toString().split('.').last; // Convert Gender enum to String
     final categories = contentState.categories;
-    final isSelected = contentState.isSelected;
 
     DateTime? age;
     if (formState.ageController.text is Timestamp) {

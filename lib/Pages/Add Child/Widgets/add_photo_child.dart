@@ -1,11 +1,10 @@
-// add_photo_child.dart
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
-import '../../../Common/Firebase/Storage/upload_user_image.dart';
-
 class AddPhotoChild extends StatefulWidget {
+  const AddPhotoChild({super.key});
+
   @override
   AddPhotoChildState createState() => AddPhotoChildState();
 }
@@ -14,8 +13,8 @@ class AddPhotoChildState extends State<AddPhotoChild> {
   File? _imageFile;
 
   Future<void> pickImage() async {
-    final ImagePicker _picker = ImagePicker();
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
 
     if (image != null) {
       setState(() {
@@ -40,10 +39,10 @@ class AddPhotoChildState extends State<AddPhotoChild> {
               ),
             ),
             Positioned(
-              child: IconButton(onPressed: pickImage,
-                  icon: Icon(Icons.add_a_photo)),
               bottom: -10,
               left: 80,
+              child: IconButton(onPressed: pickImage,
+                  icon: const Icon(Icons.add_a_photo)),
             ),
           ],
         ),

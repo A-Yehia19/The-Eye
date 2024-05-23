@@ -26,7 +26,6 @@ signup(name, email, password, rePassword, isParent, File? imageFile, context) as
     // Upload the image to Firebase Storage and get the download URL
     String imageUrl = '';
     if (imageFile != null) {
-      String fileName = DateTime.now().millisecondsSinceEpoch.toString();
       FirebaseStorage storage = FirebaseStorage.instance;
       Reference ref = storage.ref().child("profile_pics");
       UploadTask uploadTask = ref.putFile(imageFile);

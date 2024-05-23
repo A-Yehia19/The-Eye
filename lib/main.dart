@@ -10,7 +10,6 @@ import 'package:the_eye/Pages/Login/login.dart';
 import 'package:the_eye/Pages/OnBoarding/OnBoarding.dart';
 import 'package:the_eye/Pages/Profiles/profiles.dart';
 import 'package:the_eye/Pages/Signup/signup.dart';
-import 'package:the_eye/Pages/Videos%20Home/Videos%20Home.dart';
 import 'package:the_eye/Common/Firebase/Firestore/get%20user.dart';
 import 'package:the_eye/Common/Models/Classes/Creator.dart';
 import 'package:the_eye/Common/Models/Classes/Parent.dart';
@@ -61,7 +60,6 @@ class MyApp extends StatelessWidget {
           '/login': (context) => const Login(),
           '/signup': (context) => const Signup(),
           '/profiles': (context) => const Profiles(),
-          '/videoHome': (context) => const VideosHome(),
         },
         home: FutureBuilder(
           future: _getInitialScreen(),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_eye/Common/Models/Classes/Child.dart';
+import 'package:the_eye/Common/Models/Classes/User.dart';
 import 'package:the_eye/Constants/Colors.dart';
 import 'package:the_eye/Pages/Video%20Stream/Widgets/Comment%20Sheet.dart';
 
@@ -8,13 +10,35 @@ import '../../../Common/Models/Classes/Video.dart';
 
 class VideoInformation extends StatefulWidget {
   final Video video;
-  const VideoInformation({super.key, required this.video});
+  final User user;
+  const VideoInformation({super.key, required this.video, required this.user});
 
   @override
   State<VideoInformation> createState() => _VideoInformationState();
 }
 
 class _VideoInformationState extends State<VideoInformation> {
+  Child? child;
+
+  @override
+  void initState() {
+    if(widget.user is Child){
+      child = widget.user as Child;
+      if(child!.favourites.contains(widget.video.id)){
+        widget.video.isFavourite = true;
+      }
+      if(child!.likes.contains(widget.video.id)){
+        widget.video.isLiked = 1;
+      }
+      if(child!.dislikes.contains(widget.video.id)){
+        widget.video.isLiked = -1;
+      }
+    }else{
+      child = null;
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -54,11 +78,11 @@ class _VideoInformationState extends State<VideoInformation> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                    onPressed: () => setState(() => widget.video.like()),
+                    onPressed: () => setState(() => child?.likeVideo(widget.video)),
                     icon: Icon(widget.video.isLiked == 1 ? Icons.thumb_up_rounded : Icons.thumb_up_outlined, size: 25.r),
                 ),
                 IconButton(
-                    onPressed: () => setState(() => widget.video.dislike()),
+                    onPressed: () => setState(() => child?.dislikeVideo(widget.video)),
                     icon: Icon(widget.video.isLiked == -1 ? Icons.thumb_down_rounded : Icons.thumb_down_outlined, size: 25.r),
                 ),
                 IconButton(
@@ -71,7 +95,7 @@ class _VideoInformationState extends State<VideoInformation> {
                     icon: Icon(Icons.comment_outlined, size: 25.r),
                 ),
                 IconButton(
-                    onPressed: () => setState(() => widget.video.favourite()),
+                    onPressed: () => setState(() => child?.favouriteVideo(widget.video)),
                     icon: Icon(widget.video.isFavourite ? Icons.bookmark : Icons.bookmark_add_outlined, size: 25.r),
                 ),
               ],

@@ -7,9 +7,6 @@ import '../../Models/Classes/Parent.dart';
 Future<dynamic> createUser(uid, email, name, String? photo, bool isParent, [int pin = 0]) async {
   final db = FirebaseFirestore.instance;
 
-  // Determine the role based on isParent
-  String role = isParent ? 'parent' : 'creator';
-
   // Create a Parent or Creator object
   var user;
   if (isParent) {
