@@ -3,13 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Models/Classes/Child.dart';
 import 'package:the_eye/Common/Models/Classes/User.dart';
 import 'package:the_eye/Common/Widgets/Upper%20Bar.dart';
-import 'package:the_eye/Constants/Colors.dart';
 
 import 'Data/Functions/Carousel Fetch.dart';
+import 'Data/Variables.dart';
+import 'Home Sections/Explore Section.dart';
+import 'Home Sections/Favourites Section.dart';
+import 'Home Sections/Liked Section.dart';
 import 'Widgets/Buttons List.dart';
-import 'Widgets/Carousel Indicator.dart';
-import 'Widgets/Recommended Carousel.dart';
-import 'Widgets/Recommended Videos.dart';
 
 class VideosHome extends StatelessWidget {
   final User user;
@@ -33,26 +33,21 @@ class VideosHome extends StatelessWidget {
               const SizedBox(height: 20),
               Expanded(
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      RecommendedCarousel(user: user),
-                      const SizedBox(height: 10,),
-                      const CarouselIndicator(),
-                      const SizedBox(height: 10,),
-                      const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('What\'s New',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: primaryColor,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 10,),
-                      RecommendedVideos(user: user),
-                      const SizedBox(height: 25,),
-                    ],
+                  child: ValueListenableBuilder(
+                    valueListenable: selectedTab,
+                    builder: (context, value, childWidget) {
+                      if (value == -1) {
+                        return ExploreSection(child: child);
+                      } else if (value == 0) {
+                        return FavouritesSection(child: child);
+                      } else if (value == 1) {
+                        return LikedSection(child: child);
+                      } else {
+                        return const Center(
+                          child: Icon(Icons.error, color: Colors.red, size: 100,),
+                        );
+                      }
+                    },
                   ),
                 ),
               )

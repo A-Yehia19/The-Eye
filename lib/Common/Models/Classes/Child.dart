@@ -6,8 +6,8 @@ import 'Video.dart';
 
 class Child extends User {
   final String parentID;
-  final String PIN;
-  final String birthDate; //changed from datetime to string for now
+  final int PIN;
+  final DateTime birthDate; //changed from datetime to string for now
   late List<Map<String, dynamic>> history;
   late List<String> likes;
   late List<String> dislikes;
@@ -165,7 +165,7 @@ class Child extends User {
       favourites: List<String>.from(data['favourites'] ?? []),
       prefs: List<String>.from(data['prefs'] ?? []),
       screenTime: screenTime,
-      birthDate: data['birthDate'] ?? '',
+      birthDate: data['birthDate'].toDate(),
     );
   }
 }

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:the_eye/Common/Firebase/Auth/signout.dart';
 import 'package:the_eye/Pages/Creator%20Home/Widgets/creator_options.dart';
 import 'package:the_eye/Pages/Creator%20Home/Widgets/uploads_list.dart';
 import 'package:the_eye/Common/Models/Classes/Creator.dart';
+import 'package:the_eye/Pages/Creator%20Settings/creator_settings.dart';
 
 import '../../Common/Widgets/Upper Section.dart';
-import '../Parent/Common/WIdgets/Settings Button.dart';
 
 class CreatorHome extends StatelessWidget {
   final Creator creator;
@@ -24,11 +22,21 @@ class CreatorHome extends StatelessWidget {
               Positioned(
                 top: 40, // Adjust the value as needed
                 right: 20, // Adjust the value as needed
-                child: IconButton(
-                  icon: const Icon(Icons.notifications_none_rounded, color: Colors.white),
-                  onPressed: () {
-                    // Add your onPressed code here
-                  },
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.notifications_none_rounded, color: Colors.white),
+                      onPressed: () {
+                        // Add your onPressed code here
+                      },
+                    ),
+                    IconButton(onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CreatorSettings(creator: creator)),
+                      );
+                    }, icon: const Icon(Icons.settings, color: Colors.white))
+                  ],
                 ),
               ),
             ],
@@ -39,10 +47,6 @@ class CreatorHome extends StatelessWidget {
             child: const Text("Your Uploads", style: TextStyle(fontSize: 20, color: Colors.black87, fontWeight: FontWeight.w500),),
           ),
           UploadsList(videosList: creator.videos, creator: creator,),
-          Padding(
-            padding: EdgeInsets.all(10.h),
-            child: SettingsButton(text: 'Sign out', icon: Icons.logout_rounded, onPressed: () => signOut(context)),
-          ),
         ],
       ),
       //bottomNavigationBar: SemiCircle(),

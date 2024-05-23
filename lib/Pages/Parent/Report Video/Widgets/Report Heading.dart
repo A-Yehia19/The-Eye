@@ -23,7 +23,8 @@ class ReportHeading extends StatelessWidget {
             ),
           ),
           SizedBox(height: 5.h),
-          TextField(
+          TextFormField(
+            initialValue: videoID,
             onChanged: (value) => reportVideoID = value,
             decoration: const InputDecoration(
               filled: false,

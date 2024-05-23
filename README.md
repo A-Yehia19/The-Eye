@@ -52,6 +52,8 @@ to avoid any sensitive or bad content for kids.
 | 0.18.2  | fixed Video info updates (likes, dislikes, view, fav) <br/>update child data (history, likes, dislikes)   |
 | 0.18.3  | make video fetch according to filter specified by parent using firebase query                             |
 | 0.18.4  | added the screen time recorder <br/>upload all video interactions at dispose to increase efficiency       |
+| 0.18.5  | finished report videos into database <br/>adjust video home tabs to work                                  |
+| 0.19    | updated registration forms for users and children. <br/>made profile pictures functional with firebase    |
 
 ## Authors
 
@@ -67,7 +69,8 @@ to debug
 - [x] Sessions aren't saved correctly is always opens on profiles page the parent even if a creator is currently logged in.
 - [ ] make Google authentication work with both creator and parent.
 - [x] the back button shouldn't pop when there are no other pages in stack.
-- [ ] delete video data in case of uploading error.
+- [ ] delete video data in case of uploading error .
+- [ ] delete items and accounts associated with them when deleting an account.
 
 - [x] Start Page
 - [x] Creator home page
@@ -88,9 +91,9 @@ to debug
   - [x] updated UI
   - [x] connect to firebase
   - [ ] handle responsiveness
-- [ ] parents page
+- [x] parents page
   - [x] updated UI
-  - [ ] connect to firebase
+  - [x] connect to firebase
   - [x] handle responsiveness
 - [x] child's page
   - [x] updated UI

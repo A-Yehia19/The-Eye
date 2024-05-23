@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Functions/History%20Generator.dart';
 import 'package:the_eye/Common/Models/Classes/User.dart';
-
-import '../../../Common/Models/Classes/Video.dart';
-import '../../../Constants/Colors.dart';
-import '../../Video Stream/Video Stream.dart';
+import 'package:the_eye/Common/Models/Classes/Video.dart';
+import 'package:the_eye/Constants/Colors.dart';
+import 'package:the_eye/Pages/Video%20Stream/Video%20Stream.dart';
 
 class VideoCard extends StatelessWidget {
   final Video video;

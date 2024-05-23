@@ -1,11 +1,13 @@
+import 'dart:async';
 import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:the_eye/Common/Widgets/button_widget.dart';
-import 'package:the_eye/Common/Widgets/input_text_field.dart';
-import 'package:the_eye/Constants/Colors.dart';
 
-void openChangeIdDialog(context) {
+import '../../../../Constants/Colors.dart';
+
+void openSetParentPin(context, Completer<int> pinCompleter) {
   // Create a list of focus nodes
   List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
 
@@ -80,7 +82,13 @@ void openChangeIdDialog(context) {
                       ),
                     ),
                     onPressed: () {
-                      // Implement your logic here
+                      // Get the entered PIN
+                      int pin = int.tryParse(digits.join()) ?? 0;
+
+                      // Complete the completer with the PIN
+                      pinCompleter.complete(pin);
+
+                      Navigator.of(context).pop();
                     },
                     child: Text(
                       "Confirm",
@@ -98,61 +106,5 @@ void openChangeIdDialog(context) {
         ),
       ),
     ),
-  );
-}
-
-void showDeleteChildDialog(BuildContext context) {
-  final TextEditingController deleteController = TextEditingController();
-
-  showDialog(
-    context: context,
-    builder: (context) {
-      return Theme(
-        data: Theme.of(context).copyWith(
-          dialogBackgroundColor: Colors.white,
-          dialogTheme: DialogTheme(
-            shape: RoundedRectangleBorder(
-              borderRadius:
-              BorderRadius.circular(15), // Increase borderRadius value
-              side: const BorderSide(color: Colors.redAccent),
-            ),
-          ),
-        ),
-        child: AlertDialog(
-          title: const Text('Are you sure?'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text('Type "Delete child account" to delete child account',
-                  style: TextStyle(color: textColor, fontSize: 14.sp)),
-              SizedBox(height: 10.w), // Add some space between the text and the TextField (optional
-              TextFieldInput(
-                textEditingController: deleteController,
-                hintText: 'Delete child account',
-                textInputType: TextInputType.text,
-              ),
-            ],
-          ),
-          actions: [
-            CustomButton(
-              buttonColor: Colors.redAccent,
-              child: const Text(
-                'Delete',
-                style:
-                TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-              onPressed: () {
-                if (deleteController.text == 'Delete my account') {
-                  // Implement your logic to delete the account here
-                  Navigator.of(context).pop();
-                } else {
-                  // Show an error message
-                }
-              },
-            ),
-          ],
-        ),
-      );
-    },
   );
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Firebase/Firestore/get%20video.dart';
+import 'package:the_eye/Common/Functions/History%20Generator.dart';
 import 'package:the_eye/Common/Models/Classes/Creator.dart';
 import 'package:the_eye/Common/Models/Classes/Video.dart';
-
-import '../../../Constants/Colors.dart';
-import '../../Video Stream/Video Stream.dart';
+import 'package:the_eye/Constants/Colors.dart';
+import 'package:the_eye/Pages/Video%20Stream/Video%20Stream.dart';
 
 class CreatorVideoCard extends StatelessWidget {
   final String videoID;
@@ -78,7 +78,7 @@ class CreatorVideoCard extends StatelessWidget {
                         const Spacer(),
                         Icon(Icons.history_rounded, color: secondaryColor, size: 20.sp),
                         SizedBox(width: 10.w),
-                        Text('5 Days Ago',
+                        Text(historyGenerator(video.date),
                           style: TextStyle(
                             fontSize: 12.sp,
                             color: secondaryColor,
