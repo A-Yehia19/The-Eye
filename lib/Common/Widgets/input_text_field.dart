@@ -8,16 +8,21 @@ class TextFieldInput extends StatelessWidget {
   final bool isPass;
   final String hintText;
   final TextInputType textInputType;
-  final Icon? icon; // Optional icon parameter
-  final int maxLines; // Added maxLines parameter
+  final Icon? icon;
+  final int maxLines;
+  final Future<Null> Function()? onTap; // Make onTap optional
+  final void Function(String)? onChanged; // Add optional onChanged function
+
   const TextFieldInput({
     Key? key,
     required this.textEditingController,
     this.isPass = false,
     required this.hintText,
     required this.textInputType,
-    this.icon, // Optional icon parameter
-    this.maxLines = 1, // Set default value of maxLines to 1
+    this.icon,
+    this.maxLines = 1,
+    this.onTap, // No need to provide a default value
+    this.onChanged, // No need to provide a default value
   }) : super(key: key);
 
   @override
@@ -38,12 +43,14 @@ class TextFieldInput extends StatelessWidget {
         enabledBorder: inputBorder,
         filled: true,
         hintStyle: const TextStyle(color: hintColor, fontSize: 14),
-        prefixIcon: icon, // Setting the icon as prefixIcon
-        contentPadding: EdgeInsets.symmetric(vertical: 12).copyWith(left: 20), // Adjust the left padding
+        prefixIcon: icon,
+        contentPadding: EdgeInsets.symmetric(vertical: 12).copyWith(left: 20),
       ),
       keyboardType: textInputType,
       obscureText: isPass,
-      maxLines: maxLines, // Set maxLines of TextField
+      maxLines: maxLines,
+      onTap: onTap, // Use the optional onTap function
+      onChanged: onChanged, // Use the optional onChanged function
     );
   }
 }

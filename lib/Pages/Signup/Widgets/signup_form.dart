@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Widgets/Custom%20Radio.dart';
@@ -6,6 +8,7 @@ import 'package:the_eye/Pages/Signup/Data/Functions/signup.dart';
 import '../../../Common/Firebase/Auth/signin google.dart';
 import '../../../Common/Widgets/button_widget.dart';
 import '../../../Common/Widgets/input_text_field.dart';
+import '../../../Common/Widgets/set_user_profile_pic.dart';
 import '../../../Constants/Colors.dart';
 import '../../Login/login.dart';
 
@@ -17,6 +20,7 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
+  final GlobalKey<UserProfilePicState> userPicKey = GlobalKey();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -49,6 +53,8 @@ class _SignUpFormState extends State<SignUpForm> {
                   ],
                 ),
               ),
+              const SizedBox(height: 25),
+              UserProfilePic(key: userPicKey),
               const SizedBox(height: 25),
               TextFieldInput(
                   textEditingController: _nameController,
@@ -129,14 +135,18 @@ class _SignUpFormState extends State<SignUpForm> {
               ),
               const SizedBox(height: 25,),
               CustomButton(
-                onPressed: () => signup(
-                    _nameController.text,
-                    _emailController.text,
-                    _passwordController.text,
-                    _passwordConfirmController.text,
-                    isParent,
-                    context
-                ),
+                onPressed: () {
+                  File? imageFile = userPicKey.currentState?.imageFile;
+                  signup(
+                      _nameController.text,
+                      _emailController.text,
+                      _passwordController.text,
+                      _passwordConfirmController.text,
+                      isParent,
+                      imageFile, // Pass the imageFile to signup function
+                      context
+                  );
+                },
                 child: const Text("Next",
                   style: TextStyle(
                     color: Colors.white,

@@ -5,8 +5,8 @@ import 'User.dart';
 
 class Child extends User {
   final String parentID;
-  final String PIN;
-  final String birthDate; //changed from datetime to string for now
+  final int PIN;
+  final DateTime birthDate; //changed from datetime to string for now
   late List<Map<String, dynamic>> history;
   late List<String> likes;
   late List<String> favourites;
@@ -69,7 +69,7 @@ class Child extends User {
       favourites: List<String>.from(map['favourites'] ?? []),
       prefs: List<String>.from(map['prefs'] ?? []),
       screenTime: Map<String, double>.from(map['screenTime'] ?? {}),
-      birthDate: map['birthDate'] ?? '',
+      birthDate: map['birthDate'].toDate() ?? '',
     );
   }
 
@@ -106,7 +106,7 @@ class Child extends User {
       favourites: data['favourites'] ?? [],
       prefs: data['prefs'] ?? [],
       screenTime: data['screenTime'] ?? {},
-      birthDate: data['birthDate'] ?? '',
+      birthDate: data['birthDate'].toDate(), // Convert Timestamp to DateTime
     );
   }
 }

@@ -1,23 +1,45 @@
 // submit_child.dart
+import 'dart:async';
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:the_eye/Pages/Add%20Child/Widgets/add_child_form.dart';
 import 'package:the_eye/Pages/Add%20Child/Widgets/choose_content.dart';
 import '../../../Common/Firebase/Firestore/create new user.dart';
-import '../../../Common/Models/Classes/Child.dart'; // Import the Child class
+import '../../../Common/Models/Classes/Child.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
-void submit(GlobalKey<AddChildFormState> formKey, GlobalKey<ChooseChildContentState> contentKey, BuildContext context) async {
+import '../../../Common/Widgets/set_user_profile_pic.dart';
+import '../../Signup/Data/Functions/set_parent_pin.dart';
+
+// submit_child.dart
+Future<void> submit(File? imageFile, GlobalKey<AddChildFormState> formKey, GlobalKey<ChooseChildContentState> contentKey, BuildContext context) async {
+  // for debugging
+  print('submit function called');
+  print('imageFile in submit function: $imageFile');
+
   final formState = formKey.currentState;
   final contentState = contentKey.currentState;
 
   if (formState != null && contentState != null) {
     final name = formState.nameController.text;
-    final age = formState.ageController.text;
-    final pin = "1111"; // Get the pin from the form
+    //final age = DateTime.parse(formState.ageController.text);
     final gender = formState.selectedGender.toString().split('.').last; // Convert Gender enum to String
     final categories = contentState.categories;
     final isSelected = contentState.isSelected;
+
+    DateTime? age;
+    if (formState.ageController.text is Timestamp) {
+      age = (formState.ageController.text as Timestamp).toDate();
+    } else {
+      try {
+        age = DateTime.parse(formState.ageController.text);
+      } catch (e) {
+        print('Error parsing date: $e');
+      }
+    }
 
     // Get the parent's UID
     final parentID = FirebaseAuth.instance.currentUser!.uid;
@@ -28,6 +50,11 @@ void submit(GlobalKey<AddChildFormState> formKey, GlobalKey<ChooseChildContentSt
     // Get the child's UID
     final childID = childDocRef.id;
 
+    // Call openSetParentPin and get the PIN
+    Completer<int> pinCompleter = Completer<int>();
+    openSetParentPin(context, pinCompleter);
+    int pin = await pinCompleter.future;
+
     // Create a new instance of the Child class
     final child = Child(
       id: childID,
@@ -35,8 +62,8 @@ void submit(GlobalKey<AddChildFormState> formKey, GlobalKey<ChooseChildContentSt
       gender: gender,
       parentID: parentID,
       PIN: pin,
-      birthDate: age,
-      // ... other attributes
+      birthDate: age ?? DateTime.now(),
+      prefs: categories,
     );
 
     // Set the Firestore document for the child user
@@ -48,7 +75,19 @@ void submit(GlobalKey<AddChildFormState> formKey, GlobalKey<ChooseChildContentSt
     });
 
     // Call the createUser function
-    await createUser(childID, name, age, gender, false);
+    //await createUser(childID, name, age, gender, false);
+
+    // Check if an image was selected
+    if (imageFile != null) {
+      final ref = FirebaseStorage.instance.ref().child('profile_pics').child('$childID.png');
+      print("CHILD IDDDDDDDDDDDDDDDDDDDD: $childID");
+      print("PROFILE PICCCCCCCCCCCCCCCCC: $childID.png");
+      await ref.putFile(imageFile);
+      final imageUrl = await ref.getDownloadURL();
+      await childDocRef.update({'imageURL': imageUrl});
+    }else{
+      print("No image selected!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11");
+    }
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -62,14 +101,11 @@ void submit(GlobalKey<AddChildFormState> formKey, GlobalKey<ChooseChildContentSt
     // Pop the current page from the navigation stack
     Navigator.pop(context);
 
-    // Here you can handle the submission of the data
-    // For example, you can print the data
-    print('Name: $name');
-    print('Age: $age');
-    print('Pin: $pin');
-    print('Gender: $gender');
-    for (int i = 0; i < categories.length; i++) {
-      print('Category: ${categories[i]}, Selected: ${isSelected[i]}');
-    }
+  }else{
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Please fill in all the fields'),
+      ),
+    );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Models/Classes/Parent.dart';
 import 'package:the_eye/Constants/links.dart';
+import '../../../Common/Models/Classes/Child.dart';
 import '../../../Constants/Colors.dart';
 import '../../Parent/Parent Home/Parent Home.dart';
 
@@ -98,10 +99,13 @@ void openDialog(context, user) {
                     ),
                   ),
                   onPressed: () {
-                    if (digits.join().length == 4) {
-                      setState(() {
-                        isLoading = true;
-                      });
+                    // Get the entered PIN
+                    int enteredPin = int.tryParse(digits.join()) ?? 0;
+
+                    // Validate the entered PIN
+                    if ((user is Parent && user.PIN == enteredPin) || (user is Child && user.PIN == enteredPin)) {
+                      Navigator.of(context).pop();
+
                       if (user.role == "parent") {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => ParentHome(parent: user as Parent,)));
                       } else {
@@ -109,7 +113,7 @@ void openDialog(context, user) {
                       }
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Please enter a valid ID')),
+                        const SnackBar(content: Text('Invalid PIN. Please try again.')),
                       );
                     }
                   },

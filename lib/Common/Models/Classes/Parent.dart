@@ -6,6 +6,7 @@ import 'User.dart';
 class Parent extends User {
   final String plan;
   final String email;
+  final int PIN; // Add this line
   late List<String> children;
   late List<String> transactions;
 
@@ -14,6 +15,7 @@ class Parent extends User {
     required String gender,
     required String name,
     required this.email,
+    required this.PIN, // Add this line
     String imageURL = '',
     this.plan = "free",
 
@@ -39,6 +41,7 @@ class Parent extends User {
       name: map['name'] ?? 'name',
       imageURL: map['imageURL'] ?? profilePlaceholderURL,
       email: map['email'] ?? '',
+      PIN: map['PIN'] ?? 0, // Add this line
       plan: map['plan'] ?? 'free',
       children: map['children'] != null ? List<String>.from(map['children']) : [],
       transactions: map['transactions'] != null ? List<String>.from(map['transactions']) : [],
@@ -51,6 +54,7 @@ class Parent extends User {
       'gender': gender,
       'name': name,
       'imageURL': imageURL,
+      'PIN': PIN, // Add this line
       'plan': plan,
       'children': children,
       'transactions': transactions,
@@ -65,6 +69,7 @@ class Parent extends User {
       id: doc.id,
       name: data['name'] ?? 'name',
       email: data['email'] ?? '',
+      PIN: data['PIN'] ?? 0, // Add this line
       gender: data['gender'] ?? 'gender',
       imageURL: data['imageURL'] ?? profilePlaceholderURL,
       plan: data['plan'] ?? 'free',

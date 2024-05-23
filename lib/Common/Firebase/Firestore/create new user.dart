@@ -4,7 +4,7 @@ import 'package:the_eye/Constants/links.dart';
 import '../../Models/Classes/Creator.dart';
 import '../../Models/Classes/Parent.dart';
 
-Future<dynamic> createUser(uid, email, name, String? photo, bool isParent) async {
+Future<dynamic> createUser(uid, email, name, String? photo, bool isParent, [int pin = 0]) async {
   final db = FirebaseFirestore.instance;
 
   // Determine the role based on isParent
@@ -17,15 +17,16 @@ Future<dynamic> createUser(uid, email, name, String? photo, bool isParent) async
       id: uid,
       gender: 'unknown', // Replace with actual gender
       name: name,
-      imageURL: profilePlaceholderURL,
+      imageURL: photo?? profilePlaceholderURL,
       email: email,
+      PIN: pin,
     );
   } else {
     user = Creator(
       id: uid,
       gender: 'unknown', // Replace with actual gender
       name: name,
-      imageURL: profilePlaceholderURL,
+      imageURL: photo?? profilePlaceholderURL,
       email: email,
     );
   }
