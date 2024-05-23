@@ -30,8 +30,8 @@ class ProfileIcons extends StatelessWidget {
                   splashFactory: NoSplash.splashFactory,
                   onTap: () {
                     openDialog(
-                      context,
-                      childData
+                        context,
+                        childData
                     );
                   },
                   child: Column(

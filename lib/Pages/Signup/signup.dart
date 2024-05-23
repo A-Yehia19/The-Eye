@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Widgets/Back.dart';
 import 'package:the_eye/Pages/Signup/Widgets/signup_form.dart';
 
+import '../../Common/Widgets/set_user_profile_pic.dart';
+
 class Signup extends StatelessWidget {
   const Signup({Key? key}) : super(key: key);
 
