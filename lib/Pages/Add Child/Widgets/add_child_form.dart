@@ -64,8 +64,10 @@ class AddChildFormState extends State<AddChildForm> {
             ),
           ),
         ),
-        UserProfilePic(
-          key: widget.picKey,
+        Center(
+          child: UserProfilePic(
+            key: widget.picKey,
+          ),
         ), // Add the UserProfilePic widget
         Row(
           mainAxisAlignment: MainAxisAlignment
