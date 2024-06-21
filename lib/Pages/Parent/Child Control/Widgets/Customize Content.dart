@@ -60,7 +60,7 @@ class _CustomizeContentState extends State<CustomizeContent> {
           top: -10,
           left: 25.w,
           child: Text(
-            ' Children Accounts',
+            ' Customize Content',
             style: TextStyle(
               color: textColor,
               fontSize: 14.sp,

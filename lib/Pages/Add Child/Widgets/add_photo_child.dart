@@ -25,28 +25,30 @@ class AddPhotoChildState extends State<AddPhotoChild> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Stack(
-          children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundColor: Colors.white,
-              child: CircleAvatar(
-                radius: 45,
-                backgroundImage: _imageFile == null ? null : FileImage(_imageFile!),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Stack(
+            children: [
+              CircleAvatar(
+                radius: 50,
+                backgroundColor: Colors.white,
+                child: CircleAvatar(
+                  radius: 45,
+                  backgroundImage: _imageFile == null ? null : FileImage(_imageFile!),
+                ),
               ),
-            ),
-            Positioned(
-              bottom: -10,
-              left: 80,
-              child: IconButton(onPressed: pickImage,
-                  icon: const Icon(Icons.add_a_photo)),
-            ),
-          ],
-        ),
-      ],
+              Positioned(
+                bottom: -10,
+                left: 80,
+                child: IconButton(onPressed: pickImage,
+                    icon: const Icon(Icons.add_a_photo)),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
