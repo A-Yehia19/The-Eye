@@ -11,6 +11,6 @@ List <String> onboardingImages = [
 
 List <String> onboardingDescriptions = [
   'A rich experience of a safe place for your family to feel the entertainment',
-  'A rich experience of a safe place for your family to feel the entertainment',
-  'A rich experience of a safe place for your family to feel the entertainment',
+  'Let your child enjoy a variety of fun videos',
+  'Monitor and control children accounts for their safety',
 ];

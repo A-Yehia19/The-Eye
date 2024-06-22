@@ -55,6 +55,7 @@ to avoid any sensitive or bad content for kids.
 | 0.18.5  | finished report videos into database <br/>adjust video home tabs to work                                  |
 | 0.19    | updated registration forms for users and children. <br/>made profile pictures functional with firebase    |
 | 0.19.1  | minor text fixes                                                                                          |
+| 0.19.2  | minor text fixes on boarding                                                                              |
 
 ## Authors
 
