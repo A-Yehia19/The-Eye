@@ -4,10 +4,10 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:the_eye/Common/Firebase/Storage/upload_user_image.dart';
 import 'package:the_eye/Pages/Add%20Child/Widgets/add_child_form.dart';
 import 'package:the_eye/Pages/Add%20Child/Widgets/choose_content.dart';
 import '../../../Common/Models/Classes/Child.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
 import '../../Signup/Data/Functions/set_parent_pin.dart';
 
@@ -22,7 +22,6 @@ Future<void> submit(File? imageFile, GlobalKey<AddChildFormState> formKey, Globa
 
   if (formState != null && contentState != null) {
     final name = formState.nameController.text;
-    //final age = DateTime.parse(formState.ageController.text);
     final gender = formState.selectedGender.toString().split('.').last; // Convert Gender enum to String
     final categories = contentState.categories;
 
@@ -75,31 +74,24 @@ Future<void> submit(File? imageFile, GlobalKey<AddChildFormState> formKey, Globa
 
     // Check if an image was selected
     if (imageFile != null) {
-      final ref = FirebaseStorage.instance.ref().child('profile_pics').child('$childID.png');
-      print("CHILD IDDDDDDDDDDDDDDDDDDDD: $childID");
-      print("PROFILE PICCCCCCCCCCCCCCCCC: $childID.png");
-      await ref.putFile(imageFile);
-      final imageUrl = await ref.getDownloadURL();
+      final imageUrl = await uploadUserImage(imageFile, childID);
       await childDocRef.update({'imageURL': imageUrl});
     }else{
       print("No image selected!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11");
     }
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+      const SnackBar(
         content: Text('Child was added successfully'),
       ),
     );
-
-    // Wait for a short delay before popping the page
-    await Future.delayed(Duration(seconds: 2));
 
     // Pop the current page from the navigation stack
     Navigator.pop(context);
 
   }else{
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+      const SnackBar(
         content: Text('Please fill in all the fields'),
       ),
     );
