@@ -1,8 +1,16 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:the_eye/Common/Firebase/Firestore/create%20new%20user.dart';
+
+import '../../../Pages/Creator Home/creator_home.dart';
+import '../../../Pages/Profiles/profiles.dart';
+import '../../../Pages/Signup/Data/Functions/set_parent_pin.dart';
+import '../../Models/Classes/Creator.dart';
+import '../../Models/Classes/Parent.dart';
 
 Future<UserCredential> signInWithGoogle() async {
   // Trigger the authentication flow
@@ -39,13 +47,34 @@ googleSignIn(context) async {
 
 googleSignUp(bool isParent, context) async {
   await signInWithGoogle();
-  if (FirebaseAuth.instance.currentUser != null) {
+  if(FirebaseAuth.instance.currentUser != null) {
     final uid = FirebaseAuth.instance.currentUser!.uid;
     final email = FirebaseAuth.instance.currentUser!.email;
     final name = FirebaseAuth.instance.currentUser!.displayName ?? "";
     final photo = FirebaseAuth.instance.currentUser!.photoURL ?? "";
+    var user;
+    
+    if (isParent) {
+      // Call openChangeIdDialog and get the PIN
+      Completer<int> pinCompleter = Completer<int>();
+      openSetParentPin(context, pinCompleter);
+      int pin = await pinCompleter.future;
+      user = await createUser(uid, email, name, photo, isParent, pin);
+    } else {
+      user = await createUser(uid, email, name, photo, isParent);
+    }
 
-    createUser(uid, email, name, photo, isParent);
-    Navigator.pushNamedAndRemoveUntil(context, '/profiles', (route) => false);
+    if (user is Creator) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => CreatorHome(creator: user)), // Navigate to CreatorHome page
+      );
+    } else if (user is Parent) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const Profiles()), // Navigate to Profiles page
+      );
+    }
   }
+
 }
