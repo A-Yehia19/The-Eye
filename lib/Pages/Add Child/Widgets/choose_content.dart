@@ -14,7 +14,7 @@ class ChooseChildContent extends StatefulWidget {
 
 class ChooseChildContentState extends State<ChooseChildContent> {
   final List<String> categories = ['Nudity', 'Violence', 'Weapons', 'LGBTQ', 'Disgusting', 'Sexual', 'Blood'];
-  List<bool> isSelected = List.generate(7, (index) => false);
+  List<String> isSelected = [];
 
   @override
   Widget build(BuildContext context) {
@@ -40,15 +40,19 @@ class ChooseChildContentState extends State<ChooseChildContent> {
             padding: EdgeInsets.symmetric( horizontal: 2.w, vertical: 4.w),
             child: ChoiceChip(
               label: Text(category),
-              selected: isSelected[categories.indexOf(category)],
+              selected: isSelected.contains(category),
               onSelected: (bool selected) {
                 setState(() {
-                  isSelected[categories.indexOf(category)] = selected;
+                  if (selected) {
+                    isSelected.add(category);
+                  } else {
+                    isSelected.remove(category);
+                  }
                 });
               },
               selectedColor: primaryColor,
               backgroundColor: Colors.grey[200], // Lighter grey color for deactivated state
-              labelStyle: TextStyle(color: isSelected[categories.indexOf(category)] ? Colors.white : Colors.black),
+              labelStyle: TextStyle(color: isSelected.contains(category) ? Colors.white : Colors.black),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(50), // Rounder borders
               ),
@@ -63,7 +67,7 @@ class ChooseChildContentState extends State<ChooseChildContent> {
               CustomButton(
                 onPressed: () {
                   setState(() {
-                    isSelected = List.generate(categories.length, (index) => true);
+                    isSelected = List.from(categories);
                   });
                 },
                 child: const Text( // Set the text to 'Select All'
@@ -75,7 +79,7 @@ class ChooseChildContentState extends State<ChooseChildContent> {
               CustomButton(
                 onPressed: () {
                   setState(() {
-                    isSelected = List.generate(categories.length, (index) => false);
+                    isSelected.clear();
                   });
                 },
                 child: const Text('Deselect All',

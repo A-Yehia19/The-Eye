@@ -23,7 +23,7 @@ Future<void> submit(File? imageFile, GlobalKey<AddChildFormState> formKey, Globa
   if (formState != null && contentState != null) {
     final name = formState.nameController.text;
     final gender = formState.selectedGender.toString().split('.').last; // Convert Gender enum to String
-    final categories = contentState.categories;
+    final categories = contentState.isSelected;
 
     DateTime? age;
     if (formState.ageController.text is Timestamp) {
