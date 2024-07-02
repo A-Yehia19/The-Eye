@@ -14,7 +14,7 @@ class ChooseChildContent extends StatefulWidget {
 
 class ChooseChildContentState extends State<ChooseChildContent> {
   final List<String> categories = ['sexual', 'violence', 'disgusting', 'scary', 'injury'];
-  List<bool> isSelected = [];
+  List<String> isSelected = [];
 
   @override
   Widget build(BuildContext context) {
