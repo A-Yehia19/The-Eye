@@ -58,6 +58,7 @@ to avoid any sensitive or bad content for kids.
 | 0.19.2  | minor text fixes on boarding                                                                              |
 | 0.19.3  | profiles page scrollable                                                                                  |
 | 1.0.0   | first prototype released                                                                                  |
+| 1.0.1   | minor update: adjusted video fetching option                                                              |
 
 ## Authors
 
