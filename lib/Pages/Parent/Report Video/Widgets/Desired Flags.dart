@@ -13,7 +13,7 @@ class DesiredFlags extends StatefulWidget {
 class _DesiredFlagsState extends State<DesiredFlags> {
   @override
   Widget build(BuildContext context) {
-    final List<String> categories = ['Nudity', 'Violence', 'Weapons', 'LGBTQ', 'Disgusting', 'Sexual', 'Blood'];
+    final List<String> categories = ['Sexual', 'Violence', 'Disgusting', 'Scary', 'Injury'];
 
     return Stack(
       clipBehavior: Clip.none,

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_eye/Common/Models/Classes/Child.dart';
@@ -14,8 +15,8 @@ class CustomizeContent extends StatefulWidget {
 class _CustomizeContentState extends State<CustomizeContent> {
   @override
   Widget build(BuildContext context) {
-    final List<String> categories = ['Nudity', 'Violence', 'Weapons', 'LGBTQ', 'Disgusting', 'Sexual', 'Blood'];
-
+    final List<String> categories = ['sexual', 'violence', 'scary', 'injury', 'disgusting'];
+    print(widget.child.prefs);
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -44,11 +45,13 @@ class _CustomizeContentState extends State<CustomizeContent> {
                     } else {
                       widget.child.prefs.remove(category);
                     }
+                    final db = FirebaseFirestore.instance;
+                    db.collection('users').doc(widget.child.id).update({'prefs': widget.child.prefs});
                   });
                 },
                 selectedColor: primaryColor,
                 backgroundColor: Colors.grey[200], // Lighter grey color for deactivated state
-                labelStyle: TextStyle(color: widget.child.prefs.contains(category) ? Colors.white : Colors.black),
+                labelStyle: TextStyle(color: widget.child.prefs.contains(category.toLowerCase()) ? Colors.white : Colors.black),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50), // Rounder borders
                 ),
