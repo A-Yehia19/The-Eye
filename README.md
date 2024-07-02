@@ -57,6 +57,7 @@ to avoid any sensitive or bad content for kids.
 | 0.19.1  | minor text fixes                                                                                          |
 | 0.19.2  | minor text fixes on boarding                                                                              |
 | 0.19.3  | profiles page scrollable                                                                                  |
+| 0.19.4  | minor fixes<br/>implemented a working sign in with google button                                          |
 | 1.0.0   | first prototype released                                                                                  |
 
 ## Authors
@@ -71,7 +72,7 @@ for the whole app
 
 to debug
 - [x] Sessions aren't saved correctly is always opens on profiles page the parent even if a creator is currently logged in.
-- [ ] make Google authentication work with both creator and parent.
+- [x] make Google authentication work with both creator and parent.
 - [x] the back button shouldn't pop when there are no other pages in stack.
 - [ ] delete video data in case of uploading error .
 - [ ] delete items and accounts associated with them when deleting an account.
