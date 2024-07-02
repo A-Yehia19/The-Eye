@@ -7,19 +7,15 @@ import '../Variables.dart';
 void getCarouselList(List<String> prefs) async{
   final queryOptions = generatePrefsOptions(prefs);
 
-  List<List<String>> options1 = queryOptions.sublist(0,28);
-  List<List<String>> options2 = queryOptions.sublist(28);
+  if (queryOptions.length > 30) {
+    queryOptions.length = 30;
+  }
 
   final db = FirebaseFirestore.instance;
   final videosRef = db.collection('videos');
   final query = videosRef
       .where("status", isEqualTo: "Finished")
-      .where(
-      Filter.or(
-          Filter("tags", whereIn: options1),
-          Filter("tags", whereIn: options2)
-      )
-  );
+      .where("tags", whereIn: queryOptions);
 
   final videoCollection = await query.limit(5).get();
   carouselList =  videoCollection.docs.map((video) => Video.fromSnapshot(video)).toList();
